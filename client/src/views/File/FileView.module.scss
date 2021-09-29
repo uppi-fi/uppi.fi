@@ -1,0 +1,31 @@
+@import '../../theme.scss';
+
+.root {
+  padding-top: 25px;
+  width: 720px;
+  margin: 0 auto;
+
+  footer {
+    position: relative;
+    justify-content: space-between;
+    padding:16px; 
+    font-size: 14px;
+    width: 100%;
+    font-weight: bold;
+    background-color: white;
+    display: flex;
+    
+    .icon {
+      position: absolute;
+      right: 16px;
+      top: 16px * 0.75;
+      font-size: 22px;
+      color: $accent;
+      cursor: pointer;
+    }
+  }
+}
+
+.file {
+  margin-bottom: -4px;
+}
