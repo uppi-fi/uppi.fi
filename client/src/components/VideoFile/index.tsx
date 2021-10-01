@@ -1,19 +1,34 @@
-import { env } from "../../env";
-import { FileT } from "../../views/List";
+import { useEffect, useRef } from "react";
+import { useLocalStorage } from "react-use";
+import { FileT } from "shared";
+import { getServerUrl } from "../../utils/url";
+import styles from "./VideoFile.module.scss";
 
 interface VideoFileProps {
   file: FileT;
 }
 
 function VideoFile({ file }: VideoFileProps) {
+  const [autoPlay] = useLocalStorage("autoPlay", false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const previousFileId = useRef(file.id);
+
+  useEffect(() => {
+    if (previousFileId.current === file.id) {
+      return;
+    }
+
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+
+    previousFileId.current = file.id;
+  }, [file.id]);
+
   return (
-    <video width={720} controls>
-      <source
-        src={`${env.serverHost}/${file.filename}`}
-        type={file.mime_type}
-      />
+    <video ref={videoRef} autoPlay={autoPlay} className={styles.video} controls>
+      <source src={getServerUrl(file.filename)} type={file.mimetype} />
     </video>
   );
 }
-
 export default VideoFile;

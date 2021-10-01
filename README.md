@@ -4,6 +4,7 @@
 
 - Node.js
 - Docker
+- Yarn 2 (`yarn set version berry`)
 
 ## Installation & running
 
@@ -19,11 +20,11 @@ yarn start
 
 ## Migrations
 
-- `npm run migrate`
+- `yarn migrate`
   - Runs any un-executed committed migrations.
-- `npm run migrate:watch`
+- `yarn migrate:watch`
   - Runs any un-executed committed migrations and then runs and watches the current migration, re-running it on any change. For development.
-- `npm run migrate:commit`
+- `yarn migrate:commit`
   - Commits the current migration into the `committed/` folder, resetting the current migration.
-- `npm run migrate:uncommit`
+- `yarn migrate:uncommit`
   - Moves the latest commit out of the committed migrations folder and back to the current migration (assuming the current migration is empty-ish).

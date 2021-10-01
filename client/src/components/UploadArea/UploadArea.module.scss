@@ -4,13 +4,16 @@
   border: 5px dashed $border-color;
   display: grid;
   place-items: center;
+  margin-top: -48px; // To negate the header height
   width: 100%;
   height: 75vh;;
   border-radius: 25px;
   transition: background ease 0.5s;
   position: relative;
   overflow: hidden;
+  font-size: 10vh;
   background: white;
+  color: $accent;
   
   svg {
     position: relative;
@@ -21,7 +24,7 @@
   
   &.active , &:hover {
     cursor: pointer;
-    background: $button-hover-color;
+    background: rgba($accent, 0.1);
 
     svg {
       top: -2.5%

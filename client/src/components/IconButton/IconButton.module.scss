@@ -1,0 +1,32 @@
+@import '../../theme.scss';
+
+.button {
+  background: none;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  place-items: center;
+  
+  svg {
+    position: relative;
+    top: 0;
+    transition: transform ease 0.2s;
+  }
+  &:hover svg {
+    transform: scale(1.15);
+  }
+}
+
+.icon {
+  font-size: 22px;
+  color: $accent;
+  cursor: pointer;
+}
+
+.text {
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 2px;
+  margin-left: 8px;
+  color: $accent;
+}

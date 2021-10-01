@@ -1,12 +1,13 @@
 {
   "name": "server",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "tsnd --respawn src/index.ts",
     "migrate": "dotenv -e .env graphile-migrate migrate",
     "migrate:watch": "dotenv -e .env graphile-migrate watch",
     "migrate:commit": "dotenv -e .env graphile-migrate commit",
-    "migrate:uncommit": "dotenv -e .env graphile-migrate uncommit"
+    "migrate:uncommit": "dotenv -e .env graphile-migrate uncommit",
+    "generate-types": "kanel"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -22,7 +23,10 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "kanel": "^2.3.2",
     "multer": "^1.4.3",
-    "nanoid": "^3.1.28"
+    "nanoid": "^3.1.28",
+    "pg-promise": "^10.11.0",
+    "shared": "1.0.0"
   }
 }

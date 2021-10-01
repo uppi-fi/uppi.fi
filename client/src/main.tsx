@@ -1,19 +1,22 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import React from "react";
 import ReactDOM from "react-dom";
-import { env } from "./env";
+import { RecoilRoot } from "recoil";
+import App from "./App";
 import "./main.scss";
-import Routes from "./routes";
+import { getServerUrl } from "./utils/url";
 
 const client = new ApolloClient({
-  uri: `${env.serverHost}/graphql`,
+  uri: getServerUrl("graphql"),
   cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Routes />
+      <RecoilRoot>
+        <App />
+      </RecoilRoot>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root"),

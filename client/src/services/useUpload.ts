@@ -1,36 +1,36 @@
 import axios from "axios";
-import { useCallback, useState } from "react";
-import { env } from "../env";
-
-export interface UploadedFileT {
-  filename: string;
-  fileId: number;
-}
+import { useCallback } from "react";
+import { useSetRecoilState } from "recoil";
+import { FileT } from "../../../shared/types";
+import { appState } from "../state/appState";
+import { getServerUrl } from "../utils/url";
 
 export function useUpload() {
-  const [uploaded, setUploaded] = useState<UploadedFileT>();
-  const [progress, setProgress] = useState<number>(0);
+  const setAppState = useSetRecoilState(appState);
+
+  const setUploadedFile = (uploadedFile: FileT) =>
+    setAppState((old) => ({
+      ...old,
+      uploadedFile,
+    }));
+  const setProgress = (uploadProgress: number) =>
+    setAppState((old) => ({
+      ...old,
+      uploadProgress,
+    }));
 
   const upload = useCallback(async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
 
-    const { data } = await axios.post<UploadedFileT>(
-      `${env.serverHost}/upload`,
-      formData,
-      {
-        onUploadProgress: (p: ProgressEvent) => setProgress(p.loaded / p.total),
-      },
-    );
+    const { data } = await axios.post<FileT>(getServerUrl("upload"), formData, {
+      onUploadProgress: (p: ProgressEvent) => setProgress(p.loaded / p.total),
+    });
 
     setProgress(1);
-    setUploaded(data);
+    setUploadedFile(data);
     return data;
   }, []);
 
-  return {
-    uploaded,
-    upload,
-    progress,
-  };
+  return upload;
 }

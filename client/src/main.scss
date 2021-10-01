@@ -1,11 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap&text=upime.');
 
 body {
   margin: 0;
   padding: 0;
   background:#f1f1f1;
+  color: black;
 }
 
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
 * {
   box-sizing: border-box;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;

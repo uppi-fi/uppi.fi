@@ -1,0 +1,18 @@
+.root {
+  display: grid;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
+
+.image {
+  width: 80vw;
+  max-width: 600px;
+  min-width: 200px;
+}
+
+.text {
+  font-weight: bold;
+  font-size: clamp(16px, 2vw, 22px);
+  cursor: pointer;
+}

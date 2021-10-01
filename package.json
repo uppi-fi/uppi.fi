@@ -1,14 +1,19 @@
 {
+  "name": "laturi",
   "private": true,
   "workspaces": [
     "client",
-    "server"
+    "server",
+    "shared"
   ],
   "scripts": {
     "dev:client": "yarn workspace client dev",
     "dev:server": "yarn workspace server dev",
     "dev": "concurrently \"npm:dev:*\"",
-    "generate-types": "graphql-codegen"
+    "migrate": "yarn workspace server migrate",
+    "migrate:watch": "yarn workspace server migrate:watch",
+    "migrate:commit": "yarn workspace server migrate:commit",
+    "migrate:uncommit": "yarn workspace server migrate:uncommit"
   },
   "devDependencies": {
     "concurrently": "^6.2.2"

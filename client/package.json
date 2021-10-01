@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "generate-types": "graphql-codegen",
     "dev": "vite --host",
@@ -12,9 +12,12 @@
     "axios": "^0.21.4",
     "classnames": "^2.3.1",
     "graphql": "^15.6.0",
+    "prettier": "^2.4.1",
+    "rc-tooltip": "^5.1.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-use": "^17.3.1",
+    "recoil": "^0.4.1",
     "wouter": "^2.8.0-alpha.1"
   },
   "devDependencies": {

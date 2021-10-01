@@ -1,1 +1,14 @@
--- Enter migration here
+DROP TABLE IF EXISTS file;
+CREATE TABLE file  (
+  id  VARCHAR(5) PRIMARY KEY,
+  filename VARCHAR(255) NOT NULL,
+  mime_type VARCHAR(127) NOT NULL,
+  custom_name VARCHAR(255),
+  views INTEGER DEFAULT 0 NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+DROP TABLE IF EXISTS site_statistics;
+CREATE TABLE site_statistics  (
+  page_loads INTEGER DEFAULT 0 NOT NULL
+);

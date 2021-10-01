@@ -1,33 +1,26 @@
 import { Icon } from "@iconify/react";
 import cx from "classnames";
 import { memo, useRef } from "react";
-import { useDropArea } from "react-use";
+import { useRecoilValue } from "recoil";
+import { useUpload } from "../../services/useUpload";
+import { appState } from "../../state/appState";
 import styles from "./UploadArea.module.scss";
 
-export interface UploadAreaProps {
-  progress: number;
-  onShouldUpload: (file: File) => void;
-}
-
-function UploadArea({ progress, onShouldUpload }: UploadAreaProps) {
+function UploadArea() {
+  const upload = useUpload();
+  const { draggingFile, uploadProgress } = useRecoilValue(appState);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onFiles = (files: File[] | FileList | null) => {
     if (files?.length === 1) {
-      const [file] = files;
-      onShouldUpload(file);
+      upload(files[0]);
     }
   };
 
-  const [bond, state] = useDropArea({
-    onFiles,
-  });
-
   return (
     <div
-      {...bond}
       className={cx(styles.root, {
-        [styles.active]: state.over,
+        [styles.active]: draggingFile,
       })}
       onClick={() => {
         inputRef.current?.click();
@@ -42,10 +35,14 @@ function UploadArea({ progress, onShouldUpload }: UploadAreaProps) {
       <div
         className={styles.fill}
         style={{
-          height: `${progress * 100}%`,
+          height: `${uploadProgress * 100}%`,
         }}
       />
-      <Icon icon="feather:upload" color="#2a9d8f" fontSize="15vw" />
+      {uploadProgress === 0 ? (
+        <Icon icon="feather:upload" color="#2a9d8f" fontSize="15vw" />
+      ) : (
+        `${Math.round(uploadProgress * 100)}%`
+      )}
     </div>
   );
 }

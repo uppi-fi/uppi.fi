@@ -1,15 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FileT } from "shared";
 import { env } from "../../env";
 
-export interface FileT {
-  id: number;
-  filename: string;
-  mime_type: string;
-  custom_name: string;
-}
-
-function ListView() {
+function ListingView() {
   const [files, setFiles] = useState<Array<FileT>>([]);
 
   useEffect(() => {
@@ -31,4 +25,4 @@ function ListView() {
   );
 }
 
-export default ListView;
+export default ListingView;
