@@ -2,7 +2,7 @@ import { useRecoilValue } from "recoil";
 import { Route, Switch } from "wouter";
 import { currentUserState } from "./state/currentUserState";
 import FileView from "./views/FileView";
-import ListingView from "./views/ListingView";
+import OwnFiles from "./views/OwnFilesView";
 import UploadView from "./views/UploadView";
 
 const Routes = () => {
@@ -13,7 +13,7 @@ const Routes = () => {
       {currentUser ? (
         <>
           <Route path="/" component={UploadView} />
-          <Route path="/files" component={ListingView} />
+          <Route path="/files" component={OwnFiles} />
         </>
       ) : (
         <></>

@@ -7,9 +7,9 @@ import Spinner from "../../components/Spinner";
 import { FileT } from "../../schema";
 import { useApiService } from "../../services/useApiService";
 import { currentUserState } from "../../state/currentUserState";
-import styles from "./ListingView.module.scss";
+import styles from "./OwnFiles.module.scss";
 
-function ListingView() {
+function OwnFiles() {
   const currentUser = useRecoilValue(currentUserState);
   const { data: files, get: fetch } = useApiService<FileT[]>("get-files");
 
@@ -48,4 +48,4 @@ function ListingView() {
   );
 }
 
-export default ListingView;
+export default OwnFiles;
