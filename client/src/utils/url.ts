@@ -8,3 +8,7 @@ export function getServerUrl(path: string) {
 export function getFileUrl(file: FileT) {
   return getServerUrl(`${file.id}/${file.filename}`);
 }
+
+export function getVideoPreviewUrl(file: FileT) {
+  return getServerUrl(`${file.id}/thumbnail.png`);
+}

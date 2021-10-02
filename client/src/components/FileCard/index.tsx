@@ -3,8 +3,8 @@ import Tooltip from "rc-tooltip";
 import { useState } from "react";
 import { useLocation } from "wouter";
 import { FileT } from "../../schema";
-import { isImageFile } from "../../utils/mimetype";
-import { getFileUrl } from "../../utils/url";
+import { isImageFile, isVideoFile } from "../../utils/mimetype";
+import { getFileUrl, getVideoPreviewUrl } from "../../utils/url";
 import styles from "./FileCard.module.scss";
 
 interface FileCardProps {
@@ -19,6 +19,11 @@ function FileCard({ file }: FileCardProps) {
   const renderIcon = () => {
     if (isImageFile(file)) {
       return <img src={fileUrl} alt={file.filename} />;
+    }
+
+    if (isVideoFile(file)) {
+      console.log("heh", getVideoPreviewUrl(file));
+      return <img src={getVideoPreviewUrl(file)} alt={file.filename} />;
     }
 
     return (

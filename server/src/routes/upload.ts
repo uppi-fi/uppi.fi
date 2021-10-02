@@ -5,6 +5,8 @@ import { nanoid } from "nanoid";
 import * as path from "path";
 import { db } from "../database";
 import { FileT } from "../schema";
+import { getFileLocalPath } from "../utils/file";
+import { generateVideoThumbnail } from "../utils/videoThumbnails";
 
 const upload = multer({ dest: "uploads/" });
 
@@ -26,8 +28,13 @@ export const uploadRoute = (app: Application) =>
     fs.mkdirSync(path.join("uploads", row.id));
     fs.renameSync(
       path.join("uploads", req.file.filename),
-      path.join("uploads", row.id, req.file.originalname),
+      getFileLocalPath(row),
     );
+
+    // Generate thumbnail
+    if (row.mimeType.startsWith("video")) {
+      generateVideoThumbnail(row);
+    }
 
     res.json(row);
   });
