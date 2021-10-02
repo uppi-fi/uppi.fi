@@ -24,9 +24,8 @@ export const deleteFileRoute = (app: Application) =>
       );
 
       // Delete file & directory
-      const filepath = path.join("uploads", id, filename);
-      fs.unlinkSync(filepath);
-      fs.rmdirSync(path.dirname(filepath));
+      const dir = path.join("uploads", id);
+      fs.rmdirSync(dir, { recursive: true });
       res.send({
         status: ResponseStatus.Ok,
       });

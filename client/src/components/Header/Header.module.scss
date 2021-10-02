@@ -23,7 +23,6 @@ $shake-distance: 2.5px;
 .header {
   background: white;
   border-bottom: 1px solid #dfdfdf;
-  width: 100vw;
   padding: 0 8px;
   padding-right: 16px;
   display: flex;
@@ -58,4 +57,21 @@ $shake-distance: 2.5px;
   font-weight: 600;
   align-items: center;
   gap: 24px;
+}
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.smallLink {
+  font-size: 12px;
+  margin-top: 5px;
+  padding: 0 20px;
+  color: #818181;
+  transform: scale(1);
+  transition: scale ease 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }

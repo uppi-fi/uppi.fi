@@ -16,10 +16,15 @@ function Header({ pageLoads }: HeaderProps) {
 
   return (
     <header className={styles.header}>
-      <Link to="/">
-        <img src={logo} alt="uppim.me" />
-        <h1>uppim.me</h1>
-      </Link>
+      <div className={styles.row}>
+        <Link to="/">
+          <img src={logo} alt="uppim.me" />
+          <h1>uppim.me</h1>
+        </Link>
+        <Link to="/files" className={styles.smallLink}>
+          Tiedostot
+        </Link>
+      </div>
 
       <div className={styles.right}>
         {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}
