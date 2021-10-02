@@ -10,7 +10,6 @@ export interface ApiResponse<T> {
 }
 
 export function useApiService<TResponse>(path: string) {
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
   const [error, setError] = useState<boolean>(false);
@@ -26,21 +25,17 @@ export function useApiService<TResponse>(path: string) {
     try {
       const res =
         method === "POST"
-          ? await axios.post<ApiResponse<TResponse>>(url, data, config)
-          : await axios.get<ApiResponse<TResponse>>(url, {
+          ? await axios.post<TResponse>(url, data, config)
+          : await axios.get<TResponse>(url, {
               params: data,
               ...config,
             });
-      const { status, message } = res.data;
 
       if (status === ResponseStatus.Error) {
-        if (message) {
-          setErrorMessage(message);
-        }
         throw new Error();
       }
 
-      setData(res.data.data || null);
+      setData(res.data);
       setStatus(status);
       return res.data;
     } catch (err) {
@@ -61,6 +56,5 @@ export function useApiService<TResponse>(path: string) {
     status,
     data,
     error,
-    errorMessage,
   };
 }

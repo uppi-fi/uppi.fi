@@ -1,0 +1,46 @@
+.root {
+  border: 1px solid rgba(0,0,0,.06);
+  background: white;
+  min-height: 150px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 14px;
+  height: 100%;
+}
+
+.icon {
+  cursor: pointer;
+  overflow: hidden;
+  flex-basis: 150px;
+  background:#fcfcfc;
+  display: grid;
+  place-items: center;
+  font-size: 300%;
+
+  img {
+    width: 100%;
+    margin-bottom: -12px;
+    object-fit: contain;
+  }
+}
+
+.fileDetails {
+  border-top: 1px solid #dfdfdf;
+  padding: 4px;
+
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid transparent;
+    outline: none;
+    &:hover, &:focus {
+      border: 1px solid #dfdfdf;
+    }
+  }
+}

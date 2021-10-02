@@ -9,16 +9,14 @@ import { FileT } from "../schema";
 const upload = multer({ dest: "uploads/" });
 
 export const uploadRoute = (app: Application) =>
-  app.post("/upload", upload.single("file"), async (req, res) => {
+  app.post<{}, FileT>("/upload", upload.single("file"), async (req, res) => {
     if (!req.file) {
-      return res.send("error");
+      return res.sendStatus(400);
     }
 
     // Insert into database
     const fileId = nanoid(5);
-    const [row] = await db.any<
-      Pick<FileT, "id" | "filename" | "customName" | "mimeType">
-    >(
+    const [row] = await db.any<FileT>(
       `INSERT INTO file (id, filename, custom_name, mime_type)
       VALUES ($1, $2, $2, $3)
       RETURNING *`,
