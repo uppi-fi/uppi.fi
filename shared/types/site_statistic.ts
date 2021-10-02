@@ -1,11 +1,11 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
-export default interface SiteStatisticsT {
+export default interface SiteStatisticT {
   pageLoads: number;
 }
 
-export interface SiteStatisticsTInitializer {
+export interface SiteStatisticTInitializer {
   /** Default value: 0 */
   pageLoads?: number;
 }

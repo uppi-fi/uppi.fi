@@ -6,9 +6,13 @@ import { isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
 import styles from "./Header.module.scss";
 
-function Header() {
+interface HeaderProps {
+  pageLoads: number | undefined;
+}
+
+function Header({ pageLoads }: HeaderProps) {
   const currentFile = useRecoilValue(currentFileState);
-  const shouldRenderRightSide = currentFile && isVideoFile(currentFile);
+  const shouldRenderAutoPlayBtn = currentFile && isVideoFile(currentFile);
 
   return (
     <header className={styles.header}>
@@ -17,11 +21,10 @@ function Header() {
         <h1>uppim.me</h1>
       </Link>
 
-      {shouldRenderRightSide && (
-        <div className={styles.right}>
-          <AutoPlayButton />
-        </div>
-      )}
+      <div className={styles.right}>
+        Sivulatauksia: {pageLoads}
+        {shouldRenderAutoPlayBtn && <AutoPlayButton />}
+      </div>
     </header>
   );
 }

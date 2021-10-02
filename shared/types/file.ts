@@ -13,7 +13,7 @@ export default interface FileT {
 
   customName: string | null;
 
-  views: number;
+  viewCount: number;
 
   createdAt: Date;
 }
@@ -29,7 +29,7 @@ export interface FileTInitializer {
   customName?: string | null;
 
   /** Default value: 0 */
-  views?: number;
+  viewCount?: number;
 
   /** Default value: now() */
   createdAt?: Date;

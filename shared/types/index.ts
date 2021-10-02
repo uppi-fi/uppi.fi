@@ -2,15 +2,15 @@
 // Automatically generated. Don't change this file manually.
 
 import FileT, { FileTInitializer, FileTId } from './file';
-import SiteStatisticsT, { SiteStatisticsTInitializer } from './site_statistics';
+import SiteStatisticT, { SiteStatisticTInitializer } from './site_statistic';
 
 type Model =
   | FileT
-  | SiteStatisticsT
+  | SiteStatisticT
 
 interface ModelTypeMap {
   'file': FileT;
-  'site_statistics': SiteStatisticsT;
+  'site_statistic': SiteStatisticT;
 }
 
 type ModelId =
@@ -22,16 +22,16 @@ interface ModelIdTypeMap {
 
 type Initializer =
   | FileTInitializer
-  | SiteStatisticsTInitializer
+  | SiteStatisticTInitializer
 
 interface InitializerTypeMap {
   'file': FileTInitializer;
-  'site_statistics': SiteStatisticsTInitializer;
+  'site_statistic': SiteStatisticTInitializer;
 }
 
 export type {
   FileT, FileTInitializer, FileTId,
-  SiteStatisticsT, SiteStatisticsTInitializer,
+  SiteStatisticT, SiteStatisticTInitializer,
 
   Model,
   ModelTypeMap,

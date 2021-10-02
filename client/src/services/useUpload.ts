@@ -2,11 +2,13 @@ import axios from "axios";
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
 import { FileT } from "shared";
+import { useLocation } from "wouter";
 import { uploadedFileState } from "../state/uploadedFileState";
 import { uploadProgresState } from "../state/uploadProgresState";
 import { getServerUrl } from "../utils/url";
 
 export function useUpload() {
+  const [, setLocation] = useLocation();
   const setUploadedFile = useSetRecoilState(uploadedFileState);
   const setUploadProgress = useSetRecoilState(uploadProgresState);
 
@@ -21,6 +23,7 @@ export function useUpload() {
 
     setUploadProgress(1);
     setUploadedFile(data);
+    setLocation(`/${data.id}`);
     return data;
   }, []);
 

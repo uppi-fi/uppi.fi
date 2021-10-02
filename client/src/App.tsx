@@ -1,22 +1,25 @@
-import { useRecoilValue } from "recoil";
-import { Redirect } from "wouter";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import DropOverlay from "./components/DropOverlay";
 import Header from "./components/Header";
 import Routes from "./routes";
-import { uploadedFileState } from "./state/uploadedFileState";
+import { getServerUrl } from "./utils/url";
 
 function App() {
-  const uploadedFile = useRecoilValue(uploadedFileState);
+  const [pageLoads, setPageLoads] = useState<number>();
+
+  useEffect(() => {
+    axios
+      .get<number>(getServerUrl("visit"))
+      .then(({ data }) => setPageLoads(data));
+  }, []);
 
   return (
     <div className={styles.layout}>
-      <Header />
+      <Header pageLoads={pageLoads} />
       <Routes />
       <DropOverlay />
-      {uploadedFile && (
-        <Redirect key={uploadedFile.id} to={`/${uploadedFile.id}`} />
-      )}
     </div>
   );
 }
