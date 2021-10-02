@@ -14,9 +14,11 @@ function OwnFiles() {
   const { data: files, get: fetch } = useApiService<FileT[]>("get-files");
 
   useEffect(() => {
-    fetch({
-      userId: currentUser?.userId,
-    });
+    if (currentUser) {
+      fetch({
+        userId: currentUser.userId,
+      });
+    }
   }, []);
 
   if (!files) {

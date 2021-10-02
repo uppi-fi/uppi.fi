@@ -27,7 +27,12 @@ function VideoFile({ file }: VideoFileProps) {
   }, [file.id]);
 
   return (
-    <video ref={videoRef} autoPlay={autoPlay} className={styles.video} controls>
+    <video
+      ref={videoRef}
+      autoPlay={autoPlay.video}
+      className={styles.video}
+      controls
+    >
       <source src={getFileUrl(file)} type={file.mimeType} />
     </video>
   );

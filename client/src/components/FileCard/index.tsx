@@ -1,52 +1,26 @@
-import { Icon } from "@iconify/react";
-import Tooltip from "rc-tooltip";
 import { useState } from "react";
-import { useLocation } from "wouter";
 import { FileT } from "../../schema";
-import { isImageFile, isVideoFile } from "../../utils/mimetype";
-import { getFileUrl, getVideoPreviewUrl } from "../../utils/url";
+import { useApiService } from "../../services/useApiService";
+import FileCardMedia from "../FileCardMedia";
 import styles from "./FileCard.module.scss";
 
 interface FileCardProps {
   file: FileT;
 }
 
+type UpdateFileParams = Pick<FileT, "id"> &
+  Partial<Pick<FileT, "customName" | "filename" | "viewCount">>;
+
 function FileCard({ file }: FileCardProps) {
-  const [, setLocation] = useLocation();
   const [filenameValue, setFilenameValue] = useState(file.filename);
-  const fileUrl = getFileUrl(file);
+  const { post: updateFile } = useApiService<{}, UpdateFileParams>(
+    "update-file",
+  );
 
-  const renderMedia = () => {
-    if (isImageFile(file)) {
-      return <img src={fileUrl} alt={file.filename} />;
-    }
-
-    if (isVideoFile(file)) {
-      return <img src={getVideoPreviewUrl(file)} alt={file.filename} />;
-    }
-
-    return (
-      <Tooltip
-        placement="top"
-        overlay={`Tyyppi: ${file.mimeType}`}
-        mouseLeaveDelay={0}
-        arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
-      >
-        <div className={styles.iconWrapper}>
-          <Icon icon="ant-design:file-twotone" />
-        </div>
-      </Tooltip>
-    );
-  };
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <div
-          className={styles.media}
-          onClick={() => setLocation(`/${file.id}`)}
-        >
-          {renderMedia()}
-        </div>
+        <FileCardMedia file={file} />
         <div className={styles.fileDetails}>
           <input
             type="text"
@@ -54,9 +28,15 @@ function FileCard({ file }: FileCardProps) {
             onChange={(evt) => {
               const { value } = evt.currentTarget;
               setFilenameValue(value);
+              updateFile({
+                id: file.id,
+                customName: value,
+              });
               // TODO: Update custom_name
             }}
             spellCheck={false}
+            placeholder="Lisää otsikko"
+            onBlur={() => {}}
           />
         </div>
       </div>

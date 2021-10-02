@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import logo from "../../assets/images/logo.png";
 import { currentFileState } from "../../state/currentFileState";
 import { currentUserState } from "../../state/currentUserState";
-import { isVideoFile } from "../../utils/mimetype";
+import { isAudioFile, isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
 import styles from "./Header.module.scss";
 
@@ -14,7 +14,8 @@ interface HeaderProps {
 function Header({ pageLoads }: HeaderProps) {
   const currentFile = useRecoilValue(currentFileState);
   const currentUser = useRecoilValue(currentUserState);
-  const shouldRenderAutoPlayBtn = currentFile && isVideoFile(currentFile);
+  const shouldRenderAutoPlayBtn =
+    currentFile && (isVideoFile(currentFile) || isAudioFile(currentFile));
 
   return (
     <header className={styles.header}>
@@ -32,7 +33,9 @@ function Header({ pageLoads }: HeaderProps) {
 
       <div className={styles.right}>
         {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}
-        {shouldRenderAutoPlayBtn && <AutoPlayButton />}
+        {shouldRenderAutoPlayBtn && (
+          <AutoPlayButton type={isVideoFile(currentFile) ? "video" : "audio"} />
+        )}
       </div>
     </header>
   );

@@ -11,21 +11,6 @@
   height: 100%;
 }
 
-.media {
-  cursor: pointer;
-  overflow: hidden;
-  flex-shrink: 0;
-  flex-grow: 1;
-  background:#fcfcfc;
-  font-size: 300%;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-}
-
 .fileDetails {
   border-top: 1px solid #dfdfdf;
   padding: 4px;
@@ -41,10 +26,4 @@
       border: 1px solid #dfdfdf;
     }
   }
-}
-
-.iconWrapper {
-  display: grid;
-  place-items: center;
-  height: 100%;
 }
