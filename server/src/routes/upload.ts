@@ -22,7 +22,6 @@ export const uploadRoute = (app: Application) =>
       return res.sendStatus(400);
     }
 
-    console.log("User ID is:", req.body.userId);
     // Insert into database
     const fileId = nanoid(5);
     const [row] = await db.any<FileT>(

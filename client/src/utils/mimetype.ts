@@ -6,3 +6,6 @@ export function isVideoFile(file: FileT) {
 export function isImageFile(file: FileT) {
   return file.mimeType.startsWith("image");
 }
+export function isAudioFile(file: FileT) {
+  return file.mimeType.startsWith("audio");
+}

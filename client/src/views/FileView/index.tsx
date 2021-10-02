@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "wouter";
+import AudioFile from "../../components/AudioFile";
 import FileFooter from "../../components/FileFooter";
 import ImageFile from "../../components/ImageFile";
 import VideoFile from "../../components/VideoFile";
 import { useFile } from "../../services/useFile";
-import { isImageFile, isVideoFile } from "../../utils/mimetype";
+import { isAudioFile, isImageFile, isVideoFile } from "../../utils/mimetype";
 import NotFoundView from "../NotFoundView";
 import styles from "./FileView.module.scss";
 
@@ -42,6 +43,9 @@ function FileView({ fileId }: FileViewProps) {
     }
     if (isImageFile(currentFile)) {
       return <ImageFile file={currentFile} />;
+    }
+    if (isAudioFile(currentFile)) {
+      return <AudioFile file={currentFile} />;
     }
   };
 

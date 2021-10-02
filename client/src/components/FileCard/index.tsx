@@ -16,13 +16,12 @@ function FileCard({ file }: FileCardProps) {
   const [filenameValue, setFilenameValue] = useState(file.filename);
   const fileUrl = getFileUrl(file);
 
-  const renderIcon = () => {
+  const renderMedia = () => {
     if (isImageFile(file)) {
       return <img src={fileUrl} alt={file.filename} />;
     }
 
     if (isVideoFile(file)) {
-      console.log("heh", getVideoPreviewUrl(file));
       return <img src={getVideoPreviewUrl(file)} alt={file.filename} />;
     }
 
@@ -33,15 +32,20 @@ function FileCard({ file }: FileCardProps) {
         mouseLeaveDelay={0}
         arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
       >
-        <Icon icon="ant-design:file-twotone" />
+        <div className={styles.iconWrapper}>
+          <Icon icon="ant-design:file-twotone" />
+        </div>
       </Tooltip>
     );
   };
   return (
     <div className={styles.root}>
       <div className={styles.content}>
-        <div className={styles.icon} onClick={() => setLocation(`/${file.id}`)}>
-          {renderIcon()}
+        <div
+          className={styles.media}
+          onClick={() => setLocation(`/${file.id}`)}
+        >
+          {renderMedia()}
         </div>
         <div className={styles.fileDetails}>
           <input
@@ -52,6 +56,7 @@ function FileCard({ file }: FileCardProps) {
               setFilenameValue(value);
               // TODO: Update custom_name
             }}
+            spellCheck={false}
           />
         </div>
       </div>

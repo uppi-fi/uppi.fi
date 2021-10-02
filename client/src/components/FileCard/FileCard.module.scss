@@ -1,31 +1,28 @@
 .root {
   border: 1px solid rgba(0,0,0,.06);
   background: white;
-  height: 150px;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 130px auto;
   font-weight: bold;
   font-size: 14px;
   height: 100%;
 }
 
-.icon {
+.media {
   cursor: pointer;
   overflow: hidden;
-  flex-basis: 150px;
+  flex-shrink: 0;
+  flex-grow: 1;
   background:#fcfcfc;
-  display: grid;
-  place-items: center;
   font-size: 300%;
 
   img {
     width: 100%;
-    // margin-bottom: -12px;
+    height: 100%;
     object-fit: contain;
-    vertical-align: middle;
   }
 }
 
@@ -44,4 +41,10 @@
       border: 1px solid #dfdfdf;
     }
   }
+}
+
+.iconWrapper {
+  display: grid;
+  place-items: center;
+  height: 100%;
 }

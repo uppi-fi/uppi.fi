@@ -40,10 +40,14 @@ function OwnFiles() {
   }
 
   return (
-    <div className={styles.root}>
-      {files.map((file, i) => (
-        <FileCard key={i} file={file} />
-      ))}
+    <div>
+      <div className={styles.root}>
+        {files.map((file, i) => (
+          <FileCard key={i} file={file} />
+        ))}
+      </div>
+      {/* Adds some spacing so we can scroll further */}
+      <div className={styles.spacer} />
     </div>
   );
 }
