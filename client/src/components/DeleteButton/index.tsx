@@ -21,7 +21,11 @@ function DeleteButton({ fileId }: DeleteButtonProps) {
       },
     )
       .then(() => {
-        setLocation("/");
+        if (history.length) {
+          history.back();
+        } else {
+          setLocation("/");
+        }
         new Audio(deleteSound).play();
       })
       .catch(() => {
