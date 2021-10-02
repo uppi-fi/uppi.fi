@@ -1,7 +1,6 @@
-import axios from "axios";
 import { useLocation } from "wouter";
 import deleteSound from "../../assets/sounds/delete.mp3";
-import { getServerUrl } from "../../utils/url";
+import { useApiService } from "../../services/useApiService";
 import IconButton from "../IconButton";
 
 interface DeleteButtonProps {
@@ -10,10 +9,24 @@ interface DeleteButtonProps {
 
 function DeleteButton({ fileId }: DeleteButtonProps) {
   const [, setLocation] = useLocation();
+  const { post: deleteFile } = useApiService("delete-file");
+
   const onClick = async () => {
-    await axios.post(getServerUrl(`delete-file?fileId=${fileId}`));
-    setLocation("/");
-    new Audio(deleteSound).play();
+    deleteFile(
+      {
+        fileId,
+      },
+      {
+        timeout: 1000,
+      },
+    )
+      .then(() => {
+        setLocation("/");
+        new Audio(deleteSound).play();
+      })
+      .catch(() => {
+        alert("Poistaminen epäonnistui");
+      });
   };
 
   return (

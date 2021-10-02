@@ -1,18 +1,15 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { env } from "../../env";
+import { useEffect } from "react";
 import { FileT } from "../../schema";
+import { useApiService } from "../../services/useApiService";
 
 function ListingView() {
-  const [files, setFiles] = useState<Array<FileT>>([]);
+  const { data: files, get: fetch } = useApiService<FileT[]>("get-files");
 
   useEffect(() => {
-    axios
-      .get<FileT[]>(`${env.serverHost}/get-files`)
-      .then(({ data }) => setFiles(data));
+    fetch();
   }, []);
 
-  if (files === undefined) {
+  if (!files) {
     return <>Loading files...</>;
   }
 

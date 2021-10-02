@@ -1,25 +1,29 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { FileT } from "../schema";
 import { currentFileState } from "../state/currentFileState";
 import { uploadedFileState } from "../state/uploadedFileState";
-import { getServerUrl } from "../utils/url";
-
-interface ErrorT {
-  error: true;
-}
+import { useApiService } from "./useApiService";
 
 export function useFile(fileId: string) {
-  const [error, setError] = useState<boolean>();
   const [uploadedFile, setUploadedFile] = useRecoilState(uploadedFileState);
   const [currentFile, setCurrentFile] = useRecoilState(currentFileState);
+  const {
+    data: fetchedFile,
+    get: fetch,
+    error,
+  } = useApiService<FileT>("get-file");
 
   useEffect(() => {
+    // Reset current file from leaving from the view
     return () => {
       setCurrentFile(null);
     };
   }, []);
+
+  useEffect(() => {
+    setCurrentFile(fetchedFile);
+  }, [fetchedFile]);
 
   useEffect(() => {
     // File just uploaded, we can use it
@@ -30,15 +34,9 @@ export function useFile(fileId: string) {
     }
 
     // Fetch file from server
-    axios
-      .get<FileT | ErrorT>(getServerUrl("get-file"), {
-        params: {
-          fileId,
-        },
-      })
-      .then(({ data }) =>
-        "error" in data ? setError(true) : setCurrentFile(data),
-      );
+    fetch({
+      fileId,
+    });
   }, [uploadedFile?.id]);
 
   return { error, currentFile };
