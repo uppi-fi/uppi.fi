@@ -1,5 +1,5 @@
-import { FileT } from "../../../shared/types";
 import { env } from "../env";
+import { FileT } from "../schema";
 
 export function getServerUrl(path: string, params?: Record<string, string>) {
   return env.serverHost + "/" + path;

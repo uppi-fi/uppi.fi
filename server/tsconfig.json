@@ -1,5 +1,4 @@
 {
-  "extends": "../tsconfig.packages.json",
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
@@ -97,10 +96,5 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  },
-  "references": [
-    {
-      "path": "../shared"
-    }
-  ]
+  }
 }

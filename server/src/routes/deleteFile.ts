@@ -1,8 +1,8 @@
 import { Application } from "express";
 import * as fs from "fs";
 import * as path from "path";
-import { FileT } from "shared";
 import { db } from "../database";
+import { FileT } from "../schema";
 
 export const deleteFileRoute = (app: Application) =>
   app.post<{

@@ -1067,7 +1067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"client@1.0.0, client@workspace:client":
+"client@workspace:client":
   version: 0.0.0-use.local
   resolution: "client@workspace:client"
   dependencies:
@@ -3777,7 +3777,7 @@ fsevents@~2.3.2:
   languageName: node
   linkType: hard
 
-"server@1.0.0, server@workspace:server":
+"server@workspace:server":
   version: 0.0.0-use.local
   resolution: "server@workspace:server"
   dependencies:
@@ -3794,7 +3794,6 @@ fsevents@~2.3.2:
     multer: ^1.4.3
     nanoid: ^3.1.28
     pg-promise: ^10.11.0
-    shared: 1.0.0
     ts-node-dev: ^1.1.8
     typescript: ^4.4.3
   languageName: unknown
@@ -3827,15 +3826,6 @@ fsevents@~2.3.2:
   checksum: f4c1de0837f106d2dbbfd5d0720a5d059d1c66b42b580965c8f06bb1db684be8783538b684092648c981294bf817869f743a066538771dbecb293df78f765e00
   languageName: node
   linkType: hard
-
-"shared@1.0.0, shared@workspace:shared":
-  version: 0.0.0-use.local
-  resolution: "shared@workspace:shared"
-  dependencies:
-    client: 1.0.0
-    server: 1.0.0
-  languageName: unknown
-  linkType: soft
 
 "shebang-command@npm:^2.0.0":
   version: 2.0.0

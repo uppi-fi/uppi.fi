@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { FileT } from "shared";
+import { FileT } from "../schema";
 import { currentFileState } from "../state/currentFileState";
 import { uploadedFileState } from "../state/uploadedFileState";
 import { getServerUrl } from "../utils/url";

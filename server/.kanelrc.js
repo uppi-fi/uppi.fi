@@ -32,7 +32,11 @@ module.exports = {
   schemas: [
     {
       name: "public",
-      modelFolder: path.resolve(__dirname, "..", "shared", "types"),
+      modelFolder: path.resolve(__dirname, "../client/src/schema"),
+    },
+    {
+      name: "public",
+      modelFolder: path.resolve(__dirname, "../server/src/schema"),
     },
   ],
 };

@@ -1,4 +1,4 @@
-import { FileT } from "shared";
+import { FileT } from "../schema";
 
 export function isVideoFile(file: FileT) {
   return file.mimeType.startsWith("video");

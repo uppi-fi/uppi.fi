@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import { FileT } from "shared";
+import { FileT } from "../../schema";
 import { formatDate } from "../../utils/time";
 import { getFileUrl } from "../../utils/url";
 import CopyButton from "../CopyButton";

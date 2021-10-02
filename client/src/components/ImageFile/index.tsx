@@ -1,4 +1,4 @@
-import { FileT } from "shared";
+import { FileT } from "../../schema";
 import { getFileUrl } from "../../utils/url";
 import styles from "./ImageFile.module.scss";
 

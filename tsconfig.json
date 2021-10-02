@@ -1,6 +1,5 @@
 {
   "references": [
-    { "path": "./shared" },
     { "path": "./client" },
     { "path": "./server" }
   ]

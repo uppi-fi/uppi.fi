@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useCallback } from "react";
 import { useSetRecoilState } from "recoil";
-import { FileT } from "shared";
 import { useLocation } from "wouter";
+import { FileT } from "../schema";
 import { uploadedFileState } from "../state/uploadedFileState";
 import { uploadProgresState } from "../state/uploadProgresState";
 import { getServerUrl } from "../utils/url";

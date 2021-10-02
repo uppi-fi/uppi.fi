@@ -3,8 +3,8 @@ import * as fs from "fs";
 import multer from "multer";
 import { nanoid } from "nanoid";
 import * as path from "path";
-import { FileT } from "shared";
 import { db } from "../database";
+import { FileT } from "../schema";
 
 const upload = multer({ dest: "uploads/" });
 

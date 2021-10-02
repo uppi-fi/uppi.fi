@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useLocalStorage } from "react-use";
-import { FileT } from "shared";
+import { FileT } from "../../schema";
 import { getFileUrl } from "../../utils/url";
 import styles from "./VideoFile.module.scss";
 

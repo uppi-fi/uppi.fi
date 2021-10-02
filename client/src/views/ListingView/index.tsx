@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FileT } from "shared";
 import { env } from "../../env";
+import { FileT } from "../../schema";
 
 function ListingView() {
   const [files, setFiles] = useState<Array<FileT>>([]);

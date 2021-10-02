@@ -3,8 +3,7 @@
   "private": true,
   "workspaces": [
     "client",
-    "server",
-    "shared"
+    "server"
   ],
   "scripts": {
     "dev:client": "yarn workspace client dev",
