@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useLocalStorage } from "react-use";
 import { FileT } from "shared";
-import { getServerUrl } from "../../utils/url";
+import { getFileUrl } from "../../utils/url";
 import styles from "./VideoFile.module.scss";
 
 interface VideoFileProps {
@@ -27,7 +27,7 @@ function VideoFile({ file }: VideoFileProps) {
 
   return (
     <video ref={videoRef} autoPlay={autoPlay} className={styles.video} controls>
-      <source src={getServerUrl(file.filename)} type={file.mimetype} />
+      <source src={getFileUrl(file)} type={file.mimeType} />
     </video>
   );
 }

@@ -98,7 +98,7 @@ function FileView({ fileId }: FileViewProps) {
         </div>
         <div className={styles.buttons}>
           <CopyButton textToCopy={fileUrl} />
-          <DownloadButton url={fileUrl} />
+          <DownloadButton />
         </div>
       </footer>
     </div>

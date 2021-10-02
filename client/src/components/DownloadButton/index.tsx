@@ -1,12 +1,15 @@
+import { useRecoilValue } from "recoil";
+import { appState } from "../../state/appState";
+import { getServerUrl } from "../../utils/url";
 import IconButton from "../IconButton";
 
-interface DownloadButtonProps {
-  url: string;
-}
+function DownloadButton() {
+  const { currentFile } = useRecoilValue(appState);
 
-function DownloadButton({ url: downloadUrl }: DownloadButtonProps) {
+  if (!currentFile) return null;
+
   return (
-    <a href={downloadUrl} download>
+    <a href={getServerUrl(`dl?fileId=${currentFile.id}`)} download>
       <IconButton tooltip="Lataa tiedosto" icon="fa-solid:download" />
     </a>
   );

@@ -7,7 +7,7 @@ function AutoPlayButton() {
   return (
     <IconButton
       icon={autoPlay ? "fa-solid:play-circle" : "fa-solid:pause-circle"}
-      label="Auto-play"
+      label="Automaattitoisto"
       tooltip={autoPlay ? "Päällä" : "Pois päältä"}
       tooltipPlacement="left"
       onClick={() => setAutoPlay(!autoPlay)}
