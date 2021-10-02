@@ -1,6 +1,6 @@
 import { useRecoilValue } from "recoil";
 import { Link } from "wouter";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/images/logo.png";
 import { currentFileState } from "../../state/currentFileState";
 import { isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
@@ -22,7 +22,7 @@ function Header({ pageLoads }: HeaderProps) {
       </Link>
 
       <div className={styles.right}>
-        Sivulatauksia: {pageLoads}
+        {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}
         {shouldRenderAutoPlayBtn && <AutoPlayButton />}
       </div>
     </header>

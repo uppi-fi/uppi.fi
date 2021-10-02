@@ -1,6 +1,7 @@
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
+import { deleteFileRoute } from "./routes/deleteFile";
 import { downloadRoute } from "./routes/download";
 import { getFileRoute } from "./routes/getFile";
 import { getFilesRoute } from "./routes/getFiles";
@@ -17,6 +18,7 @@ app.use(express.static("uploads"));
 
 getFileRoute(app);
 getFilesRoute(app);
+deleteFileRoute(app);
 uploadRoute(app);
 downloadRoute(app);
 visitRoute(app);

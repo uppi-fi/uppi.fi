@@ -1,4 +1,4 @@
-import image from "../../assets/404.png";
+import image from "../../assets/images/404.png";
 import styles from "./NotFound.module.scss";
 
 function NotFoundView() {

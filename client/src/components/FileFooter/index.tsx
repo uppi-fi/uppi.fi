@@ -3,12 +3,14 @@ import { FileT } from "shared";
 import { formatDate } from "../../utils/time";
 import { getFileUrl } from "../../utils/url";
 import CopyButton from "../CopyButton";
+import DeleteButton from "../DeleteButton";
 import DownloadButton from "../DownloadButton";
 import styles from "./FileFooter.module.scss";
 
 interface FileFooterProps {
   file: FileT;
 }
+
 function FileFooter({ file }: FileFooterProps) {
   return (
     <footer className={styles.root}>
@@ -22,8 +24,9 @@ function FileFooter({ file }: FileFooterProps) {
         </div>
 
         <div className={styles.buttons}>
+          <DeleteButton fileId={file.id} />
           <CopyButton textToCopy={getFileUrl(file)} />
-          <DownloadButton />
+          <DownloadButton fileId={file.id} />
         </div>
       </div>
     </footer>
