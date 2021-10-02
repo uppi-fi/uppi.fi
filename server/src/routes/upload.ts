@@ -11,18 +11,25 @@ import { generateVideoThumbnail } from "../utils/videoThumbnails";
 const upload = multer({ dest: "uploads/" });
 
 export const uploadRoute = (app: Application) =>
-  app.post<{}, FileT>("/upload", upload.single("file"), async (req, res) => {
+  app.post<
+    {},
+    FileT,
+    {
+      userId: string;
+    }
+  >("/upload", upload.single("file"), async (req, res) => {
     if (!req.file) {
       return res.sendStatus(400);
     }
 
+    console.log("User ID is:", req.body.userId);
     // Insert into database
     const fileId = nanoid(5);
     const [row] = await db.any<FileT>(
-      `INSERT INTO file (id, filename, custom_name, mime_type)
-      VALUES ($1, $2, $2, $3)
+      `INSERT INTO files (id, user_id, filename, custom_name, mime_type)
+      VALUES ($1, $2, $3, $3, $4)
       RETURNING *`,
-      [fileId, req.file.originalname, req.file.mimetype],
+      [fileId, req.body.userId, req.file.originalname, req.file.mimetype],
     );
 
     fs.mkdirSync(path.join("uploads", row.id));

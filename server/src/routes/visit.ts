@@ -6,7 +6,7 @@ export const visitRoute = (app: Application) =>
     const row = await db.one<{
       pageLoads: number;
     }>(
-      `UPDATE site_statistic SET page_loads = page_loads + 1 RETURNING page_loads`,
+      `UPDATE site_statistics SET page_loads = page_loads + 1 RETURNING page_loads`,
     );
     res.json(row.pageLoads);
   });

@@ -1,17 +1,22 @@
 import { Icon } from "@iconify/react";
 import cx from "classnames";
 import { useEffect } from "react";
+import { useRecoilValue } from "recoil";
 import FileCard from "../../components/FileCard";
 import Spinner from "../../components/Spinner";
 import { FileT } from "../../schema";
 import { useApiService } from "../../services/useApiService";
+import { currentUserState } from "../../state/currentUserState";
 import styles from "./ListingView.module.scss";
 
 function ListingView() {
+  const currentUser = useRecoilValue(currentUserState);
   const { data: files, get: fetch } = useApiService<FileT[]>("get-files");
 
   useEffect(() => {
-    fetch();
+    fetch({
+      userId: currentUser?.userId,
+    });
   }, []);
 
   if (!files) {

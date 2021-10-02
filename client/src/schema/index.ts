@@ -1,37 +1,45 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
-import FileT, { FileTInitializer, FileTId } from './file';
-import SiteStatisticT, { SiteStatisticTInitializer } from './site_statistic';
+import FileT, { FileTInitializer, FileTId } from './files';
+import SiteStatisticT, { SiteStatisticTInitializer } from './site_statistics';
+import UserT, { UserTInitializer, UserTId } from './users';
 
 type Model =
   | FileT
   | SiteStatisticT
+  | UserT
 
 interface ModelTypeMap {
-  'file': FileT;
-  'site_statistic': SiteStatisticT;
+  'files': FileT;
+  'site_statistics': SiteStatisticT;
+  'users': UserT;
 }
 
 type ModelId =
   | FileTId
+  | UserTId
 
 interface ModelIdTypeMap {
-  'file': FileTId;
+  'files': FileTId;
+  'users': UserTId;
 }
 
 type Initializer =
   | FileTInitializer
   | SiteStatisticTInitializer
+  | UserTInitializer
 
 interface InitializerTypeMap {
-  'file': FileTInitializer;
-  'site_statistic': SiteStatisticTInitializer;
+  'files': FileTInitializer;
+  'site_statistics': SiteStatisticTInitializer;
+  'users': UserTInitializer;
 }
 
 export type {
   FileT, FileTInitializer, FileTId,
   SiteStatisticT, SiteStatisticTInitializer,
+  UserT, UserTInitializer, UserTId,
 
   Model,
   ModelTypeMap,

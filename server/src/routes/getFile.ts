@@ -4,12 +4,14 @@ import { FileT } from "../schema";
 
 export const getFileRoute = (app: Application) =>
   app.get<
+    {},
+    FileT,
+    {},
     {
       fileId: string;
-    },
-    FileT
+    }
   >("/get-file", async (req, res) => {
-    const [file] = await db.any(`SELECT * FROM file WHERE id=$1`, [
+    const [file] = await db.any(`SELECT * FROM files WHERE id=$1`, [
       req.query.fileId,
     ]);
 

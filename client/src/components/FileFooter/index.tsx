@@ -1,5 +1,7 @@
 import { Icon } from "@iconify/react";
+import { useRecoilValue } from "recoil";
 import { FileT } from "../../schema";
+import { currentUserState } from "../../state/currentUserState";
 import { formatDate } from "../../utils/time";
 import { getFileUrl } from "../../utils/url";
 import CopyButton from "../CopyButton";
@@ -12,6 +14,8 @@ interface FileFooterProps {
 }
 
 function FileFooter({ file }: FileFooterProps) {
+  const currentUser = useRecoilValue(currentUserState);
+
   return (
     <footer className={styles.root}>
       <div className={styles.row}>
@@ -24,7 +28,9 @@ function FileFooter({ file }: FileFooterProps) {
         </div>
 
         <div className={styles.buttons}>
-          <DeleteButton fileId={file.id} />
+          {currentUser?.userId === file.userId && (
+            <DeleteButton fileId={file.id} />
+          )}
           <CopyButton textToCopy={getFileUrl(file)} />
           <DownloadButton fileId={file.id} />
         </div>

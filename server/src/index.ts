@@ -5,6 +5,7 @@ import { deleteFileRoute } from "./routes/deleteFile";
 import { downloadRoute } from "./routes/download";
 import { getFileRoute } from "./routes/getFile";
 import { getFilesRoute } from "./routes/getFiles";
+import { getUserRoute } from "./routes/getUser";
 import { uploadRoute } from "./routes/upload";
 import { visitRoute } from "./routes/visit";
 
@@ -23,6 +24,7 @@ deleteFileRoute(app);
 uploadRoute(app);
 downloadRoute(app);
 visitRoute(app);
+getUserRoute(app);
 
 app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);

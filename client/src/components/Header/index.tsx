@@ -2,6 +2,7 @@ import { useRecoilValue } from "recoil";
 import { Link } from "wouter";
 import logo from "../../assets/images/logo.png";
 import { currentFileState } from "../../state/currentFileState";
+import { currentUserState } from "../../state/currentUserState";
 import { isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
 import styles from "./Header.module.scss";
@@ -12,6 +13,7 @@ interface HeaderProps {
 
 function Header({ pageLoads }: HeaderProps) {
   const currentFile = useRecoilValue(currentFileState);
+  const currentUser = useRecoilValue(currentUserState);
   const shouldRenderAutoPlayBtn = currentFile && isVideoFile(currentFile);
 
   return (
@@ -21,9 +23,11 @@ function Header({ pageLoads }: HeaderProps) {
           <img src={logo} alt="uppim.me" />
           <h1>uppim.me</h1>
         </Link>
-        <Link to="/files" className={styles.smallLink}>
-          Tiedostot
-        </Link>
+        {currentUser && (
+          <Link to="/files" className={styles.smallLink}>
+            Tiedostot
+          </Link>
+        )}
       </div>
 
       <div className={styles.right}>

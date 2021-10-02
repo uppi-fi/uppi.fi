@@ -17,7 +17,7 @@ export const deleteFileRoute = (app: Application) =>
     try {
       // Update DB
       const { filename, id } = await db.one<Pick<FileT, "id" | "filename">>(
-        `DELETE FROM file
+        `DELETE FROM files
         WHERE id=$1
         RETURNING id, filename`,
         [req.body.fileId],

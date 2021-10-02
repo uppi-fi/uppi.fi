@@ -1,4 +1,5 @@
 const path = require("path");
+const pluralize = require("pluralize");
 
 const capitalizeFirstLetter = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -21,7 +22,8 @@ module.exports = {
 
   preDeleteModelFolder: true,
 
-  modelNominator: (model) => capitalizeFirstLetter(toCamel(model)) + "T",
+  modelNominator: (model) =>
+    capitalizeFirstLetter(toCamel(pluralize.singular(model))) + "T",
   fileNominator: (_, originalName) => originalName,
   propertyNominator: (propertyName, model) => toCamel(propertyName),
 

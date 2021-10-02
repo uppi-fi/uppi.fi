@@ -1,10 +1,12 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
-export type FileTId = string & { " __flavor"?: 'file' };
+import { UserTId } from './users';
+
+export type FileTId = string & { " __flavor"?: 'files' };
 
 export default interface FileT {
-  /** Primary key. Index: file_pkey */
+  /** Primary key. Index: files_pkey */
   id: FileTId;
 
   filename: string;
@@ -16,10 +18,12 @@ export default interface FileT {
   viewCount: number;
 
   createdAt: Date;
+
+  userId: UserTId;
 }
 
 export interface FileTInitializer {
-  /** Primary key. Index: file_pkey */
+  /** Primary key. Index: files_pkey */
   id: FileTId;
 
   filename: string;
@@ -33,4 +37,6 @@ export interface FileTInitializer {
 
   /** Default value: now() */
   createdAt?: Date;
+
+  userId: UserTId;
 }

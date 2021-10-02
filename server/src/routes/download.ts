@@ -8,7 +8,7 @@ export const downloadRoute = (app: Application) =>
   }>("/dl", async (req, res) => {
     const { fileId } = req.query;
     if (typeof fileId !== "string") return;
-    const [row] = await db.any(`SELECT filename FROM file WHERE id=$1`, [
+    const [row] = await db.any(`SELECT filename FROM files WHERE id=$1`, [
       fileId,
     ]);
 

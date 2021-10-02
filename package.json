@@ -15,7 +15,8 @@
     "migrate:uncommit": "yarn workspace server migrate:uncommit"
   },
   "devDependencies": {
-    "concurrently": "^6.2.2"
+    "concurrently": "^6.2.2",
+    "prettier": "^2.4.1"
   },
   "packageManager": "yarn@1.22.1"
 }
