@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
-import { useLocalStorage } from "react-use";
+import { useRecoilValue } from "recoil";
 import { FileT } from "../../schema";
+import { autoPlayState } from "../../state/autoPlayState";
 import { getFileUrl } from "../../utils/url";
 import styles from "./VideoFile.module.scss";
 
@@ -9,7 +10,7 @@ interface VideoFileProps {
 }
 
 function VideoFile({ file }: VideoFileProps) {
-  const [autoPlay] = useLocalStorage("autoPlay", false);
+  const autoPlay = useRecoilValue(autoPlayState);
   const videoRef = useRef<HTMLVideoElement>(null);
   const previousFileId = useRef(file.id);
 

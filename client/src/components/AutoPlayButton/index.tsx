@@ -1,8 +1,9 @@
-import { useLocalStorage } from "react-use";
+import { useRecoilState } from "recoil";
+import { autoPlayState } from "../../state/autoPlayState";
 import IconButton from "../IconButton";
 
 function AutoPlayButton() {
-  const [autoPlay, setAutoPlay] = useLocalStorage("autoPlay", false);
+  const [autoPlay, setAutoPlay] = useRecoilState(autoPlayState);
 
   return (
     <IconButton
