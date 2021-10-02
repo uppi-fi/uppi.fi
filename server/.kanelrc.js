@@ -16,6 +16,7 @@ module.exports = {
     user: "postgres",
     password: "postgres",
     database: "laturi",
+    port: 5433,
   },
 
   preDeleteModelFolder: true,

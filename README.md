@@ -4,7 +4,7 @@
 
 - Node.js
 - Docker
-- Yarn 2 (`yarn set version berry`)
+- Yarn (for workspaces)
 
 ## Installation & running
 

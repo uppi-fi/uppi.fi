@@ -21,5 +21,5 @@ const pgp = PgPromise({
 });
 
 export const db = pgp({
-  connectionString: "postgres://postgres:postgres@localhost:5432/laturi",
+  connectionString: "postgres://postgres:postgres@localhost:5433/laturi",
 });

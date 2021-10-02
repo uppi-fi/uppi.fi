@@ -12,6 +12,7 @@ services:
             max-size: 10m
             max-file: "3"
         ports:
-          - '5432:5432'
+          - '5433:5433'
         volumes: 
-          - ./scripts/create-databases.sh:/docker-entrypoint-initdb.d/scripts/create-databases.sh
+          - ./scripts/create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
+        command: -p 5433

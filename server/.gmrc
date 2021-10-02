@@ -15,7 +15,7 @@
    *
    * RECOMMENDATION: use `DATABASE_URL` envvar instead.
    */
-  // "connectionString": "postgres://appuser:apppassword@host:5432/appdb",
+  "connectionString": "postgres://postgres:postgres@localhost:5433/laturi",
 
   /*
    * shadowConnectionString: like connectionString, but this is used for the
@@ -23,7 +23,7 @@
    *
    * RECOMMENDATION: use `SHADOW_DATABASE_URL` envvar instead.
    */
-  // "shadowConnectionString": "postgres://appuser:apppassword@host:5432/appdb_shadow",
+  "shadowConnectionString": "postgres://postgres:postgres@localhost:5433/laturi_shadow",
 
   /*
    * rootConnectionString: like connectionString, but this is used for
@@ -32,7 +32,7 @@
    *
    * RECOMMENDATION: use `ROOT_DATABASE_URL` envvar instead.
    */
-  // "rootConnectionString": "postgres://adminuser:adminpassword@host:5432/postgres",
+  "rootConnectionString": "postgres://postgres:postgres@localhost:5433/postgres",
 
   /*
    * pgSettings: key-value settings to be automatically loaded into PostgreSQL
