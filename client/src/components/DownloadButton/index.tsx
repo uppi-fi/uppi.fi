@@ -1,10 +1,10 @@
 import { useRecoilValue } from "recoil";
-import { appState } from "../../state/appState";
+import { currentFileState } from "../../state/currentFileState";
 import { getServerUrl } from "../../utils/url";
 import IconButton from "../IconButton";
 
 function DownloadButton() {
-  const { currentFile } = useRecoilValue(appState);
+  const currentFile = useRecoilValue(currentFileState);
 
   if (!currentFile) return null;
 

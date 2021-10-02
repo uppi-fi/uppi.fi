@@ -1,0 +1,33 @@
+import { Icon } from "@iconify/react";
+import { FileT } from "shared";
+import { formatDate } from "../../utils/time";
+import { getFileUrl } from "../../utils/url";
+import CopyButton from "../CopyButton";
+import DownloadButton from "../DownloadButton";
+import styles from "./FileFooter.module.scss";
+
+interface FileFooterProps {
+  file: FileT;
+}
+function FileFooter({ file }: FileFooterProps) {
+  return (
+    <footer className={styles.root}>
+      <div className={styles.row}>
+        <div className={styles.col}>
+          {file.customName !== file.filename ? file.customName : file.filename}
+          <div className={styles.date}>
+            {formatDate(file.createdAt)}
+            <Icon icon="bx:bx-calendar" fontSize={18} />{" "}
+          </div>
+        </div>
+
+        <div className={styles.buttons}>
+          <CopyButton textToCopy={getFileUrl(file)} />
+          <DownloadButton />
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+export default FileFooter;

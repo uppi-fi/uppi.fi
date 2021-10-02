@@ -1,19 +1,19 @@
 import { useRecoilValue } from "recoil";
 import { Redirect } from "wouter";
 import styles from "./App.module.scss";
+import DropOverlay from "./components/DropOverlay";
 import Header from "./components/Header";
 import Routes from "./routes";
-import { useDragAndDrop } from "./services/useDragAndDrop";
-import { appState } from "./state/appState";
+import { uploadedFileState } from "./state/uploadedFileState";
 
 function App() {
-  const { uploadedFile } = useRecoilValue(appState);
-  const bond = useDragAndDrop();
+  const uploadedFile = useRecoilValue(uploadedFileState);
 
   return (
-    <div {...bond} className={styles.layout}>
+    <div className={styles.layout}>
       <Header />
       <Routes />
+      <DropOverlay />
       {uploadedFile && (
         <Redirect key={uploadedFile.id} to={`/${uploadedFile.id}`} />
       )}

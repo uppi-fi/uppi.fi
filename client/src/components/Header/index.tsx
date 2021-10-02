@@ -1,15 +1,13 @@
-import { useLocalStorage } from "react-use";
 import { useRecoilValue } from "recoil";
 import { Link } from "wouter";
 import logo from "../../assets/logo.png";
-import { appState } from "../../state/appState";
+import { currentFileState } from "../../state/currentFileState";
 import { isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
 import styles from "./Header.module.scss";
 
 function Header() {
-  const { currentFile } = useRecoilValue(appState);
-  const [autoPlay, setAutoPlay] = useLocalStorage("autoPlay", false);
+  const currentFile = useRecoilValue(currentFileState);
   const shouldRenderRightSide = currentFile && isVideoFile(currentFile);
 
   return (

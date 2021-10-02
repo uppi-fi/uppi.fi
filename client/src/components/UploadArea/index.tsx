@@ -3,12 +3,14 @@ import cx from "classnames";
 import { memo, useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { useUpload } from "../../services/useUpload";
-import { appState } from "../../state/appState";
+import { draggingState } from "../../state/draggingState";
+import { uploadProgresState } from "../../state/uploadProgresState";
 import styles from "./UploadArea.module.scss";
 
 function UploadArea() {
   const upload = useUpload();
-  const { draggingFile, uploadProgress } = useRecoilValue(appState);
+  const uploadProgress = useRecoilValue(uploadProgresState);
+  const dragging = useRecoilValue(draggingState);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onFiles = (files: File[] | FileList | null) => {
@@ -20,7 +22,7 @@ function UploadArea() {
   return (
     <div
       className={cx(styles.root, {
-        [styles.active]: draggingFile,
+        [styles.active]: dragging,
       })}
       onClick={() => {
         inputRef.current?.click();

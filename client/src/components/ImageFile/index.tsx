@@ -1,5 +1,5 @@
 import { FileT } from "shared";
-import { getServerUrl } from "../../utils/url";
+import { getFileUrl } from "../../utils/url";
 import styles from "./ImageFile.module.scss";
 
 interface ImageFileProps {
@@ -7,7 +7,7 @@ interface ImageFileProps {
 }
 
 function ImageFile({ file }: ImageFileProps) {
-  const imageUrl = getServerUrl(file.filename);
+  const imageUrl = getFileUrl(file);
 
   return (
     <a href={imageUrl}>

@@ -1,0 +1,22 @@
+.root {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  display: none;
+  pointer-events: none;
+  display: none;
+  place-items: center;
+  font-size: clamp(24px, 8vw, 64px);
+  font-weight: bold;
+  transition: background ease 0.5s, color ease 0.5s;
+  color: transparent;
+  
+  &.visible {
+    color: black;
+    background: rgba(255,255,255,0.8);
+    display: grid;
+  }
+}

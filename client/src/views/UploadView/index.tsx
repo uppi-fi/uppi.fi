@@ -1,17 +1,14 @@
 import { useEffect } from "react";
 import { useSetRecoilState } from "recoil";
 import UploadArea from "../../components/UploadArea";
-import { appState } from "../../state/appState";
+import { uploadProgresState } from "../../state/uploadProgresState";
 import styles from "./UploadView.module.scss";
 
 function UploadView() {
-  const setAppState = useSetRecoilState(appState);
+  const setUploadProgress = useSetRecoilState(uploadProgresState);
 
   useEffect(() => {
-    setAppState((old) => ({
-      ...old,
-      uploadProgress: 0,
-    }));
+    setUploadProgress(0);
   }, []);
 
   return (
