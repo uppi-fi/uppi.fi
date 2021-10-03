@@ -3,7 +3,7 @@
 
 export default interface SiteStatisticT {
   pageLoads: number;
-};;;;;;;;;;
+}
 
 export interface SiteStatisticTInitializer {
   /** Default value: 0 */

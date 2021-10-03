@@ -1,7 +1,7 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
-export type UserTId = string & { ' __flavor'?: 'users' };
+export type UserTId = string & { " __flavor"?: 'users' };
 
 export default interface UserT {
   /** Primary key. Index: users_pkey */
@@ -11,7 +11,7 @@ export default interface UserT {
   telegramUserId: string | null;
 
   createdAt: Date;
-};;;;;;;;;;
+}
 
 export interface UserTInitializer {
   /** Primary key. Index: users_pkey */

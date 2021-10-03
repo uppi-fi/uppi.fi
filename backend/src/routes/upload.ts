@@ -28,8 +28,8 @@ export const uploadRoute = (app: Application) =>
     const fileId = nanoid(appConfig.fileIdLength);
     const fileExtension = path.extname(req.file.originalname);
     const [row] = await db.any<FileT>(
-      `INSERT INTO files (id, user_id, filename, custom_name, mime_type, file_extension)
-      VALUES ($1, $2, $3, $3, $4, $5)
+      `INSERT INTO files (id, user_id, filename, custom_name, mime_type, file_extension, file_size)
+      VALUES ($1, $2, $3, $3, $4, $5, $6)
       RETURNING *`,
       [
         fileId,
@@ -37,6 +37,7 @@ export const uploadRoute = (app: Application) =>
         req.file.originalname,
         req.file.mimetype,
         fileExtension,
+        req.file.size,
       ]
     );
 
