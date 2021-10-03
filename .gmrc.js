@@ -105,8 +105,8 @@ module.exports = {
    */
   afterCurrent: [
     {
-      _: "command",
-      command: "yarn generate-types",
+      _: 'command',
+      command: 'yarn generate-types',
     },
   ],
 
@@ -134,5 +134,5 @@ module.exports = {
    */
   // migrationsFolder: "./migrations",
 
-  "//generatedWith": "1.2.0",
+  '//generatedWith': '1.2.0',
 };

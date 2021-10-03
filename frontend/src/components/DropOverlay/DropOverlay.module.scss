@@ -13,10 +13,10 @@
   font-weight: bold;
   transition: background ease 0.5s, color ease 0.5s;
   color: transparent;
-  
+
   &.visible {
     color: black;
-    background: rgba(255,255,255,0.8);
+    background: rgba(255, 255, 255, 0.8);
     display: grid;
   }
 }

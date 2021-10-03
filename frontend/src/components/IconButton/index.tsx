@@ -1,8 +1,8 @@
-import { Icon } from "@iconify/react";
-import cx from "classnames";
-import Tooltip from "rc-tooltip";
-import React from "react";
-import styles from "./IconButton.module.scss";
+import { Icon } from '@iconify/react';
+import cx from 'classnames';
+import Tooltip from 'rc-tooltip';
+import React from 'react';
+import styles from './IconButton.module.scss';
 
 interface IconButtonProps extends React.ComponentProps<typeof Icon> {
   label?: string;
@@ -14,7 +14,7 @@ interface IconButtonProps extends React.ComponentProps<typeof Icon> {
 function IconButton(props: IconButtonProps) {
   const {
     tooltip,
-    tooltipPlacement = "bottom",
+    tooltipPlacement = 'bottom',
     onClick,
     label,
     ...iconProps

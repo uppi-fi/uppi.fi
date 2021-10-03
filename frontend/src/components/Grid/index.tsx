@@ -1,23 +1,23 @@
-import cx from "classnames";
-import styles from "./Flex.module.scss";
+import cx from 'classnames';
+import styles from './Flex.module.scss';
 
 export type FlexProps = Pick<
   React.CSSProperties,
-  | "gap"
-  | "columnGap"
-  | "rowGap"
-  | "justifyContent"
-  | "justifyItems"
-  | "justifySelf"
-  | "alignContent"
-  | "alignItems"
-  | "alignSelf"
-  | "gridTemplateColumns"
-  | "gridTemplateRows"
-  | "gridAutoRows"
-  | "gridAutoColumns"
+  | 'gap'
+  | 'columnGap'
+  | 'rowGap'
+  | 'justifyContent'
+  | 'justifyItems'
+  | 'justifySelf'
+  | 'alignContent'
+  | 'alignItems'
+  | 'alignSelf'
+  | 'gridTemplateColumns'
+  | 'gridTemplateRows'
+  | 'gridAutoRows'
+  | 'gridAutoColumns'
 > &
-  Pick<React.HTMLAttributes<HTMLDivElement>, "className">;
+  Pick<React.HTMLAttributes<HTMLDivElement>, 'className'>;
 
 const Grid: React.FC<FlexProps> = ({ children, className, ...rest }) => {
   return (

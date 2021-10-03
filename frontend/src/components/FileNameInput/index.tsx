@@ -1,11 +1,11 @@
-import { FileT } from "@shared/schema";
-import cx from "classnames";
-import { useState } from "react";
-import { useApiService } from "../../services/useApiService";
-import styles from "./FileNameInput.module.scss";
+import { FileT } from '@shared/schema';
+import cx from 'classnames';
+import { useState } from 'react';
+import { useApiService } from '../../services/useApiService';
+import styles from './FileNameInput.module.scss';
 
-type UpdateFileParams = Pick<FileT, "id"> &
-  Partial<Pick<FileT, "customName" | "filename" | "viewCount">>;
+type UpdateFileParams = Pick<FileT, 'id'> &
+  Partial<Pick<FileT, 'customName' | 'filename' | 'viewCount'>>;
 
 interface FileNameInputProps {
   file: FileT;
@@ -13,9 +13,9 @@ interface FileNameInputProps {
 }
 
 function FileNameInput({ file, className }: FileNameInputProps) {
-  const [value, setValue] = useState(file.customName || "");
-  const { post: updateFile } = useApiService<{}, UpdateFileParams>(
-    "update-file",
+  const [value, setValue] = useState(file.customName || '');
+  const { post: updateFile } = useApiService<unknown, UpdateFileParams>(
+    'update-file'
   );
 
   return (

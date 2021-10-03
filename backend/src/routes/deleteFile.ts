@@ -1,30 +1,30 @@
-import { FileT } from "@shared/schema";
-import { Application } from "express";
-import * as fs from "fs";
-import * as path from "path";
-import pgPromise from "pg-promise";
-import { db } from "../database";
-import { ResponseStatus } from "../types";
+import { FileT } from '@shared/schema';
+import { Application } from 'express';
+import * as fs from 'fs';
+import * as path from 'path';
+import pgPromise from 'pg-promise';
+import { db } from '../database';
+import { ResponseStatus } from '../types';
 
 export const deleteFileRoute = (app: Application) =>
   app.post<
-    {},
-    {},
+    unknown,
+    unknown,
     {
       fileId: string;
     }
-  >("/delete-file", async (req, res) => {
+  >('/delete-file', async (req, res) => {
     try {
       // Update DB
-      const { filename, id } = await db.one<Pick<FileT, "id" | "filename">>(
+      const { id } = await db.one<Pick<FileT, 'id' | 'filename'>>(
         `DELETE FROM files
         WHERE id=$1
         RETURNING id, filename`,
-        [req.body.fileId],
+        [req.body.fileId]
       );
 
       // Delete file & directory
-      const dir = path.join("uploads", id);
+      const dir = path.join('uploads', id);
       fs.rmdirSync(dir, { recursive: true });
       res.send({
         status: ResponseStatus.Ok,
@@ -34,7 +34,7 @@ export const deleteFileRoute = (app: Application) =>
         if (!error.code) {
           res.send({
             status: ResponseStatus.Error,
-            message: "Could not find file",
+            message: 'Could not find file',
           });
         }
         res.send(ResponseStatus.Error);

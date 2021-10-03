@@ -1,15 +1,16 @@
-import { path as ffmpegPath } from "@ffmpeg-installer/ffmpeg";
+import { path as ffmpegPath } from '@ffmpeg-installer/ffmpeg';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { path as ffprobePath } from "@ffprobe-installer/ffprobe";
-import { FileT } from "@shared/schema";
-import * as ffmpeg from "fluent-ffmpeg";
-import * as path from "path";
-import { getFileLocalPath } from "./file";
+import { path as ffprobePath } from '@ffprobe-installer/ffprobe';
+import { FileT } from '@shared/schema';
+import * as ffmpeg from 'fluent-ffmpeg';
+import * as path from 'path';
+import { getFileLocalPath } from './file';
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 ffmpeg.setFfprobePath(ffprobePath);
 
-const THUMBNAIL_FILENAME = "thumbnail.png";
+const THUMBNAIL_FILENAME = 'thumbnail.png';
 
 export const getVideoDuration = (inputPath: string) => {
   return new Promise<number>((resolve, reject) => {
@@ -34,11 +35,11 @@ export async function generateVideoThumbnail(file: FileT) {
         timemarks: [duration], // number of seconds
         filename: THUMBNAIL_FILENAME,
       },
-      path.dirname(videoPath),
+      path.dirname(videoPath)
     )
-    .on("end", function () {
-      console.log(
-        `Generated video thumbnail: ${path.join(videoDir, THUMBNAIL_FILENAME)}`,
+    .on('end', function () {
+      console.debug(
+        `Generated video thumbnail: ${path.join(videoDir, THUMBNAIL_FILENAME)}`
       );
     });
 }

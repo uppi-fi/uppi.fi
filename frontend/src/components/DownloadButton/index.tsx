@@ -1,5 +1,5 @@
-import { getServerUrl } from "../../utils/url";
-import IconButton from "../IconButton";
+import { getServerUrl } from '../../utils/url';
+import IconButton from '../IconButton';
 
 interface DownloadButtonProps {
   fileId: string;

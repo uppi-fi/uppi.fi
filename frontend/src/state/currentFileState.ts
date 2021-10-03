@@ -1,7 +1,7 @@
-import { FileT } from "@shared/schema";
-import { atom } from "recoil";
+import { FileT } from '@shared/schema';
+import { atom } from 'recoil';
 
 export const currentFileState = atom<FileT | null>({
-  key: "currentFileState",
+  key: 'currentFileState',
   default: null,
 });

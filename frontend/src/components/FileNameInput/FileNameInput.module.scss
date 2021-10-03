@@ -5,7 +5,8 @@
   font-size: 13px;
   border: 1px solid transparent;
   outline: none;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     border: 1px solid #dfdfdf;
   }
 }

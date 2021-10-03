@@ -1,7 +1,7 @@
-import "rc-tooltip/assets/bootstrap.css";
-import { useState } from "react";
-import { copyToClipboard } from "../../utils/clipboard";
-import IconButton from "../IconButton";
+import 'rc-tooltip/assets/bootstrap.css';
+import { useState } from 'react';
+import { copyToClipboard } from '../../utils/clipboard';
+import IconButton from '../IconButton';
 
 interface CopyButtonProps {
   textToCopy: string;
@@ -24,7 +24,7 @@ function CopyButton({ textToCopy }: CopyButtonProps) {
   return (
     <IconButton
       icon="fa-solid:link"
-      tooltip={wasCopied ? "Jees ✔️" : "Kopioi linkki"}
+      tooltip={wasCopied ? 'Jees ✔️' : 'Kopioi linkki'}
       onClick={onClick}
     />
   );

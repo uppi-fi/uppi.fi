@@ -1,9 +1,9 @@
-import { useRecoilValue } from "recoil";
-import { Route, Switch } from "wouter";
-import { currentUserState } from "./state/currentUserState";
-import FileView from "./views/FileView";
-import OwnFiles from "./views/OwnFilesView";
-import UploadView from "./views/UploadView";
+import { useRecoilValue } from 'recoil';
+import { Route, Switch } from 'wouter';
+import { currentUserState } from './state/currentUserState';
+import FileView from './views/FileView';
+import OwnFiles from './views/OwnFilesView';
+import UploadView from './views/UploadView';
 
 const Routes = () => {
   const currentUser = useRecoilValue(currentUserState);

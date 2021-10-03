@@ -3,7 +3,7 @@
 
 import { UserTId } from './users';
 
-export type FileTId = string & { " __flavor"?: 'files' };
+export type FileTId = string & { ' __flavor'?: 'files' };
 
 export default interface FileT {
   /** Primary key. Index: files_pkey */
@@ -22,7 +22,7 @@ export default interface FileT {
   createdAt: Date;
 
   userId: UserTId;
-}
+};;;;;;;;;;
 
 export interface FileTInitializer {
   /** Primary key. Index: files_pkey */

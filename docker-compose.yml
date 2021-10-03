@@ -1,18 +1,18 @@
 version: '3.7'
 services:
-    postgres:
-        image: postgres:14
-        restart: always
-        environment:
-          - POSTGRES_USER=postgres
-          - POSTGRES_PASSWORD=postgres
-          - POSTGRES_MULTIPLE_DATABASES=laturi,laturi_shadow
-        logging:
-          options:
-            max-size: 10m
-            max-file: "3"
-        ports:
-          - '5433:5433'
-        volumes: 
-          - ./scripts/create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
-        command: -p 5433
+  postgres:
+    image: postgres:14
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_MULTIPLE_DATABASES=laturi,laturi_shadow
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    ports:
+      - '5433:5433'
+    volumes:
+      - ./scripts/create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
+    command: -p 5433

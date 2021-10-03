@@ -9,31 +9,33 @@
 ## Installation & running
 
 1. Load environment variables:
-    ```sh
-    chmod +x scripts/set_env.sh
-    source scripts/set_env.sh
-    ```
+
+   ```sh
+   chmod +x scripts/set_env.sh
+   source scripts/set_env.sh
+   ```
 
 2. Start postgres:
-    ```sh
-    docker-compose up -d
-    ```
+
+   ```sh
+   docker-compose up -d
+   ```
 
 3. Install npm packages
-    ```
-    yarn
-    ```
-3. Start app
-    ```
-    yarn start
-    ```
-    or individually:
-    ```sh
-    yarn dev:frontend   # Starts frontend
-    yarn dev:backend    # Starts backend
-    yarn dev:bot        # Starts telegram bot
-    yarn migrate:watch  # Starts watching `current.sql` changes
-    ```
+   ```
+   yarn
+   ```
+4. Start app
+   ```
+   yarn start
+   ```
+   or individually:
+   ```sh
+   yarn dev:frontend   # Starts frontend
+   yarn dev:backend    # Starts backend
+   yarn dev:bot        # Starts telegram bot
+   yarn migrate:watch  # Starts watching `current.sql` changes
+   ```
 
 ## Ports used
 

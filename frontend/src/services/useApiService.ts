@@ -1,7 +1,7 @@
-import axios, { AxiosRequestConfig } from "axios";
-import { useState } from "react";
-import { ResponseStatus } from "../types";
-import { getServerUrl } from "../utils/url";
+import axios, { AxiosRequestConfig } from 'axios';
+import { useState } from 'react';
+import { ResponseStatus } from '../types';
+import { getServerUrl } from '../utils/url';
 
 export interface ApiResponse<T> {
   status: ResponseStatus;
@@ -9,22 +9,24 @@ export interface ApiResponse<T> {
   data?: T;
 }
 
-export function useApiService<TResponse, TDataOrParams = {}>(path: string) {
+export function useApiService<TResponse, TDataOrParams = unknown>(
+  path: string
+) {
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
   const [error, setError] = useState<boolean>(false);
 
   const request = async (
-    method: "GET" | "POST",
+    method: 'GET' | 'POST',
     data?: TDataOrParams,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ) => {
     setError(false);
     const url = getServerUrl(path);
 
     try {
       const res =
-        method === "POST"
+        method === 'POST'
           ? await axios.post(url, data, config)
           : await axios.get(url, {
               params: data,
@@ -41,14 +43,14 @@ export function useApiService<TResponse, TDataOrParams = {}>(path: string) {
     } catch (err) {
       setError(true);
       console.error({ err, path, method, data, config });
-      throw new Error("API error");
+      throw new Error('API error');
     }
   };
 
   const get = async (params?: TDataOrParams, config?: AxiosRequestConfig) =>
-    request("GET", params, config);
+    request('GET', params, config);
   const post = async (data?: TDataOrParams, config?: AxiosRequestConfig) =>
-    request("POST", data, config);
+    request('POST', data, config);
 
   return {
     get,

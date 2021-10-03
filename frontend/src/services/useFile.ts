@@ -1,9 +1,9 @@
-import { FileT } from "@shared/schema";
-import { useEffect } from "react";
-import { useRecoilState } from "recoil";
-import { currentFileState } from "../state/currentFileState";
-import { uploadedFileState } from "../state/uploadedFileState";
-import { useApiService } from "./useApiService";
+import { FileT } from '@shared/schema';
+import { useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { currentFileState } from '../state/currentFileState';
+import { uploadedFileState } from '../state/uploadedFileState';
+import { useApiService } from './useApiService';
 
 export function useFile(fileId: string) {
   const [uploadedFile, setUploadedFile] = useRecoilState(uploadedFileState);
@@ -12,7 +12,7 @@ export function useFile(fileId: string) {
     data: fetchedFile,
     get: fetch,
     error,
-  } = useApiService<FileT>("get-file");
+  } = useApiService<FileT>('get-file');
 
   useEffect(() => {
     // Reset current file from leaving from the view

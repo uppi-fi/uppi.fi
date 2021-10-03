@@ -1,7 +1,7 @@
-import { env } from "@shared/env";
-import * as PgPromise from "pg-promise";
+import { env } from '@shared/env';
+import * as PgPromise from 'pg-promise';
 
-function camelizeColumns(data: any[]) {
+function camelizeColumns(data: Record<string, string>[]) {
   const tmp = data[0];
   for (const prop in tmp) {
     const camel = pgp.utils.camelize(prop);

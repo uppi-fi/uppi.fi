@@ -1,12 +1,12 @@
-import { useRecoilValue } from "recoil";
-import { Link } from "wouter";
-import { isAudioFile, isVideoFile } from "../../../../shared/mimetype";
-import logo from "../../assets/images/logo.png";
-import { currentFileState } from "../../state/currentFileState";
-import { currentUserState } from "../../state/currentUserState";
-import AutoPlayButton from "../AutoPlayButton";
-import Row from "../Row";
-import styles from "./Header.module.scss";
+import { useRecoilValue } from 'recoil';
+import { Link } from 'wouter';
+import { isAudioFile, isVideoFile } from '../../../../shared/mimetype';
+import logo from '../../assets/images/logo.png';
+import { currentFileState } from '../../state/currentFileState';
+import { currentUserState } from '../../state/currentUserState';
+import AutoPlayButton from '../AutoPlayButton';
+import Row from '../Row';
+import styles from './Header.module.scss';
 
 interface HeaderProps {
   pageLoads: number | undefined;
@@ -35,7 +35,7 @@ function Header({ pageLoads }: HeaderProps) {
       <div className={styles.right}>
         {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}
         {shouldRenderAutoPlayBtn && (
-          <AutoPlayButton type={isVideoFile(currentFile) ? "video" : "audio"} />
+          <AutoPlayButton type={isVideoFile(currentFile) ? 'video' : 'audio'} />
         )}
       </div>
     </header>

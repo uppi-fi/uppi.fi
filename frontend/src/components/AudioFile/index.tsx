@@ -1,8 +1,8 @@
-import { FileT } from "@shared/schema";
-import { useRecoilValue } from "recoil";
-import { autoPlayState } from "../../state/autoPlayState";
-import { getFileUrl } from "../../utils/url";
-import styles from "./AudioFile.module.scss";
+import { FileT } from '@shared/schema';
+import { useRecoilValue } from 'recoil';
+import { autoPlayState } from '../../state/autoPlayState';
+import { getFileUrl } from '../../utils/url';
+import styles from './AudioFile.module.scss';
 
 interface AudioFileProps {
   file: FileT;

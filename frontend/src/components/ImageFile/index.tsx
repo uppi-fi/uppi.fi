@@ -1,6 +1,6 @@
-import { FileT } from "@shared/schema";
-import { getFileUrl } from "../../utils/url";
-import styles from "./ImageFile.module.scss";
+import { FileT } from '@shared/schema';
+import { getFileUrl } from '../../utils/url';
+import styles from './ImageFile.module.scss';
 
 interface ImageFileProps {
   file: FileT;

@@ -1,6 +1,6 @@
-import Flex, { FlexProps } from "../Flex";
+import Flex, { FlexProps } from '../Flex';
 
-const Col: React.FC<Omit<FlexProps, "flexDirection">> = ({
+const Col: React.FC<Omit<FlexProps, 'flexDirection'>> = ({
   children,
   ...rest
 }) => {

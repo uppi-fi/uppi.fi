@@ -1,9 +1,9 @@
-import { FileT } from "@shared/schema";
-import { useEffect, useMemo, useRef } from "react";
-import ReactPlayer from "react-player";
-import { useRecoilValue } from "recoil";
-import { autoPlayState } from "../../state/autoPlayState";
-import { getFileUrl } from "../../utils/url";
+import { FileT } from '@shared/schema';
+import { useEffect, useMemo, useRef } from 'react';
+import ReactPlayer from 'react-player';
+import { useRecoilValue } from 'recoil';
+import { autoPlayState } from '../../state/autoPlayState';
+import { getFileUrl } from '../../utils/url';
 
 interface VideoFileProps {
   file: FileT;
@@ -36,7 +36,7 @@ function VideoFile({ file }: VideoFileProps) {
       width="100%"
       height="75vh"
       style={{
-        background: "#000",
+        background: '#000',
       }}
     />
   );

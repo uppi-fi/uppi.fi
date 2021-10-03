@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const draggingState = atom<boolean>({
-  key: "draggingState",
+  key: 'draggingState',
   default: false,
 });

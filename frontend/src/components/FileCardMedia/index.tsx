@@ -1,16 +1,16 @@
-import { Icon } from "@iconify/react";
-import { FileT } from "@shared/schema";
-import Tooltip from "rc-tooltip";
-import { useMemo } from "react";
-import { useLocation } from "wouter";
+import { Icon } from '@iconify/react';
+import { FileT } from '@shared/schema';
+import Tooltip from 'rc-tooltip';
+import { useMemo } from 'react';
+import { useLocation } from 'wouter';
 import {
   isAudioFile,
   isImageFile,
   isVideoFile,
-} from "../../../../shared/mimetype";
-import { getFileUrl, getVideoPreviewUrl } from "../../utils/url";
-import Centered from "../Centered";
-import styles from "./FileCardMedia.module.scss";
+} from '../../../../shared/mimetype';
+import { getFileUrl, getVideoPreviewUrl } from '../../utils/url';
+import Centered from '../Centered';
+import styles from './FileCardMedia.module.scss';
 
 interface FileCardMediaProps {
   file: FileT;
@@ -40,7 +40,7 @@ function FileCardMedia({ file }: FileCardMediaProps) {
         overlay={`Tyyppi: ${file.mimeType}`}
         mouseLeaveDelay={0}
         overlayStyle={{
-          top: "0 !important",
+          top: '0 !important',
         }}
         arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
       >

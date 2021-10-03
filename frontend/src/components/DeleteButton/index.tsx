@@ -1,7 +1,7 @@
-import { useLocation } from "wouter";
-import deleteSound from "../../assets/sounds/delete.mp3";
-import { useApiService } from "../../services/useApiService";
-import IconButton from "../IconButton";
+import { useLocation } from 'wouter';
+import deleteSound from '../../assets/sounds/delete.mp3';
+import { useApiService } from '../../services/useApiService';
+import IconButton from '../IconButton';
 
 interface DeleteButtonProps {
   fileId: string;
@@ -9,7 +9,7 @@ interface DeleteButtonProps {
 
 function DeleteButton({ fileId }: DeleteButtonProps) {
   const [, setLocation] = useLocation();
-  const { post: deleteFile } = useApiService("delete-file");
+  const { post: deleteFile } = useApiService('delete-file');
 
   const onClick = async () => {
     deleteFile(
@@ -18,18 +18,18 @@ function DeleteButton({ fileId }: DeleteButtonProps) {
       },
       {
         timeout: 1000,
-      },
+      }
     )
       .then(() => {
         if (history.length) {
           history.back();
         } else {
-          setLocation("/");
+          setLocation('/');
         }
         new Audio(deleteSound).play();
       })
       .catch(() => {
-        alert("Poistaminen epäonnistui");
+        alert('Poistaminen epäonnistui');
       });
   };
 

@@ -1,9 +1,9 @@
-import { useRecoilState } from "recoil";
-import { autoPlayState } from "../../state/autoPlayState";
-import IconButton from "../IconButton";
+import { useRecoilState } from 'recoil';
+import { autoPlayState } from '../../state/autoPlayState';
+import IconButton from '../IconButton';
 
 interface AutoPlayButtonProps {
-  type: "audio" | "video";
+  type: 'audio' | 'video';
 }
 
 function AutoPlayButton({ type }: AutoPlayButtonProps) {
@@ -12,9 +12,9 @@ function AutoPlayButton({ type }: AutoPlayButtonProps) {
 
   return (
     <IconButton
-      icon={isAutoPlaying ? "fa-solid:play-circle" : "fa-solid:pause-circle"}
+      icon={isAutoPlaying ? 'fa-solid:play-circle' : 'fa-solid:pause-circle'}
       label="Automaattitoisto"
-      tooltip={isAutoPlaying ? "Päällä" : "Pois päältä"}
+      tooltip={isAutoPlaying ? 'Päällä' : 'Pois päältä'}
       tooltipPlacement="left"
       onClick={() =>
         setAutoPlay({

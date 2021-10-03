@@ -3,21 +3,26 @@
 $shake-distance: 2.5px;
 
 @keyframes shake {
-  10%, 90% {
+  10%,
+  90% {
     -webkit-transform: translate3d(-1px, 0, 0);
-            transform: translate3d(-1px, 0, 0);
+    transform: translate3d(-1px, 0, 0);
   }
-  20%, 80% {
+  20%,
+  80% {
     -webkit-transform: translate3d(2px, 0, 0);
-            transform: translate3d(2px, 0, 0);
+    transform: translate3d(2px, 0, 0);
   }
-  30%, 50%, 70% {
+  30%,
+  50%,
+  70% {
     -webkit-transform: translate3d(-4px, 0, 0);
-            transform: translate3d(-4px, 0, 0);
+    transform: translate3d(-4px, 0, 0);
   }
-  40%, 60% {
+  40%,
+  60% {
     -webkit-transform: translate3d(4px, 0, 0);
-            transform: translate3d(4px, 0, 0);
+    transform: translate3d(4px, 0, 0);
   }
 }
 .header {
@@ -35,10 +40,10 @@ $shake-distance: 2.5px;
     display: flex;
     align-items: center;
   }
-  
-  img{
+
+  img {
     margin-right: -10px;
-    &:hover{
+    &:hover {
       animation: shake 2s ease normal;
     }
   }

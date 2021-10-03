@@ -1,15 +1,15 @@
-import { Icon } from "@iconify/react";
-import { FileT } from "@shared/schema";
-import { useRecoilValue } from "recoil";
-import { currentUserState } from "../../state/currentUserState";
-import { formatDate } from "../../utils/time";
-import { getFileUrl } from "../../utils/url";
-import Col from "../Col";
-import CopyButton from "../CopyButton";
-import DeleteButton from "../DeleteButton";
-import DownloadButton from "../DownloadButton";
-import Row from "../Row";
-import styles from "./FileFooter.module.scss";
+import { Icon } from '@iconify/react';
+import { FileT } from '@shared/schema';
+import { useRecoilValue } from 'recoil';
+import { currentUserState } from '../../state/currentUserState';
+import { formatDate } from '../../utils/time';
+import { getFileUrl } from '../../utils/url';
+import Col from '../Col';
+import CopyButton from '../CopyButton';
+import DeleteButton from '../DeleteButton';
+import DownloadButton from '../DownloadButton';
+import Row from '../Row';
+import styles from './FileFooter.module.scss';
 
 interface FileFooterProps {
   file: FileT;
@@ -25,7 +25,7 @@ function FileFooter({ file }: FileFooterProps) {
           {file.customName !== file.filename ? file.customName : file.filename}
           <Row alignItems="center" className={styles.date}>
             {formatDate(file.createdAt)}
-            <Icon icon="bx:bx-calendar" fontSize={18} />{" "}
+            <Icon icon="bx:bx-calendar" fontSize={18} />{' '}
           </Row>
         </Col>
 

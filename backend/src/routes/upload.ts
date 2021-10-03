@@ -1,16 +1,16 @@
-import { appConfig } from "@shared/config";
-import { isVideoFile } from "@shared/mimetype";
-import { FileT } from "@shared/schema";
-import { Application } from "express";
-import * as fs from "fs";
-import * as multer from "multer";
-import { nanoid } from "nanoid";
-import * as path from "path";
-import { db } from "../database";
-import { getFileLocalPath } from "../utils/file";
-import { generateVideoThumbnail } from "../utils/videoThumbnails";
+import { appConfig } from '@shared/config';
+import { isVideoFile } from '@shared/mimetype';
+import { FileT } from '@shared/schema';
+import { Application } from 'express';
+import * as fs from 'fs';
+import * as multer from 'multer';
+import { nanoid } from 'nanoid';
+import * as path from 'path';
+import { db } from '../database';
+import { getFileLocalPath } from '../utils/file';
+import { generateVideoThumbnail } from '../utils/videoThumbnails';
 
-const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: 'uploads/' });
 
 export const uploadRoute = (app: Application) =>
   app.post<
@@ -19,7 +19,7 @@ export const uploadRoute = (app: Application) =>
     {
       userId: string;
     }
-  >("/upload", upload.single("file"), async (req, res) => {
+  >('/upload', upload.single('file'), async (req, res) => {
     if (!req.file) {
       return res.sendStatus(400);
     }
@@ -37,13 +37,13 @@ export const uploadRoute = (app: Application) =>
         req.file.originalname,
         req.file.mimetype,
         fileExtension,
-      ],
+      ]
     );
 
-    fs.mkdirSync(path.join("uploads", row.id));
+    fs.mkdirSync(path.join('uploads', row.id));
     fs.renameSync(
-      path.join("uploads", req.file.filename),
-      getFileLocalPath(row),
+      path.join('uploads', req.file.filename),
+      getFileLocalPath(row)
     );
 
     // Generate thumbnail

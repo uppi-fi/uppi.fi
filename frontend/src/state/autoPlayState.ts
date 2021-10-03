@@ -1,14 +1,14 @@
-import { atom } from "recoil";
-import { localStorageEffect } from "./localStorageEffect";
+import { atom } from 'recoil';
+import { localStorageEffect } from './localStorageEffect';
 
 export const autoPlayState = atom<{
   audio: boolean;
   video: boolean;
 }>({
-  key: "autoPlayState",
+  key: 'autoPlayState',
   default: {
     audio: false,
     video: false,
   },
-  effects_UNSTABLE: [localStorageEffect("autoPlay")],
+  effects_UNSTABLE: [localStorageEffect('autoPlay')],
 });

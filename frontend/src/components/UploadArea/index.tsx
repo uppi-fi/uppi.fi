@@ -1,11 +1,11 @@
-import { Icon } from "@iconify/react";
-import cx from "classnames";
-import { memo, useRef } from "react";
-import { useRecoilValue } from "recoil";
-import { useUpload } from "../../services/useUpload";
-import { draggingState } from "../../state/draggingState";
-import { uploadProgresState } from "../../state/uploadProgresState";
-import styles from "./UploadArea.module.scss";
+import { Icon } from '@iconify/react';
+import cx from 'classnames';
+import { memo, useRef } from 'react';
+import { useRecoilValue } from 'recoil';
+import { useUpload } from '../../services/useUpload';
+import { draggingState } from '../../state/draggingState';
+import { uploadProgresState } from '../../state/uploadProgresState';
+import styles from './UploadArea.module.scss';
 
 function UploadArea() {
   const upload = useUpload();
@@ -31,7 +31,7 @@ function UploadArea() {
       <input
         ref={inputRef}
         type="file"
-        style={{ display: "none" }}
+        style={{ display: 'none' }}
         onChange={(evt) => onFiles(evt.currentTarget.files)}
       />
       <div

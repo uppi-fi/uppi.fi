@@ -1,5 +1,5 @@
-import { FileT } from "@shared/schema";
-import { env } from "../env";
+import { FileT } from '@shared/schema';
+import { env } from '../env';
 
 export function getServerUrl(path: string) {
   return new URL(path, env.apiHost).href;

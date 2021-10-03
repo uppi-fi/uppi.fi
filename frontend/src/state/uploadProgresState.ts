@@ -1,6 +1,6 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 export const uploadProgresState = atom<number>({
-  key: "uploadProgresState",
+  key: 'uploadProgresState',
   default: 0,
 });
