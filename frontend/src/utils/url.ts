@@ -2,7 +2,7 @@ import { FileT } from "@shared/schema";
 import { env } from "../env";
 
 export function getServerUrl(path: string) {
-  return new URL(path, env.serverHost).href;
+  return new URL(path, env.apiHost).href;
 }
 
 export function getFileUrl(file: FileT) {

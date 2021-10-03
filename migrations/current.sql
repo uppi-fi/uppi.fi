@@ -27,4 +27,3 @@ CREATE TABLE site_statistics  (
   page_loads INTEGER DEFAULT 0 NOT NULL
 );
 INSERT INTO site_statistics (page_loads) VALUES (0);
-

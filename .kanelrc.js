@@ -1,5 +1,14 @@
 const path = require("path");
 const pluralize = require("pluralize");
+const fs = require("fs");
+
+// Quick hack, couldn't get env working here
+const getDatabaseUrl = () => {
+  const envFile = fs.readFileSync(path.join(__dirname, ".env"), "utf-8");
+  const lines = envFile.split("\n");
+  const dbLine = lines.find((l) => l.includes("DATABASE_URL")).split("=")[1]?.replace(/"/g, '');
+  return dbLine.trim();
+};
 
 const capitalizeFirstLetter = (s) => {
   return s.charAt(0).toUpperCase() + s.slice(1);
@@ -13,7 +22,7 @@ const toCamel = (s, capitalize) => {
 
 module.exports = {
   connection: {
-    connectionString: process.env.DATABASE_URL
+    connectionString: getDatabaseUrl(),
   },
 
   preDeleteModelFolder: true,

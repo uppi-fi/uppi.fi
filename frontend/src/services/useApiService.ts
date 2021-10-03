@@ -25,8 +25,8 @@ export function useApiService<TResponse, TDataOrParams>(path: string) {
     try {
       const res =
         method === "POST"
-          ? await axios.post<TResponse>(url, data, config)
-          : await axios.get<TResponse>(url, {
+          ? await axios.post(url, data, config)
+          : await axios.get(url, {
               params: data,
               ...config,
             });

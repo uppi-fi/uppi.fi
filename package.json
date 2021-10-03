@@ -12,7 +12,7 @@
     "migrate:commit": "graphile-migrate commit",
     "migrate:uncommit": "graphile-migrate uncommit",
     "generate-types": "kanel",
-    "prestart": "check-env FRONTEND_HOST TELEGRAM_BOT_TOKEN VITE_BACKEND_HOST DATABASE_URL SHADOW_DATABASE_URL ROOT_DATABASE_URL",
+    "prestart": "check-env FRONTEND_HOST TELEGRAM_BOT_TOKEN VITE_EXPRESS_HOST DATABASE_URL SHADOW_DATABASE_URL ROOT_DATABASE_URL",
     "start": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\""
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "axios": "^0.22.0",
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
     "kanel": "^2.3.2",
