@@ -20,6 +20,7 @@ function FileCardMedia({ file }: FileCardMediaProps) {
   const [, setLocation] = useLocation();
   const fileUrl = getFileUrl(file);
 
+  /** TODO: Maybe separate component from this? */
   const rendered = useMemo(() => {
     if (isImageFile(file)) {
       return <img src={fileUrl} alt={file.filename} />;
