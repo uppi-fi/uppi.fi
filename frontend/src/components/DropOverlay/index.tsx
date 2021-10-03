@@ -1,8 +1,8 @@
 import cx from 'classnames';
 import { useEffect } from 'react';
-import { useDrop } from 'react-use';
 import { useRecoilState } from 'recoil';
 import { useLocation } from 'wouter';
+import useDrop from '../../services/useDrop';
 import { useUpload } from '../../services/useUpload';
 import { draggingState } from '../../state/draggingState';
 import styles from './DropOverlay.module.scss';
