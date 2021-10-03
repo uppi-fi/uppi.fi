@@ -28,28 +28,10 @@
   height: 40vh;
 }
 
-.centered {
-  display: grid;
-  place-items: center;
-  text-align: center;
-}
-
 .row {
-  display: flex;
-  align-items: center;
   font-weight: bold;
   svg {
     color: $accent;
     font-size: 32px;
-    margin-right: 8px;
-  }
-}
-
-.noFiles {
-  a {
-    display: block;
-    margin-top: 16px;
-    font-weight: 400;
-    font-size: 12px;
   }
 }

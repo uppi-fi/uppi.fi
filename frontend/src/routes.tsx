@@ -16,7 +16,7 @@ const Routes = () => {
           <Route path="/files" component={OwnFiles} />
         </>
       ) : (
-        <></>
+        <>ei pääsyä</>
       )}
       <Route path="/:fileId">{(params) => <FileView {...params} />}</Route>
     </Switch>

@@ -5,6 +5,7 @@ import logo from "../../assets/images/logo.png";
 import { currentFileState } from "../../state/currentFileState";
 import { currentUserState } from "../../state/currentUserState";
 import AutoPlayButton from "../AutoPlayButton";
+import Row from "../Row";
 import styles from "./Header.module.scss";
 
 interface HeaderProps {
@@ -19,7 +20,7 @@ function Header({ pageLoads }: HeaderProps) {
 
   return (
     <header className={styles.header}>
-      <div className={styles.row}>
+      <Row alignItems="center">
         <Link to="/">
           <img src={logo} alt="uppim.me" />
           <h1>uppim.me</h1>
@@ -29,7 +30,7 @@ function Header({ pageLoads }: HeaderProps) {
             Tiedostot
           </Link>
         )}
-      </div>
+      </Row>
 
       <div className={styles.right}>
         {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}

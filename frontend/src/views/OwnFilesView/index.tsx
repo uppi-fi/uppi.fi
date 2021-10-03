@@ -1,9 +1,10 @@
 import { Icon } from "@iconify/react";
 import { FileT } from "@shared/schema";
-import cx from "classnames";
 import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
+import Centered from "../../components/Centered";
 import FileCard from "../../components/FileCard";
+import Row from "../../components/Row";
 import Spinner from "../../components/Spinner";
 import { useApiService } from "../../services/useApiService";
 import { currentUserState } from "../../state/currentUserState";
@@ -23,26 +24,24 @@ function OwnFiles() {
 
   if (!files) {
     return (
-      <div className={styles.centered}>
+      <Centered>
         <Spinner />
-      </div>
+      </Centered>
     );
   }
   if (!files.length) {
     return (
-      <div className={cx(styles.centered, styles.noFiles)}>
-        <div>
-          <div className={styles.row}>
-            <Icon icon="entypo:emoji-sad" fontSize={25} /> Et ole vielä lisännyt
-            tiedostoja
-          </div>
-        </div>
-      </div>
+      <Centered className={styles.row}>
+        <Row alignItems="center" gap="8px">
+          <Icon icon="entypo:emoji-sad" fontSize={25} /> Et ole vielä lisännyt
+          tiedostoja
+        </Row>
+      </Centered>
     );
   }
 
   return (
-    <div>
+    <>
       <div className={styles.root}>
         {files.map((file, i) => (
           <FileCard key={i} file={file} />
@@ -50,7 +49,7 @@ function OwnFiles() {
       </div>
       {/* Adds some spacing so we can scroll further */}
       <div className={styles.spacer} />
-    </div>
+    </>
   );
 }
 

@@ -4,9 +4,11 @@ import { useRecoilValue } from "recoil";
 import { currentUserState } from "../../state/currentUserState";
 import { formatDate } from "../../utils/time";
 import { getFileUrl } from "../../utils/url";
+import Col from "../Col";
 import CopyButton from "../CopyButton";
 import DeleteButton from "../DeleteButton";
 import DownloadButton from "../DownloadButton";
+import Row from "../Row";
 import styles from "./FileFooter.module.scss";
 
 interface FileFooterProps {
@@ -18,23 +20,23 @@ function FileFooter({ file }: FileFooterProps) {
 
   return (
     <footer className={styles.root}>
-      <div className={styles.row}>
-        <div className={styles.col}>
+      <Row alignItems="center" justifyContent="space-between">
+        <Col gap="8px">
           {file.customName !== file.filename ? file.customName : file.filename}
-          <div className={styles.date}>
+          <Row alignItems="center" className={styles.date}>
             {formatDate(file.createdAt)}
             <Icon icon="bx:bx-calendar" fontSize={18} />{" "}
-          </div>
-        </div>
+          </Row>
+        </Col>
 
-        <div className={styles.buttons}>
+        <Row gap="4px">
           {currentUser?.userId === file.userId && (
             <DeleteButton fileId={file.id} />
           )}
           <CopyButton textToCopy={getFileUrl(file)} />
           <DownloadButton fileId={file.id} />
-        </div>
-      </div>
+        </Row>
+      </Row>
     </footer>
   );
 }

@@ -9,6 +9,7 @@ import {
   isVideoFile,
 } from "../../../../shared/mimetype";
 import { getFileUrl, getVideoPreviewUrl } from "../../utils/url";
+import Centered from "../Centered";
 import styles from "./FileCardMedia.module.scss";
 
 interface FileCardMediaProps {
@@ -43,7 +44,7 @@ function FileCardMedia({ file }: FileCardMediaProps) {
         }}
         arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
       >
-        <div className={styles.iconWrapper}>{rendered}</div>
+        <Centered>{rendered}</Centered>
       </Tooltip>
     </div>
   );

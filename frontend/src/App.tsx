@@ -1,52 +1,35 @@
-import { UserT } from "@shared/schema";
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
-import { useLocation } from "wouter";
+import { useRecoilValue } from "recoil";
 import styles from "./App.module.scss";
+import Centered from "./components/Centered";
 import DropOverlay from "./components/DropOverlay";
 import Header from "./components/Header";
 import Routes from "./routes";
 import { useApiService } from "./services/useApiService";
+import { useCheckAccess } from "./services/useCheckAccess";
 import { currentUserState } from "./state/currentUserState";
-
-const Access = () => {
-  const [location, setLocation] = useLocation();
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
-  const { get: getUser } = useApiService<UserT>("get-user");
-
-  useEffect(() => {
-    (async () => {
-      let userId = currentUser?.userId;
-
-      if (/^\/access\/[a-f0-9-]{36}$/.test(location)) {
-        userId = location.split("/").pop();
-        setLocation("/");
-      }
-
-      const user = await getUser({
-        userId,
-      });
-      setCurrentUser(user);
-    })();
-  }, []);
-
-  return null;
-};
 
 function App() {
   const [pageLoads, setPageLoads] = useState<number>();
   const { get: updateVisits } = useApiService<number>("visit");
+  const currentUser = useRecoilValue(currentUserState);
+  const { userVerified } = useCheckAccess();
 
   useEffect(() => {
     updateVisits().then(setPageLoads);
   }, []);
 
+  if (!userVerified) return null;
+
   return (
     <>
-      <Access />
-
       <div className={styles.layout}>
         <Header pageLoads={pageLoads} />
+        {!currentUser && (
+          <Centered>
+            <h3>Ei pääsyä 😡</h3>
+          </Centered>
+        )}
         <Routes />
         <DropOverlay />
       </div>
