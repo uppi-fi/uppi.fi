@@ -2,6 +2,7 @@ import { FileT } from "@shared/schema";
 import { useState } from "react";
 import { useApiService } from "../../services/useApiService";
 import FileCardMedia from "../FileCardMedia";
+import FileNameInput from "../FileNameInput";
 import styles from "./FileCard.module.scss";
 
 interface FileCardProps {
@@ -22,22 +23,7 @@ function FileCard({ file }: FileCardProps) {
       <div className={styles.content}>
         <FileCardMedia file={file} />
         <div className={styles.fileDetails}>
-          <input
-            type="text"
-            value={filenameValue}
-            onChange={(evt) => {
-              const { value } = evt.currentTarget;
-              setFilenameValue(value);
-              updateFile({
-                id: file.id,
-                customName: value,
-              });
-              // TODO: Update custom_name
-            }}
-            spellCheck={false}
-            placeholder="Lisää otsikko"
-            onBlur={() => {}}
-          />
+          <FileNameInput file={file} />
         </div>
       </div>
     </div>

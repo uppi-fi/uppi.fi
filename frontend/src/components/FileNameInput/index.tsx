@@ -13,7 +13,7 @@ interface FileNameInputProps {
 }
 
 function FileNameInput({ file, className }: FileNameInputProps) {
-  const [filenameValue, setFilenameValue] = useState(file.customName);
+  const [value, setValue] = useState(file.customName || "");
   const { post: updateFile } = useApiService<{}, UpdateFileParams>(
     "update-file",
   );
@@ -22,10 +22,10 @@ function FileNameInput({ file, className }: FileNameInputProps) {
     <input
       className={cx(styles.input, className)}
       type="text"
-      value={filenameValue}
+      value={value}
       onChange={(evt) => {
         const { value } = evt.currentTarget;
-        setFilenameValue(value);
+        setValue(value);
         // TODO: Update custom_name
       }}
       spellCheck={false}
@@ -33,7 +33,7 @@ function FileNameInput({ file, className }: FileNameInputProps) {
       onBlur={() => {
         updateFile({
           id: file.id,
-          customName: filenameValue,
+          customName: value,
         });
       }}
     />
