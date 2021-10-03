@@ -1,3 +1,4 @@
+import { env } from "@shared/env";
 import * as PgPromise from "pg-promise";
 
 function camelizeColumns(data: any[]) {
@@ -21,5 +22,5 @@ const pgp = PgPromise({
 });
 
 export const db = pgp({
-  connectionString: "postgres://postgres:postgres@localhost:5433/laturi",
+  connectionString: env.rootDatabaseUrl,
 });

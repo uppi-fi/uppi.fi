@@ -1,3 +1,4 @@
+import { appConfig } from "@shared/config";
 import { FileT } from "@shared/schema";
 import { Application } from "express";
 import * as fs from "fs";
@@ -23,7 +24,7 @@ export const uploadRoute = (app: Application) =>
     }
 
     // Insert into database
-    const fileId = nanoid(5);
+    const fileId = nanoid(appConfig.fileIdLength);
     const [row] = await db.any<FileT>(
       `INSERT INTO files (id, user_id, filename, custom_name, mime_type)
       VALUES ($1, $2, $3, $3, $4)

@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev:frontend": "vite --host --port 3005",
-    "dev:backend": "tsnd -r tsconfig-paths/register --respawn backend/src/index.ts",
-    "dev:bot": "tsnd -r tsconfig-paths/register --respawn bot/src/index.ts",
+    "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
+    "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
     "build:frontend": "tsc && vite build",
     "migrate": "graphile-migrate migrate",
     "migrate:watch": "graphile-migrate watch",
