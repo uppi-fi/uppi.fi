@@ -1,4 +1,5 @@
 import { appConfig } from "@shared/config";
+import { isVideoFile } from "@shared/mimetype";
 import { FileT } from "@shared/schema";
 import { Application } from "express";
 import * as fs from "fs";
@@ -25,11 +26,18 @@ export const uploadRoute = (app: Application) =>
 
     // Insert into database
     const fileId = nanoid(appConfig.fileIdLength);
+    const fileExtension = path.extname(req.file.originalname);
     const [row] = await db.any<FileT>(
-      `INSERT INTO files (id, user_id, filename, custom_name, mime_type)
-      VALUES ($1, $2, $3, $3, $4)
+      `INSERT INTO files (id, user_id, filename, custom_name, mime_type, file_extension)
+      VALUES ($1, $2, $3, $3, $4, $5)
       RETURNING *`,
-      [fileId, req.body.userId, req.file.originalname, req.file.mimetype],
+      [
+        fileId,
+        req.body.userId,
+        req.file.originalname,
+        req.file.mimetype,
+        fileExtension,
+      ],
     );
 
     fs.mkdirSync(path.join("uploads", row.id));
@@ -39,7 +47,7 @@ export const uploadRoute = (app: Application) =>
     );
 
     // Generate thumbnail
-    if (row.mimeType.startsWith("video")) {
+    if (isVideoFile(row)) {
       generateVideoThumbnail(row);
     }
 

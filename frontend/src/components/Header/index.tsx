@@ -1,9 +1,9 @@
 import { useRecoilValue } from "recoil";
 import { Link } from "wouter";
+import { isAudioFile, isVideoFile } from "../../../../shared/mimetype";
 import logo from "../../assets/images/logo.png";
 import { currentFileState } from "../../state/currentFileState";
 import { currentUserState } from "../../state/currentUserState";
-import { isAudioFile, isVideoFile } from "../../utils/mimetype";
 import AutoPlayButton from "../AutoPlayButton";
 import styles from "./Header.module.scss";
 

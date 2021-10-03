@@ -29,6 +29,7 @@ $shake-distance: 2.5px;
   align-items: center;
   justify-content: space-between;
   cursor: default;
+  z-index: 1;
 
   a {
     display: flex;

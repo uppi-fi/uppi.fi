@@ -12,6 +12,7 @@ CREATE TABLE files  (
   filename VARCHAR(255) NOT NULL,
   mime_type VARCHAR(127) NOT NULL,
   custom_name VARCHAR(255),
+  file_extension VARCHAR(255) NOT NULL,
   view_count INTEGER DEFAULT 0 NOT NULL,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   user_id VARCHAR(36) NOT NULL REFERENCES users (user_id)

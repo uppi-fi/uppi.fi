@@ -15,6 +15,8 @@ export default interface FileT {
 
   customName: string | null;
 
+  fileExtension: string;
+
   viewCount: number;
 
   createdAt: Date;
@@ -31,6 +33,8 @@ export interface FileTInitializer {
   mimeType: string;
 
   customName?: string | null;
+
+  fileExtension: string;
 
   /** Default value: 0 */
   viewCount?: number;

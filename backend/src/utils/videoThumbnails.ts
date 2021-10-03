@@ -36,6 +36,9 @@ export async function generateVideoThumbnail(file: FileT) {
       },
       path.dirname(videoPath),
     )
+    .on("error", (err) => {
+      console.log("RIP,", err);
+    })
     .on("end", function () {
       console.log(
         `Generated video thumbnail: ${path.join(videoDir, THUMBNAIL_FILENAME)}`,

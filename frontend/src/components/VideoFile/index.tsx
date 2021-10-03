@@ -1,9 +1,9 @@
 import { FileT } from "@shared/schema";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
+import ReactPlayer from "react-player";
 import { useRecoilValue } from "recoil";
 import { autoPlayState } from "../../state/autoPlayState";
 import { getFileUrl } from "../../utils/url";
-import styles from "./VideoFile.module.scss";
 
 interface VideoFileProps {
   file: FileT;
@@ -26,15 +26,19 @@ function VideoFile({ file }: VideoFileProps) {
     previousFileId.current = file.id;
   }, [file.id]);
 
+  const shouldPlay = useMemo(() => autoPlay.video, []);
+
   return (
-    <video
-      ref={videoRef}
-      autoPlay={autoPlay.video}
-      className={styles.video}
+    <ReactPlayer
+      playing={shouldPlay}
+      url={getFileUrl(file)}
       controls
-    >
-      <source src={getFileUrl(file)} type={file.mimeType} />
-    </video>
+      width="100%"
+      height="75vh"
+      style={{
+        background: "#000",
+      }}
+    />
   );
 }
 export default VideoFile;

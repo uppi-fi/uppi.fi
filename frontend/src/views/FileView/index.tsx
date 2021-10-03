@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Redirect } from "wouter";
+import {
+  isAudioFile,
+  isImageFile,
+  isVideoFile,
+} from "../../../../shared/mimetype";
 import AudioFile from "../../components/AudioFile";
 import FileFooter from "../../components/FileFooter";
 import ImageFile from "../../components/ImageFile";
 import VideoFile from "../../components/VideoFile";
 import { useFile } from "../../services/useFile";
-import { isAudioFile, isImageFile, isVideoFile } from "../../utils/mimetype";
 import NotFoundView from "../NotFoundView";
 import styles from "./FileView.module.scss";
 
@@ -38,6 +42,7 @@ function FileView({ fileId }: FileViewProps) {
   }
 
   const renderFile = () => {
+    console.log(currentFile.mimeType);
     if (isVideoFile(currentFile)) {
       return <VideoFile file={currentFile} />;
     }

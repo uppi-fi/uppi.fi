@@ -3,9 +3,14 @@ import { FileT } from "@shared/schema";
 import Tooltip from "rc-tooltip";
 import { useMemo } from "react";
 import { useLocation } from "wouter";
-import { isAudioFile, isImageFile, isVideoFile } from "../../utils/mimetype";
+import {
+  isAudioFile,
+  isImageFile,
+  isVideoFile,
+} from "../../../../shared/mimetype";
 import { getFileUrl, getVideoPreviewUrl } from "../../utils/url";
 import styles from "./FileCardMedia.module.scss";
+
 interface FileCardMediaProps {
   file: FileT;
 }
