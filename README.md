@@ -4,7 +4,7 @@
 
 - Node.js
 - Yarn
-- Docker
+- Docker (or your own PostgreSQL database)
 
 ## Installation & running
 
