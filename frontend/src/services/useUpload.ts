@@ -1,3 +1,4 @@
+import { appConfig } from "@shared/config";
 import { FileT } from "@shared/schema";
 import { useCallback } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -6,8 +7,6 @@ import { currentUserState } from "../state/currentUserState";
 import { uploadedFileState } from "../state/uploadedFileState";
 import { uploadProgresState } from "../state/uploadProgresState";
 import { useApiService } from "./useApiService";
-
-const MAX_FILE_SIZE = 10_000_000;
 
 export function useUpload() {
   const [, setLocation] = useLocation();
@@ -21,7 +20,7 @@ export function useUpload() {
       return alert("Et oo kirjautuneena?");
     }
 
-    if (file.size > MAX_FILE_SIZE) {
+    if (file.size > appConfig.maxFileSize) {
       return alert("Max koko 10MB");
     }
 

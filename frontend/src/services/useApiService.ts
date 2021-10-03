@@ -9,7 +9,7 @@ export interface ApiResponse<T> {
   data?: T;
 }
 
-export function useApiService<TResponse, TDataOrParams>(path: string) {
+export function useApiService<TResponse, TDataOrParams = {}>(path: string) {
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
   const [error, setError] = useState<boolean>(false);

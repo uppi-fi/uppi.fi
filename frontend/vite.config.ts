@@ -15,4 +15,12 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  resolve: {
+    alias: [
+      {
+        find: "@shared",
+        replacement: path.resolve(__dirname, "../shared"),
+      },
+    ],
+  },
 });
