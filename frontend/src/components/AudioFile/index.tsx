@@ -11,7 +11,6 @@ interface AudioFileProps {
 function AudioFile({ file }: AudioFileProps) {
   const autoPlay = useRecoilValue(autoPlayState);
 
-  console.log(autoPlay.audio);
   return (
     <audio autoPlay={autoPlay.audio} className={styles.audio} controls>
       <source src={getFileUrl(file)} type={file.mimeType} />

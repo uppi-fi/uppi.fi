@@ -42,7 +42,6 @@ function FileView({ fileId }: FileViewProps) {
   }
 
   const renderFile = () => {
-    console.log(currentFile.mimeType);
     if (isVideoFile(currentFile)) {
       return <VideoFile file={currentFile} />;
     }
