@@ -22,5 +22,5 @@ const pgp = PgPromise({
 });
 
 export const db = pgp({
-  connectionString: env.rootDatabaseUrl,
+  connectionString: env.databaseUrl,
 });

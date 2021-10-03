@@ -1,6 +1,3 @@
--- Enter migration here
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 -- Users
 DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users  (

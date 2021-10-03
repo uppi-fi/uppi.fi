@@ -11,7 +11,7 @@ import { updateFileRoute } from "./routes/updateFile";
 import { uploadRoute } from "./routes/upload";
 import { visitRoute } from "./routes/visit";
 const app = express();
-const PORT = new URL(env.backendHost || "").port;
+const PORT = new URL(env.expressHost || "").port;
 
 app.use(express.json());
 app.use(cors());
@@ -27,5 +27,5 @@ getUserRoute(app);
 updateFileRoute(app);
 
 app.listen(PORT, () => {
-  console.log(`Express server is running at ${env.backendHost}`);
+  console.log(`Express server is running at ${env.expressHost}`);
 });
