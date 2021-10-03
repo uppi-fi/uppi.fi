@@ -108,6 +108,10 @@ module.exports = {
       _: 'command',
       command: 'yarn generate-types',
     },
+    {
+      _: 'command',
+      command: 'npx prettier --write shared/schema',
+    },
   ],
 
   /*
