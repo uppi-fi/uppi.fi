@@ -13,7 +13,7 @@
     "migrate:uncommit": "graphile-migrate uncommit",
     "generate-types": "kanel",
     "lint:eslint": "eslint '**/*.{js,ts,tsx}' --quiet --fix",
-    "lint:prettier": "eslint '**/*.{js,ts,tsx}' --quiet --fix",
+    "lint:prettier": "prettier --write .",
     "prestart": "check-env FRONTEND_HOST TELEGRAM_BOT_TOKEN VITE_EXPRESS_HOST DATABASE_URL SHADOW_DATABASE_URL ROOT_DATABASE_URL",
     "start": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\""
   },
@@ -61,6 +61,7 @@
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/fluent-ffmpeg": "^2.1.18",
+    "@types/lodash-es": "^4.17.5",
     "@types/multer": "^1.4.7",
     "@types/react": "^17.0.26",
     "@types/react-dom": "^17.0.9",
@@ -78,6 +79,7 @@
     "graphile-migrate": "^1.2.0",
     "husky": "^7.0.2",
     "lint-staged": "^11.1.2",
+    "lodash-es": "^4.17.21",
     "prettier": "^2.4.1",
     "ts-node-dev": "^1.1.8",
     "tsconfig-paths": "^3.11.0"
