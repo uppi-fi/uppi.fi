@@ -1,0 +1,12 @@
+@import '../../theme.scss';
+
+.sorters {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  color: $accent;
+  font-size: 12px;
+  svg {
+    margin-left: 8px;
+  }
+}

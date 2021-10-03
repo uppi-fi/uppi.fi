@@ -3,4 +3,6 @@ export const appConfig = {
   fileIdLength: 10,
   /** Max file size in bytes */
   maxFileSize: 10_000_000, // 10MB
+  /** Time to wait until update request is sent after user types */
+  typingUpdateDebounceMs: 250,
 };
