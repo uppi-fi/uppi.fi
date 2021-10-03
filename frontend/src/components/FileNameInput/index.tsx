@@ -1,6 +1,8 @@
+import { appConfig } from '@shared/config';
 import { FileT } from '@shared/schema';
 import cx from 'classnames';
 import { useState } from 'react';
+import { useDebounce } from 'react-use';
 import { useApiService } from '../../services/useApiService';
 import styles from './FileNameInput.module.scss';
 
@@ -18,6 +20,16 @@ function FileNameInput({ file, className }: FileNameInputProps) {
     'update-file'
   );
 
+  useDebounce(
+    () =>
+      updateFile({
+        id: file.id,
+        customName: value,
+      }),
+    appConfig.typingUpdateDebounceMs,
+    [value]
+  );
+
   return (
     <input
       className={cx(styles.input, className)}
@@ -26,16 +38,9 @@ function FileNameInput({ file, className }: FileNameInputProps) {
       onChange={(evt) => {
         const { value } = evt.currentTarget;
         setValue(value);
-        // TODO: Update custom_name
       }}
       spellCheck={false}
       placeholder="Lisää otsikko"
-      onBlur={() => {
-        updateFile({
-          id: file.id,
-          customName: value,
-        });
-      }}
     />
   );
 }
