@@ -48,7 +48,7 @@ function FileCardMedia({ file }: FileCardMediaProps) {
         }}
         arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
       >
-        <Centered>{rendered}</Centered>
+        <Centered className={styles.content}>{rendered}</Centered>
       </Tooltip>
     </div>
   );
