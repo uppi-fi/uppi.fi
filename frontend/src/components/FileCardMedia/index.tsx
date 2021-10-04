@@ -36,6 +36,9 @@ function FileCardMedia({ file }: FileCardMediaProps) {
 
   return (
     <div className={styles.media} onClick={() => setLocation(`/${file.id}`)}>
+      <div className={styles.fileType}>
+        {file.fileExtension.replace(/./, '')}
+      </div>
       <Tooltip
         placement="top"
         overlay={`Tyyppi: ${file.mimeType}`}

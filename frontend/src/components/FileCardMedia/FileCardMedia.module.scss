@@ -5,6 +5,7 @@
   flex-grow: 1;
   background: #fcfcfc;
   font-size: 300%;
+  position: relative;
 
   img {
     width: 100%;
@@ -15,4 +16,15 @@
 
 .tooltip {
   transform: translate(0, 100px);
+}
+
+.fileType {
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px 0 0 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
