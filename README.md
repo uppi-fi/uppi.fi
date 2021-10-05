@@ -37,6 +37,13 @@
    yarn migrate:watch  # Starts watching `current.sql` changes
    ```
 
+## WSL troubleshooting
+
+Port-forwarding does not seem to always work with WSL, there are two scripts in `scripts/` directory that should help if there is some issues:
+
+- `wsl-port-forwards.cmd` - Enables port-forwarding through `netsh`
+- `disable-wsl-port-forwards.cmd` - Disables all port-forwards
+
 ## Ports used
 
 - `3005` - Frontend
