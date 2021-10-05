@@ -3,29 +3,31 @@
 ## Pre-requisities
 
 - Node.js
-- Yarn
+- Yarn (npm should work too with minimal changes)
 - Docker (or your own PostgreSQL database)
 
 ## Installation & running
 
-1. Load environment variables:
+1. Copy `.env.example` to `.env` and update it
+
+2. Load environment variables:
 
    ```sh
    chmod +x scripts/set-env.sh
    source scripts/set-env.sh
    ```
 
-2. Start postgres:
+3. Start postgres:
 
    ```sh
    docker-compose up -d
    ```
 
-3. Install npm packages
+4. Install npm packages
    ```
    yarn
    ```
-4. Start app
+5. Start app
    ```
    yarn start
    ```
@@ -37,18 +39,18 @@
    yarn migrate:watch  # Starts watching `current.sql` changes
    ```
 
-## WSL troubleshooting
-
-Port-forwarding does not seem to always work with WSL, there are two scripts in `scripts/` directory that should help if there is some issues:
-
-- `wsl-port-forwards.cmd` - Enables port-forwarding through `netsh`
-- `disable-wsl-port-forwards.cmd` - Disables all port-forwards
-
 ## Ports used
 
 - `3005` - Frontend
 - `5433` - PostgreSQL
 - `8000` - Express backend
+
+### WSL troubleshooting
+
+Port-forwarding does not seem to always work with WSL, there are two scripts in `scripts/` directory that should help if there is some issues:
+
+- `wsl-port-forwards.cmd` - Enables port-forwarding through `netsh`
+- `disable-wsl-port-forwards.cmd` - Disables all port-forwards
 
 ## Migrations
 
