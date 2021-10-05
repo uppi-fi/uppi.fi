@@ -11,8 +11,8 @@
 1. Load environment variables:
 
    ```sh
-   chmod +x scripts/set_env.sh
-   source scripts/set_env.sh
+   chmod +x scripts/set-env.sh
+   source scripts/set-env.sh
    ```
 
 2. Start postgres:
