@@ -29,15 +29,24 @@
    ```
 5. Start app
    ```
+   yarn build
    yarn start
    ```
-   or individually:
-   ```sh
-   yarn dev:frontend   # Starts frontend
-   yarn dev:backend    # Starts backend
-   yarn dev:bot        # Starts telegram bot
-   yarn migrate:watch  # Starts watching `current.sql` changes
-   ```
+
+## Development
+
+Steps above but instead yarn build & start:
+
+```
+yarn dev
+```
+or individually:
+```sh
+yarn dev:frontend   # Starts frontend
+yarn dev:backend    # Starts backend
+yarn dev:bot        # Starts telegram bot
+yarn migrate:watch  # Starts watching `current.sql` changes
+```
 
 ## Ports used
 
