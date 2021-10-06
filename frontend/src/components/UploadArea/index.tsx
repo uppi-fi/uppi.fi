@@ -6,6 +6,7 @@ import { useUpload } from '../../services/useUpload';
 import { draggingState } from '../../state/draggingState';
 import { uploadProgresState } from '../../state/uploadProgresState';
 import Col from '../atoms/Col';
+import Text from '../atoms/Text';
 import styles from './UploadArea.module.scss';
 
 function UploadArea() {
@@ -42,9 +43,15 @@ function UploadArea() {
         }}
       />
       {uploadProgress === 0 ? (
-        <Col alignItems="center">
-          <Icon icon="feather:upload" color="#2a9d8f" fontSize="15vw" />
-          Lataa tiedosto
+        <Col alignItems="center" gap="8px">
+          <Icon icon="entypo:upload-to-cloud" color="#2a9d8f" fontSize="20vh" />
+          <Text
+            marginTop="-8px" // Icon has lots of space on bottom, let's negate some of that
+            fontSize="clamp(13px, 4vh, 24px)"
+            fontWeight="bold"
+          >
+            Lisää tiedosto
+          </Text>
         </Col>
       ) : (
         `${Math.round(uploadProgress * 100)}%`
