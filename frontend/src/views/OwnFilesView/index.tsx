@@ -9,8 +9,8 @@ import FileListSorters from '../../components/FileListSorters';
 import Spinner from '../../components/Spinner';
 import { useApiService } from '../../services/useApiService';
 import { currentUserState } from '../../state/currentUserState';
-import { fileListState } from '../../state/fileListState';
-import { sortedFileListState } from '../../state/sortedFileListState';
+import { fileListState } from '../../state/fileList/fileListState';
+import { sortedFileListState } from '../../state/fileList/sortedFileListState';
 import styles from './OwnFiles.module.scss';
 
 function OwnFiles() {

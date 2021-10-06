@@ -5,7 +5,7 @@ import { useRecoilState } from 'recoil';
 import {
   FileListSortState,
   fileListSortState,
-} from '../../state/fileListSortState';
+} from '../../state/fileList/fileListSortState';
 import styles from './SortButton.module.scss';
 
 interface SortButtonProps {

@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { localStorageEffect } from './localStorageEffect';
+import { localStorageEffect } from '../localStorageEffect';
 
 type SortState = {
   order: 'asc' | 'desc';
