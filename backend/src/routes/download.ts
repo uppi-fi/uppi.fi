@@ -19,6 +19,6 @@ export const downloadRoute = (app: Application) =>
     }
 
     res.download(
-      path.resolve(__dirname, '../../uploads', fileId, row.filename)
+      path.resolve(__dirname, '../../../uploads', fileId, row.filename)
     );
   });
