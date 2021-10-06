@@ -14,9 +14,9 @@ export type FlexProps = Pick<
 > &
   Pick<React.HTMLAttributes<HTMLDivElement>, 'className'>;
 
-const Flex: React.FC<FlexProps> = ({ children, className, ...rest }) => {
+const Flex: React.FC<FlexProps> = ({ children, className, ...css }) => {
   return (
-    <div className={cx(styles.root, className)} style={rest}>
+    <div className={cx(styles.root, className)} style={css}>
       {children}
     </div>
   );

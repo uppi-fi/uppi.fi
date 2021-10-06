@@ -5,6 +5,7 @@ import { useRecoilValue } from 'recoil';
 import { useUpload } from '../../services/useUpload';
 import { draggingState } from '../../state/draggingState';
 import { uploadProgresState } from '../../state/uploadProgresState';
+import Col from '../atoms/Col';
 import styles from './UploadArea.module.scss';
 
 function UploadArea() {
@@ -41,7 +42,10 @@ function UploadArea() {
         }}
       />
       {uploadProgress === 0 ? (
-        <Icon icon="feather:upload" color="#2a9d8f" fontSize="15vw" />
+        <Col alignItems="center">
+          <Icon icon="feather:upload" color="#2a9d8f" fontSize="15vw" />
+          Lataa tiedosto
+        </Col>
       ) : (
         `${Math.round(uploadProgress * 100)}%`
       )}

@@ -4,8 +4,8 @@ import { isAudioFile, isVideoFile } from '../../../../shared/mimetype';
 import logo from '../../assets/images/logo.png';
 import { currentFileState } from '../../state/currentFileState';
 import { currentUserState } from '../../state/currentUserState';
+import Row from '../atoms/Row';
 import AutoPlayButton from '../AutoPlayButton';
-import Row from '../Row';
 import styles from './Header.module.scss';
 
 interface HeaderProps {

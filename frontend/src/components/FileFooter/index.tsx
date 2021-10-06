@@ -4,11 +4,11 @@ import { useRecoilValue } from 'recoil';
 import { currentUserState } from '../../state/currentUserState';
 import { formatDate } from '../../utils/time';
 import { getFileUrl } from '../../utils/url';
-import Col from '../Col';
+import Col from '../atoms/Col';
+import Row from '../atoms/Row';
 import CopyButton from '../CopyButton';
 import DeleteButton from '../DeleteButton';
 import DownloadButton from '../DownloadButton';
-import Row from '../Row';
 import styles from './FileFooter.module.scss';
 
 interface FileFooterProps {
