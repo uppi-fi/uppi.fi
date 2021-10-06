@@ -16,8 +16,7 @@
 
   svg {
     position: relative;
-    top: 0;
-    transition: top ease 0.5s;
+    transition: all ease 0.5s;
     pointer-events: none;
   }
 
@@ -27,7 +26,8 @@
     background: rgba($accent, 0.1);
 
     svg {
-      top: -2.5%;
+      color: red;
+      transform: translateY(-1.25vh);
     }
   }
 }
@@ -44,4 +44,13 @@
     rgba(122, 218, 206, 0.3) 100%
   );
   transition: height ease-in-out 0.1s;
+}
+
+.col {
+  @media screen and (max-height: $small) {
+    gap: 8px;
+  }
+  @media screen and (max-height: $medium) {
+    gap: 14px;
+  }
 }

@@ -43,7 +43,7 @@ function UploadArea() {
         }}
       />
       {uploadProgress === 0 ? (
-        <Col alignItems="center" gap="8px">
+        <Col alignItems="center" className={styles.col}>
           <Icon icon="entypo:upload-to-cloud" color="#2a9d8f" fontSize="20vh" />
           <Text
             marginTop="-8px" // Icon has lots of space on bottom, let's negate some of that
