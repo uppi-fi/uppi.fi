@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:frontend": "tsnd -r tsconfig-paths/register --quiet --respawn frontend/createDevServer.ts",
+    "dev:frontend": "vite --host --port $FRONTEND_PORT",
     "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
     "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
     
@@ -11,7 +11,7 @@
     "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
     "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
 
-    "start:frontend": "serve -p 3005 dist/frontend/",
+    "start:frontend": "serve -p $FRONTEND_PORT dist/frontend/",
     "start:backend": "node dist/backend/src/index.js",
     "start:bot": "node dist/bot/src/index.js",
     
