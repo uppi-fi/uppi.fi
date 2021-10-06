@@ -6,16 +6,28 @@
     "dev:frontend": "tsnd -r tsconfig-paths/register --quiet --respawn frontend/createDevServer.ts",
     "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
     "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
-    "build:frontend": "tsc && vite build",
+    
+    "build:frontend": "vite build frontend --outDir ../dist/frontend",
+    "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
+    "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
+
+    "start:frontend": "serve -p 3005 dist/frontend/",
+    "start:backend": "node dist/backend/src/index.js",
+    "start:bot": "node dist/bot/src/index.js",
+    
     "migrate": "graphile-migrate migrate",
     "migrate:watch": "graphile-migrate watch",
     "migrate:commit": "graphile-migrate commit",
     "migrate:uncommit": "graphile-migrate uncommit",
     "generate-types": "kanel",
+
     "lint:eslint": "eslint '**/*.{js,ts,tsx}' --quiet --fix",
     "lint:prettier": "prettier --write .",
+
     "prestart": "check-env FRONTEND_HOST TELEGRAM_BOT_TOKEN VITE_EXPRESS_HOST DATABASE_URL SHADOW_DATABASE_URL ROOT_DATABASE_URL",
-    "start": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\""
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\"",
+    "build": "concurrently \"npm:build:frontend\" \"npm:build:backend\" \"npm:build:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\"",
+    "start": "concurrently \"npm:start:frontend\" \"npm:start:backend\" \"npm:start:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\""
   },
   "husky": {
     "hooks": {
@@ -49,6 +61,7 @@
     "react-use": "^17.3.1",
     "recoil": "^0.4.1",
     "sass": "^1.42.1",
+    "serve": "^12.0.1",
     "telegraf": "^4.4.2",
     "typescript": "^4.4.3",
     "uuid": "^8.3.2",
@@ -82,6 +95,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^2.4.1",
     "ts-node-dev": "^1.1.8",
-    "tsconfig-paths": "^3.11.0"
+    "tsconfig-paths": "^3.11.0",
+    "tscpaths": "^0.0.9"
   }
 }
