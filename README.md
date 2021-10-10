@@ -8,7 +8,7 @@
 
 ## Installation & running
 
-1. Copy `.env.example` to `.env` and update it
+1. Copy `.env.example` to `.env` and update it if needed
 
 2. Load environment variables:
 
