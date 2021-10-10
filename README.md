@@ -1,6 +1,6 @@
 # laturi
 
-## Pre-requisities
+## Requirements
 
 - Node.js
 - Yarn (npm should work too with minimal changes)
