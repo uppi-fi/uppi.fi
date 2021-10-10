@@ -23,11 +23,11 @@
    docker-compose up -d
    ```
 
-4. Install npm packages
+4. Install npm packages:
    ```
    yarn
    ```
-5. Start app
+5. Start app:
    ```
    yarn build
    yarn start
