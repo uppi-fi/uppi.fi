@@ -1,4 +1,4 @@
-# laturi
+# Uppim.me
 
 ## Requirements
 
