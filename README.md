@@ -1,4 +1,4 @@
-# Uppim.me
+# uppim.me
 
 ## Requirements
 
