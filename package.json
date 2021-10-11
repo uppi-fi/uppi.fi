@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:frontend": "vite --host --port $FRONTEND_PORT",
+    "dev:frontend": "vite --config frontend/vite.config.ts --host --port $FRONTEND_PORT",
     "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
     "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
     
