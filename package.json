@@ -11,7 +11,7 @@
     "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
     "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
 
-    "start:frontend": "serve -p $FRONTEND_PORT dist/frontend/",
+    "start:frontend": "serve -s -p $FRONTEND_PORT dist/frontend/",
     "start:backend": "node dist/backend/src/index.js",
     "start:bot": "node dist/bot/src/index.js",
     

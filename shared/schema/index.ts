@@ -1,9 +1,9 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
-import FileT, { FileTId, FileTInitializer } from './files';
+import FileT, { FileTInitializer, FileTId } from './files';
 import SiteStatisticT, { SiteStatisticTInitializer } from './site_statistics';
-import UserT, { UserTId, UserTInitializer } from './users';
+import UserT, { UserTInitializer, UserTId } from './users';
 
 type Model =
   | FileT
