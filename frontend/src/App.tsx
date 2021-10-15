@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Routes from './routes';
 import { useApiService } from './services/useApiService';
 import { useCheckAccess } from './services/useCheckAccess';
+import { useIsFileView } from './services/useIsFileView';
 import { currentUserState } from './state/currentUserState';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const { get: updateVisits } = useApiService<number>('visit');
   const currentUser = useRecoilValue(currentUserState);
   const { userVerified } = useCheckAccess();
+  const isFileView = useIsFileView();
 
   useEffect(() => {
     updateVisits().then(setPageLoads);
@@ -25,7 +27,7 @@ function App() {
     <>
       <div className={styles.layout}>
         <Header pageLoads={pageLoads} />
-        {!currentUser && (
+        {!currentUser && !isFileView && location && (
           <Centered>
             <h3>Ei pääsyä 😡</h3>
           </Centered>
