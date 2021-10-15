@@ -15,7 +15,7 @@ export function useCheckAccess() {
     (async () => {
       let userId = currentUser?.userId;
 
-      if (/^\/access\/[a-f0-9-]{36}$/.test(location)) {
+      if (/^\/auth\/[a-z0-9-]+$/.test(location)) {
         userId = location.split('/').pop();
         setLocation('/');
       }

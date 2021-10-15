@@ -34,7 +34,7 @@ bot.hears(/^KAP$/, async (ctx) => {
   }
 
   ctx.reply(
-    `Tässä linkki tiedostoihisi:\n${`${env.frontendHost}/access/${user.userId}`}`
+    `Tässä linkki tiedostoihisi:\n${`${env.frontendHost}/auth/${user.userId}`}`
   );
 });
 
