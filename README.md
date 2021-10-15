@@ -1,4 +1,4 @@
-# uppim.me
+# uppim.me  &middot;  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Requirements
 
@@ -40,7 +40,9 @@ Steps above but instead yarn build & start:
 ```
 yarn dev
 ```
+
 or individually:
+
 ```sh
 yarn dev:frontend   # Starts frontend
 yarn dev:backend    # Starts backend
@@ -71,3 +73,6 @@ Port-forwarding does not seem to always work with WSL, there are two scripts in 
   - Commits the current migration into the `committed/` folder, resetting the current migration.
 - `yarn migrate:uncommit`
   - Moves the latest commit out of the committed migrations folder and back to the current migration (assuming the current migration is empty-ish).
+
+## License
+This repository is MIT licensed.
