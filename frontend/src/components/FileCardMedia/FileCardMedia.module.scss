@@ -6,8 +6,8 @@
   background: #fcfcfc;
   font-size: 300%;
   position: relative;
-  display: flex;
-  align-items: center;
+  display: grid;
+  place-items: center;
 
   img {
     width: 100%;
