@@ -3,7 +3,7 @@ import { FileT } from '@shared/schema';
 import { useRecoilValue } from 'recoil';
 import { currentUserState } from '../../state/currentUserState';
 import { formatDate } from '../../utils/time';
-import { getFileUrl } from '../../utils/url';
+import { getFileUrl, getFileDownloadUrl } from '../../utils/url';
 import Col from '../atoms/Col';
 import Row from '../atoms/Row';
 import CopyButton from '../CopyButton';
@@ -34,7 +34,7 @@ function FileFooter({ file }: FileFooterProps) {
             <DeleteButton fileId={file.id} />
           )}
           <CopyButton textToCopy={getFileUrl(file)} />
-          <DownloadButton file={file} />
+          <DownloadButton url={getFileDownloadUrl(file)} />
         </Row>
       </Row>
     </footer>
