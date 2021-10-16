@@ -1,4 +1,4 @@
-import { env } from '@shared/env';
+import { env } from '@shared/config';
 import * as PgPromise from 'pg-promise';
 
 function camelizeColumns(data: Record<string, string>[]) {
@@ -22,5 +22,5 @@ const pgp = PgPromise({
 });
 
 export const db = pgp({
-  connectionString: env.databaseUrl,
+  connectionString: env.DATABASE_URL,
 });

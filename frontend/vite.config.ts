@@ -1,6 +1,7 @@
 import react from '@vitejs/plugin-react';
 import * as path from 'path';
 import { defineConfig } from 'vite';
+import { env } from '../shared/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -11,6 +12,10 @@ export default defineConfig({
       // Allow serving files from one level up to the project root
       allow: [path.resolve(__dirname, '..')],
     },
+    proxy: {
+      '/api': env.BACKEND_URL,
+    },
+    port: env.FRONTEND_PORT,
   },
   plugins: [react()],
   resolve: {
@@ -20,13 +25,12 @@ export default defineConfig({
         replacement: path.resolve(__dirname, '../shared'),
       },
       {
-        find: '@backend',
-        replacement: path.resolve(__dirname, '../backend'),
-      },
-      {
         find: '@frontend',
         replacement: __dirname,
       },
     ],
+  },
+  optimizeDeps: {
+    include: ['envalid'],
   },
 });

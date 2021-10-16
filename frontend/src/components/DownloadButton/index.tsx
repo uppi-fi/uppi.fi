@@ -1,13 +1,10 @@
-import { getServerUrl } from '../../utils/url';
+import { FileT } from '@shared/schema';
+import { getFileDownloadUrl } from '../../utils/url';
 import IconButton from '../IconButton';
 
-interface DownloadButtonProps {
-  fileId: string;
-}
-
-function DownloadButton({ fileId }: DownloadButtonProps) {
+function DownloadButton({ file }: { file: FileT }) {
   return (
-    <a href={getServerUrl(`dl?fileId=${fileId}`)} download>
+    <a href={getFileDownloadUrl(file)} download>
       <IconButton tooltip="Lataa tiedosto" icon="fa-solid:download" />
     </a>
   );

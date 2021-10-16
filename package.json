@@ -3,28 +3,22 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev:frontend": "vite --config frontend/vite.config.ts --host --port $FRONTEND_PORT",
+    "dev:frontend": "vite --config frontend/vite.config.ts --host",
     "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
     "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
-    
     "build:frontend": "vite build frontend --outDir ../dist/frontend",
     "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
     "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
-
     "start:frontend": "serve -s -p $FRONTEND_PORT dist/frontend/",
     "start:backend": "node dist/backend/src/index.js",
     "start:bot": "node dist/bot/src/index.js",
-    
     "migrate": "graphile-migrate migrate",
     "migrate:watch": "graphile-migrate watch",
     "migrate:commit": "graphile-migrate commit",
     "migrate:uncommit": "graphile-migrate uncommit",
-    "generate-types": "kanel",
-
     "lint:eslint": "eslint '**/*.{js,ts,tsx}' --quiet --fix",
     "lint:prettier": "prettier --write .",
-
-    "prestart": "check-env FRONTEND_HOST TELEGRAM_BOT_TOKEN VITE_EXPRESS_HOST DATABASE_URL SHADOW_DATABASE_URL ROOT_DATABASE_URL",
+    "generate-types": "kanel",
     "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\"",
     "build": "concurrently \"npm:build:frontend\" \"npm:build:backend\" \"npm:build:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\"",
     "start": "concurrently \"npm:start:frontend\" \"npm:start:backend\" \"npm:start:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\""
@@ -47,6 +41,7 @@
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
+    "envalid": "^7.2.1",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
     "kanel": "^2.3.2",
@@ -82,7 +77,6 @@
     "@typescript-eslint/eslint-plugin": "^4.32.0",
     "@typescript-eslint/parser": "^4.32.0",
     "@vitejs/plugin-react": "^1.0.1",
-    "check-env": "^1.3.0",
     "concurrently": "^6.3.0",
     "dotenv-cli": "^4.0.0",
     "eslint": "^7.32.0",

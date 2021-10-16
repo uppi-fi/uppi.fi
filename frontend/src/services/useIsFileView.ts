@@ -1,10 +1,10 @@
-import { appConfig } from '@shared/config';
+import { env } from '@shared/config';
 import { useLocation } from 'wouter';
 
 export function useIsFileView() {
   const [location] = useLocation();
   const isFileLocation = new RegExp(
-    `^\/[a-z0-9-]{${appConfig.fileIdLength}}$`,
+    `^/[a-z0-9-]{${env.FILE_ID_LENGTH}}$`,
     'i'
   ).test(location);
   return isFileLocation;

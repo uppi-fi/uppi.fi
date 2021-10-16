@@ -34,7 +34,7 @@ function FileFooter({ file }: FileFooterProps) {
             <DeleteButton fileId={file.id} />
           )}
           <CopyButton textToCopy={getFileUrl(file)} />
-          <DownloadButton fileId={file.id} />
+          <DownloadButton file={file} />
         </Row>
       </Row>
     </footer>

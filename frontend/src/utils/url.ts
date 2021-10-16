@@ -1,14 +1,13 @@
 import { FileT } from '@shared/schema';
-import { env } from '../env';
-
-export function getServerUrl(path: string) {
-  return new URL(path, env.apiHost).href;
-}
 
 export function getFileUrl(file: FileT) {
-  return getServerUrl(`${file.id}/${file.filename}`);
+  return `/api/${file.id}/${file.filename}`;
 }
 
 export function getVideoPreviewUrl(file: FileT) {
-  return getServerUrl(`${file.id}/thumbnail.png`);
+  return `/api/${file.id}/thumbnail.png`;
+}
+
+export function getFileDownloadUrl(file: FileT) {
+  return `/api/dl?fileId=${file.id}`;
 }

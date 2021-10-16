@@ -1,4 +1,4 @@
-import { env } from '@shared/env';
+import { env } from '@shared/config';
 import { UserT } from '@shared/schema';
 import { Telegraf } from 'telegraf';
 import { v4 as uuid } from 'uuid';
@@ -34,7 +34,7 @@ bot.hears(/^KAP$/, async (ctx) => {
   }
 
   ctx.reply(
-    `Tässä linkki tiedostoihisi:\n${`${env.frontendHost}/auth/${user.userId}`}`
+    `Tässä linkki tiedostoihisi:\n${`${env.FRONTEND_BASE_URL}/auth/${user.userId}`}`
   );
 });
 

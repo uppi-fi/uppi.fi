@@ -1,10 +1,11 @@
-import { appConfig } from '@shared/config';
 import { FileT } from '@shared/schema';
 import cx from 'classnames';
 import { useState } from 'react';
 import { useDebounce } from 'react-use';
 import { useApiService } from '../../services/useApiService';
 import styles from './FileNameInput.module.scss';
+
+const TYPING_UPDATE_DEBOUNCE_MS = 250;
 
 type UpdateFileParams = Pick<FileT, 'id'> &
   Partial<Pick<FileT, 'customName' | 'filename' | 'viewCount'>>;
@@ -26,7 +27,7 @@ function FileNameInput({ file, className }: FileNameInputProps) {
         id: file.id,
         customName: value,
       }),
-    appConfig.typingUpdateDebounceMs,
+    TYPING_UPDATE_DEBOUNCE_MS,
     [value]
   );
 
