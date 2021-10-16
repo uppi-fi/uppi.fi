@@ -1,7 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import { useState } from 'react';
 import { ResponseStatus } from '../types';
-import { getServerUrl } from '../utils/url';
 
 export interface ApiResponse<T> {
   status: ResponseStatus;
@@ -22,7 +21,7 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
     config?: AxiosRequestConfig
   ) => {
     setError(false);
-    const url = getServerUrl(path);
+    const url = '/api/' + path;
 
     try {
       const res =

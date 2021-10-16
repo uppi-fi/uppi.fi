@@ -1,4 +1,4 @@
-import { appConfig } from '@shared/config';
+import { env } from '@shared/config';
 import { isVideoFile } from '@shared/mimetype';
 import { FileT } from '@shared/schema';
 import { Application } from 'express';
@@ -25,7 +25,7 @@ export const uploadRoute = (app: Application) =>
     }
 
     // Insert into database
-    const fileId = nanoid(appConfig.fileIdLength);
+    const fileId = nanoid(env.FILE_ID_LENGTH);
     const fileExtension = path.extname(req.file.originalname);
     const [row] = await db.any<FileT>(
       `INSERT INTO files (id, user_id, filename, custom_name, mime_type, file_extension, file_size)

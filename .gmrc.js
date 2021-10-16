@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 /*
  * Graphile Migrate configuration.
  *
@@ -15,7 +17,9 @@ module.exports = {
    *
    * RECOMMENDATION: use `DATABASE_URL` envvar instead.
    */
-  connectionString: process.env.DATABASE_URL,
+  connectionString:
+    process.env.DATABASE_URL ??
+    'postgres://postgres:postgres@localhost:5433/laturi',
 
   /*
    * shadowConnectionString: like connectionString, but this is used for the
@@ -23,7 +27,9 @@ module.exports = {
    *
    * RECOMMENDATION: use `SHADOW_DATABASE_URL` envvar instead.
    */
-  shadowConnectionString: process.env.SHADOW_DATABASE_URL,
+  shadowConnectionString:
+    process.env.SHADOW_DATABASE_URL ??
+    'postgres://postgres:postgres@localhost:5433/laturi_shadow',
 
   /*
    * rootConnectionString: like connectionString, but this is used for

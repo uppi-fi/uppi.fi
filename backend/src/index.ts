@@ -1,7 +1,9 @@
-import { env } from '@shared/env';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import * as cors from 'cors';
 import * as express from 'express';
-import { URL } from 'url';
+import { env } from '@shared/config';
 import { deleteFileRoute } from './routes/deleteFile';
 import { downloadRoute } from './routes/download';
 import { getFileRoute } from './routes/getFile';
@@ -10,8 +12,8 @@ import { getUserRoute } from './routes/getUser';
 import { updateFileRoute } from './routes/updateFile';
 import { uploadRoute } from './routes/upload';
 import { visitRoute } from './routes/visit';
+
 const app = express();
-const PORT = new URL(env.expressHost || '').port;
 
 app.use(express.json());
 app.use(cors());
@@ -26,6 +28,8 @@ visitRoute(app);
 getUserRoute(app);
 updateFileRoute(app);
 
-app.listen(PORT, () => {
-  console.log(`Express server is running at ${env.expressHost}`);
+app.listen(env.BACKEND_PORT, () => {
+  console.log(
+    `Express server is running at http://localhost:${env.BACKEND_PORT}`
+  );
 });

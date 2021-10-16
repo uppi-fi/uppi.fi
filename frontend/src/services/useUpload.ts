@@ -1,4 +1,4 @@
-import { appConfig } from '@shared/config';
+import { env } from '@shared/config';
 import { FileT } from '@shared/schema';
 import { useCallback } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
@@ -20,7 +20,7 @@ export function useUpload() {
       return alert('Et oo kirjautuneena?');
     }
 
-    if (file.size > appConfig.maxFileSize) {
+    if (file.size > env.MAX_FILE_SIZE) {
       return alert('Max koko 10MB');
     }
 

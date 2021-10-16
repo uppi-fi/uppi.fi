@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": ["ESNext"],
-    "allowJs": false,
+    "lib": [
+      "ESNext"
+    ],
+    "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
@@ -12,9 +14,15 @@
     "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
-      "@frontend/*": ["frontend/src/*"],
-      "@backend/*": ["backend/src/*"],
-      "@shared/*": ["shared/*"]
-    }
+      "@frontend/*": [
+        "frontend/src/*"
+      ],
+      "@backend/*": [
+        "backend/src/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ]
+    },
   }
 }
