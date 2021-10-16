@@ -1,4 +1,4 @@
-import { cleanEnv, num, port, str, url } from 'envalid';
+import { cleanEnv, num, port, str } from 'envalid';
 
 export const env = cleanEnv(process.env, {
   TELEGRAM_BOT_TOKEN: str({ desc: 'Your token for Telegram bot' }),
