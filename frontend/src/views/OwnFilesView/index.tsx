@@ -54,7 +54,7 @@ function OwnFiles() {
     <div>
       <div className={styles.main}>
         <h2>
-          Tiedostot
+          Omat tiedostot
           <FileListSorters />
         </h2>
 

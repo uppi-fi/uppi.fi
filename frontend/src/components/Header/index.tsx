@@ -27,7 +27,7 @@ function Header({ pageLoads }: HeaderProps) {
         </Link>
         {currentUser && (
           <Link to="/files" className={styles.smallLink}>
-            Tiedostot
+            Omat tiedostot
           </Link>
         )}
       </Row>
