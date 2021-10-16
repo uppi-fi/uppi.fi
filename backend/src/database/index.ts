@@ -1,5 +1,5 @@
-import { env } from '@shared/config';
 import * as PgPromise from 'pg-promise';
+import { env } from '@shared/config';
 
 function camelizeColumns(data: Record<string, string>[]) {
   const tmp = data[0];

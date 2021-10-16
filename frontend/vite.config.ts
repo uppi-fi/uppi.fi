@@ -13,9 +13,17 @@ export default defineConfig({
       allow: [path.resolve(__dirname, '..')],
     },
     proxy: {
-      '/api': env.BACKEND_URL,
+      '/api': {
+        target: env.BACKEND_URL,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
     },
     port: env.FRONTEND_PORT,
+  },
+  define: {
+    'process.env.MAX_FILE_SIZE': env.MAX_FILE_SIZE,
+    'process.env.FILE_ID_LENGTH': env.FILE_ID_LENGTH,
+    'process.env.TELEGRAM_BOT_TOKEN': '""',
   },
   plugins: [react()],
   resolve: {
@@ -29,8 +37,5 @@ export default defineConfig({
         replacement: __dirname,
       },
     ],
-  },
-  optimizeDeps: {
-    include: ['envalid'],
   },
 });

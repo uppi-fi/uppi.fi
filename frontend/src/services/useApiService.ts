@@ -21,7 +21,7 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
     config?: AxiosRequestConfig
   ) => {
     setError(false);
-    const url = '/api' + path;
+    const url = '/api/' + path;
 
     try {
       const res =

@@ -1,6 +1,9 @@
-import { env } from '@shared/config';
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import * as cors from 'cors';
 import * as express from 'express';
+import { env } from '@shared/config';
 import { deleteFileRoute } from './routes/deleteFile';
 import { downloadRoute } from './routes/download';
 import { getFileRoute } from './routes/getFile';

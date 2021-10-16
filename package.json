@@ -41,7 +41,7 @@
     "classnames": "^2.3.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
-    "envalid": "^7.2.1",
+    "envalid": "6.0.2",
     "express": "^4.17.1",
     "fluent-ffmpeg": "^2.1.2",
     "kanel": "^2.3.2",
