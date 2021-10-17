@@ -1,5 +1,7 @@
 # uppim.me &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Uppim.me is a **fast** and **easy to use** file uploader.
+
 ## Requirements
 
 - Node.js
@@ -36,9 +38,17 @@
    yarn start
    ```
 
-## Environment variables configuration or ports used?
+## Environment variables and configuration
 
-See `shared/env.ts`
+See `shared/env.ts`. You can add the environment variables to `.env` file, where they get loaded to environment variables.
+
+## Ports used
+
+| Port | Service   | Development link      | Development script |
+| ---- | --------- | --------------------- | ------------------ |
+| 3005 | Frontend  | http://localhost:3005 | yarn dev:frontend  |
+| 8000 | Backend   | http://localhost:8000 | yarn dev:backend   |
+| 6006 | Storybook | http://localhost:6006 | yarn storybook     |
 
 ### WSL troubleshooting
 
