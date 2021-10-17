@@ -1,17 +1,17 @@
 import { Icon } from '@iconify/react';
-import FileListSorters from '../../components/FileListSorters';
-import Spinner from '../../components/Spinner';
-import styles from './OwnFiles.module.scss';
-import Modal from '../../components/Modal';
+import times from 'lodash-es/times';
 import { Route, useLocation } from 'wouter';
-import File from '../../components/File';
-import { useFile } from '../../services/useFile';
-import { useFetchFiles } from '../../services/useFetchFiles';
-import Skeleton from '../../components/Skeleton';
-import { times } from 'lodash-es';
-import Result from '../../components/Result';
 import { LinkButton } from '../../components/Button';
+import File from '../../components/File';
 import FileCardGrid from '../../components/FileCardGrid';
+import FileListSorters from '../../components/FileListSorters';
+import Modal from '../../components/Modal';
+import Result from '../../components/Result';
+import Skeleton from '../../components/Skeleton';
+import Spinner from '../../components/Spinner';
+import { useFetchFiles } from '../../services/useFetchFiles';
+import { useFile } from '../../services/useFile';
+import styles from './OwnFiles.module.scss';
 
 function OwnFiles() {
   const { files, error } = useFetchFiles();

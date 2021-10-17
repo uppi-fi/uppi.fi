@@ -1,8 +1,8 @@
-import styles from './FileCard.module.scss';
 import cx from 'classnames';
+import noop from 'lodash-es/noop';
 import { useRef } from 'react';
 import { useClickAway } from 'react-use';
-import { noop } from 'lodash';
+import styles from './FileCard.module.scss';
 
 type FileCardProps = React.HTMLAttributes<HTMLDivElement> & {
   selected?: boolean;

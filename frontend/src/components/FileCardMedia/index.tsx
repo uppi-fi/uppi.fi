@@ -1,5 +1,7 @@
 import { Icon } from '@iconify/react';
 import { FileT } from '@shared/schema';
+import { clickEvent, useDoubleClick } from '@zattoo/use-double-click';
+import noop from 'lodash-es/noop';
 import Tooltip from 'rc-tooltip';
 import { useMemo } from 'react';
 import {
@@ -10,8 +12,6 @@ import {
 import { getFileUrl, getVideoPreviewUrl } from '../../utils/url';
 import Centered from '../Centered';
 import styles from './FileCardMedia.module.scss';
-import { clickEvent, useDoubleClick } from '@zattoo/use-double-click';
-import { noop } from 'lodash-es';
 
 interface FileCardMediaProps {
   file: FileT;

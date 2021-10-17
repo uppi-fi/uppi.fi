@@ -1,4 +1,4 @@
-import { orderBy } from 'lodash-es';
+import orderBy from 'lodash-es/orderBy';
 import { selector } from 'recoil';
 import { fileListSortState } from './fileListSortState';
 import { fileListState } from './fileListState';

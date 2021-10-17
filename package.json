@@ -6,7 +6,7 @@
     "dev:frontend": "vite --config frontend/vite.config.ts --host",
     "dev:backend": "tsnd -r tsconfig-paths/register --quiet --respawn backend/src/index.ts",
     "dev:bot": "tsnd  -r tsconfig-paths/register --quiet --respawn bot/src/index.ts",
-    "build:frontend": "vite build frontend --outDir ../dist/frontend",
+    "build:frontend": "vite build frontend --emptyOutDir --outDir ../dist/frontend",
     "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
     "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
     "start:frontend": "vite preview --config frontend/vite.config.ts --port 3005",
