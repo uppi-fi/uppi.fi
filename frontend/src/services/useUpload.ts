@@ -35,7 +35,7 @@ export function useUpload() {
 
     setUploadProgress(1);
     setUploadedFile(uploadedFile);
-    setLocation(`/${uploadedFile.id}`);
+    setLocation(`/files/${uploadedFile.id}`);
     return uploadedFile;
   }, []);
 

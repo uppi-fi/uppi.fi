@@ -18,7 +18,9 @@ const Routes = () => {
       ) : (
         <>ei pääsyä</>
       )}
-      <Route path="/:fileId">{(params) => <FileView {...params} />}</Route>
+      <Route path="/files/:fileId">
+        {(params) => <FileView {...params} />}
+      </Route>
     </Switch>
   );
 };
