@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      TELEGRAM_BOT_TOKEN: 'test' # TODO: Add a real token here later on?
 
     services:
       # Label used to access the service container
