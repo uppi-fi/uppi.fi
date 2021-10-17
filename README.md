@@ -38,9 +38,17 @@ Uppim.me is a **fast** and **easy to use** file uploader.
    yarn start
    ```
 
-## Environment variables configuration or ports used?
+## Environment variables and configuration
 
-See `shared/env.ts`
+See `shared/env.ts`. You can add the environment variables to `.env` file, where they get loaded to environment variables.
+
+## Ports used
+
+| Port | Service   | Development link      | Development script |
+| ---- | --------- | --------------------- | ------------------ |
+| 3005 | Frontend  | http://localhost:3005 | yarn dev:frontend  |
+| 8000 | Backend   | http://localhost:8000 | yarn dev:backend   |
+| 6006 | Storybook | http://localhost:6006 | yarn storybook     |
 
 ### WSL troubleshooting
 
