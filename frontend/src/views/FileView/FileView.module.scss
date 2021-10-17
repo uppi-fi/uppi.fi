@@ -1,4 +1,8 @@
 .file-view-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
   min-width: 200px;
   width: 900px;
   max-width: 100vw;
