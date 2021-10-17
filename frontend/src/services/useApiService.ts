@@ -32,13 +32,19 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
                 params: data,
                 ...config,
               });
+        const responseOk = res.status === 200;
 
-        if (status === ResponseStatus.Error) {
-          throw new Error();
+        if (responseOk) {
+          setStatus(ResponseStatus.Ok);
+        } else {
+          setStatus(ResponseStatus.Error);
+          console.error({
+            res,
+          });
+          throw new Error(`${method} request failed to url: ${url}`);
         }
 
         setData(res.data);
-        setStatus(status);
         return res.data;
       } catch (err) {
         setError(err);
