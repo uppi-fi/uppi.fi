@@ -23,6 +23,7 @@ export default defineConfig({
   define: {
     'process.env.MAX_FILE_SIZE': env.MAX_FILE_SIZE,
     'process.env.FILE_ID_LENGTH': env.FILE_ID_LENGTH,
+    'process.env.BACKEND_URL': env.BACKEND_URL,
     'process.env.TELEGRAM_BOT_TOKEN': '""',
   },
   plugins: [react()],
