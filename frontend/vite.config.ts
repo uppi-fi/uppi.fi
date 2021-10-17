@@ -14,7 +14,7 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: env.BACKEND_URL,
+        target: `http://localhost:${env.BACKEND_PORT}`,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
     },

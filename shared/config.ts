@@ -2,11 +2,11 @@ import { cleanEnv, num, port, str } from 'envalid';
 
 export const env = cleanEnv(process.env, {
   TELEGRAM_BOT_TOKEN: str({ desc: 'Your token for Telegram bot' }),
-  BACKEND_URL: str({
-    default: 'http://localhost:8000',
-    desc: 'Backend url for proxying frontend requests',
-  }),
   BACKEND_PORT: port({ default: 8000 }),
+  BACKEND_URL: str({
+    default: 'http://localhost:3005/api',
+    desc: 'Backend URL for prefixing backend calls',
+  }),
   FRONTEND_BASE_URL: str({
     default: 'http://localhost:3005',
     desc: 'The url Telegram bot messages prefix links to',
