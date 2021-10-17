@@ -23,24 +23,3 @@
     font-size: 24px;
   }
 }
-
-.right {
-  color: $accent;
-  display: flex;
-  font-size: 12px;
-  font-weight: 600;
-  align-items: center;
-  gap: 24px;
-}
-
-.smallLink {
-  font-size: 12px;
-  margin-top: 5px;
-  padding: 0 20px;
-  color: #818181;
-  transform: scale(1);
-  transition: scale ease 0.2s;
-
-  &:hover {
-  }
-}
