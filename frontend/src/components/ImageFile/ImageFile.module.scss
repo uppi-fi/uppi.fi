@@ -1,5 +1,4 @@
-@import '../../theme.scss';
-
+@use '../../theme.scss' as *;
 .image {
   object-fit: contain;
   width: 100%;

@@ -1,0 +1,15 @@
+@use '../../theme.scss' as *;
+
+.button,
+.button--primary {
+  border: 0;
+  padding: 6px 16px;
+  background: $accent;
+  border: 2px solid $accent;
+  color: #fff;
+}
+.button--secondary {
+  background: #fff;
+  border: 2px solid $accent;
+  color: $icon-color;
+}

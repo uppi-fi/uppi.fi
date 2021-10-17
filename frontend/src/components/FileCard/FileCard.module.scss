@@ -1,7 +1,18 @@
-.root {
+@use '../../theme.scss' as *;
+
+.file-card {
   border: 1px solid rgba(0, 0, 0, 0.06);
   background: white;
   user-select: none;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 6px 0 $accent-transparent;
+  }
+
+  &.file-card--selected {
+    background: $accent-transparent;
+  }
 }
 
 .content {
@@ -10,22 +21,4 @@
   font-weight: bold;
   font-size: 14px;
   height: 100%;
-}
-
-.fileDetails {
-  border-top: 1px solid #dfdfdf;
-  padding: 4px;
-
-  input[type='text'] {
-    width: 100%;
-    padding: 8px;
-    font-weight: bold;
-    font-size: 13px;
-    border: 1px solid transparent;
-    outline: none;
-    &:hover,
-    &:focus {
-      border: 1px solid #dfdfdf;
-    }
-  }
 }

@@ -1,14 +1,7 @@
+import { BackButtonLink } from '../../components/BackButton';
 import { useEffect, useState } from 'react';
 import { Redirect } from 'wouter';
-import {
-  isAudioFile,
-  isImageFile,
-  isVideoFile,
-} from '../../../../shared/mimetype';
-import AudioFile from '../../components/AudioFile';
-import FileFooter from '../../components/FileFooter';
-import ImageFile from '../../components/ImageFile';
-import VideoFile from '../../components/VideoFile';
+import File from '../../components/File';
 import { useFile } from '../../services/useFile';
 import NotFoundView from '../NotFoundView';
 import styles from './FileView.module.scss';
@@ -41,22 +34,10 @@ function FileView({ fileId }: FileViewProps) {
     return null;
   }
 
-  const renderFile = () => {
-    if (isVideoFile(currentFile)) {
-      return <VideoFile file={currentFile} />;
-    }
-    if (isImageFile(currentFile)) {
-      return <ImageFile file={currentFile} />;
-    }
-    if (isAudioFile(currentFile)) {
-      return <AudioFile file={currentFile} />;
-    }
-  };
-
   return (
-    <div className={styles.root}>
-      <div className={styles.file}>{renderFile()}</div>
-      <FileFooter file={currentFile} />
+    <div className={styles['file-view-container']}>
+      <BackButtonLink href="/files">Takaisin omiin tiedostoihin</BackButtonLink>
+      <File file={currentFile} />
     </div>
   );
 }

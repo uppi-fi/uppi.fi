@@ -1,0 +1,12 @@
+@use '../../theme.scss' as *;
+
+.backbutton {
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-grid;
+  gap: 6px;
+  align-items: center;
+  grid-template-columns: min-content auto;
+  color: $accent;
+  padding: 12px 0;
+}

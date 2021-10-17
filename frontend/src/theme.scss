@@ -1,8 +1,11 @@
+@use 'sass:color';
+
 $button-hover-color: #f3f3f3;
 $border-color: #dfdfdf;
 $border-light-color: #ebebeb;
 $icon-color: #5c5c5c;
 $accent: #2a9d8f;
+$accent-transparent: color.adjust(#00ffd5, $alpha: -0.9);
 
 $small: 400px;
 $medium: 600px;

@@ -1,0 +1,53 @@
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skeleton {
+  overflow: hidden;
+  position: relative;
+  width: fit-content;
+  cursor: wait;
+  background: rgb(238, 238, 238);
+  height: 1rem;
+  animation: fade 1500ms forwards;
+
+  &--dark {
+    background: rgb(223, 223, 223);
+  }
+
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+
+    /* Wave */
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.5),
+      transparent
+    );
+    animation: wave 1.5s linear 0.5s infinite;
+  }
+}

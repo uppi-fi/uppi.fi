@@ -1,0 +1,22 @@
+@use '../../theme.scss' as *;
+
+.result {
+  svg {
+    color: $accent;
+    font-size: 32px;
+  }
+}
+
+.title {
+  font-size: 22px;
+  padding: 6px;
+  font-weight: bold;
+}
+
+.subtitle {
+  padding: 6px;
+}
+
+.extra {
+  margin-top: 6px;
+}

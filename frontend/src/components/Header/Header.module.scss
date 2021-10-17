@@ -1,4 +1,4 @@
-@import '../../theme.scss';
+@use '../../theme.scss' as *;
 
 $shake-distance: 2.5px;
 
@@ -74,6 +74,5 @@ $shake-distance: 2.5px;
   transition: scale ease 0.2s;
 
   &:hover {
-    transform: scale(1.1);
   }
 }
