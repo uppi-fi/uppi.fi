@@ -21,6 +21,7 @@ export default defineConfig({
     port: env.FRONTEND_PORT,
   },
   define: {
+    'process.env': {},
     'process.env.MAX_FILE_SIZE': env.MAX_FILE_SIZE,
     'process.env.FILE_ID_LENGTH': env.FILE_ID_LENGTH,
     'process.env.BACKEND_URL': env.BACKEND_URL,
