@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { ResponseStatus } from '../types';
 
 export interface ApiResponse<T> {
@@ -13,43 +13,58 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
 ) {
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
-  const [error, setError] = useState<boolean>(false);
+  const [error, setError] = useState<any>();
 
-  const request = async (
-    method: 'GET' | 'POST',
-    data?: TDataOrParams,
-    config?: AxiosRequestConfig
-  ) => {
-    setError(false);
-    const url = '/api/' + path;
+  const request = useCallback(
+    async (
+      method: 'GET' | 'POST',
+      data?: TDataOrParams,
+      config?: AxiosRequestConfig
+    ) => {
+      setError(false);
+      const url = '/api/' + path;
 
-    try {
-      const res =
-        method === 'POST'
-          ? await axios.post(url, data, config)
-          : await axios.get(url, {
-              params: data,
-              ...config,
-            });
+      try {
+        const res =
+          method === 'POST'
+            ? await axios.post(url, data, config)
+            : await axios.get(url, {
+                params: data,
+                ...config,
+              });
+        const responseOk = res.status === 200;
 
-      if (status === ResponseStatus.Error) {
-        throw new Error();
+        if (responseOk) {
+          setStatus(ResponseStatus.Ok);
+        } else {
+          setStatus(ResponseStatus.Error);
+          console.error({
+            res,
+          });
+          throw new Error(`${method} request failed to url: ${url}`);
+        }
+
+        setData(res.data);
+        return res.data;
+      } catch (err) {
+        setError(err);
+        console.error({ err, path, method, data, config });
+        throw new Error('API error');
       }
+    },
+    [path, status]
+  );
 
-      setData(res.data);
-      setStatus(status);
-      return res.data;
-    } catch (err) {
-      setError(true);
-      console.error({ err, path, method, data, config });
-      throw new Error('API error');
-    }
-  };
-
-  const get = async (params?: TDataOrParams, config?: AxiosRequestConfig) =>
-    request('GET', params, config);
-  const post = async (data?: TDataOrParams, config?: AxiosRequestConfig) =>
-    request('POST', data, config);
+  const get = useCallback(
+    async (params?: TDataOrParams, config?: AxiosRequestConfig) =>
+      request('GET', params, config),
+    [request]
+  );
+  const post = useCallback(
+    async (data?: TDataOrParams, config?: AxiosRequestConfig) =>
+      request('POST', data, config),
+    [request]
+  );
 
   return {
     get,

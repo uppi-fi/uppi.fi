@@ -4,7 +4,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: #f1f1f1;
+  background: rgba(198, 205, 213, 0.09);
   color: black;
 }
 
@@ -20,6 +20,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  color: #414141;
 }
 * {
   box-sizing: border-box;

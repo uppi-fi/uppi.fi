@@ -1,4 +1,4 @@
-@import '../../theme.scss';
+@use '../../theme.scss' as *;
 
 .main {
   padding-top: 24px;
@@ -8,10 +8,15 @@
   margin: 0 auto;
   word-wrap: break-word;
   word-break: break-all;
-  h2 {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 16px;
+}
+
+.page-header {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+
+  :last-child {
+    margin-left: auto;
   }
 }
 
@@ -24,24 +29,5 @@
   svg {
     color: $accent;
     font-size: 32px;
-  }
-}
-
-
-.grid {
-  
-  display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: min-content;
-
-  @media screen and (min-width: $small) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media screen and (min-width: $medium) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media screen and (min-width: $large) {
-    grid-template-columns: repeat(4, 1fr);
   }
 }

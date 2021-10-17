@@ -1,0 +1,8 @@
+.breadcrumb__item {
+  line-height: 1;
+}
+.breadcrumb__inner {
+}
+.breadcrumb__item:last-child .breadcrumb__separator {
+  display: none;
+}

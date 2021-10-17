@@ -13,12 +13,14 @@ const Routes = () => {
       {currentUser ? (
         <>
           <Route path="/" component={UploadView} />
-          <Route path="/files" component={OwnFiles} />
+          <Route path="/files/:fileId?" component={OwnFiles} />
         </>
       ) : (
         <>ei pääsyä</>
       )}
-      <Route path="/:fileId">{(params) => <FileView {...params} />}</Route>
+      <Route path="/files/:fileId">
+        {(params) => <FileView {...params} />}
+      </Route>
     </Switch>
   );
 };

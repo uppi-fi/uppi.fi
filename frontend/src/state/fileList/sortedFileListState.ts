@@ -9,6 +9,10 @@ export const sortedFileListState = selector({
     const sort = get(fileListSortState);
     const files = get(fileListState);
 
+    if (!files) {
+      return null;
+    }
+
     switch (sort.type) {
       case 'date':
         return orderBy(

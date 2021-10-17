@@ -1,73 +1,90 @@
 import { Icon } from '@iconify/react';
-import { FileT } from '@shared/schema';
-import { useEffect } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import Row from '../../components/atoms/Row';
-import Centered from '../../components/Centered';
-import FileCard from '../../components/FileCard';
 import FileListSorters from '../../components/FileListSorters';
 import Spinner from '../../components/Spinner';
-import { useApiService } from '../../services/useApiService';
-import { currentUserState } from '../../state/currentUserState';
-import { fileListState } from '../../state/fileList/fileListState';
-import { sortedFileListState } from '../../state/fileList/sortedFileListState';
 import styles from './OwnFiles.module.scss';
+import Modal from '../../components/Modal';
+import { Route, useLocation } from 'wouter';
+import File from '../../components/File';
+import { useFile } from '../../services/useFile';
+import { useFetchFiles } from '../../services/useFetchFiles';
+import Skeleton from '../../components/Skeleton';
+import { times } from 'lodash-es';
+import Result from '../../components/Result';
+import { LinkButton } from '../../components/Button';
+import FileCardGrid from '../../components/FileCardGrid';
 
 function OwnFiles() {
-  const currentUser = useRecoilValue(currentUserState);
-  const { data: apiFiles, get: fetch } = useApiService<FileT[]>('get-files');
-  const setFiles = useSetRecoilState(fileListState);
-  const files = useRecoilValue(sortedFileListState);
-
-  useEffect(() => {
-    if (apiFiles) setFiles(apiFiles);
-  }, [apiFiles]);
-
-  useEffect(() => {
-    if (currentUser) {
-      fetch({
-        userId: currentUser.userId,
-      });
-    }
-  }, []);
-
-  if (!files) {
-    return (
-      <Centered>
-        <Spinner />
-      </Centered>
-    );
-  }
-
-  if (!files.length) {
-    return (
-      <Centered className={styles.row}>
-        <Row alignItems="center" gap="8px">
-          <Icon icon="entypo:emoji-sad" fontSize={25} /> Et ole vielä lisännyt
-          tiedostoja
-        </Row>
-      </Centered>
-    );
-  }
+  const { files, error } = useFetchFiles();
 
   return (
     <div>
       <div className={styles.main}>
-        <h2>
-          Omat tiedostot
+        <header className={styles['page-header']}>
+          <Icon
+            icon="bx:bxs-face"
+            color="#545454"
+            style={{
+              height: '40px',
+              width: '40px',
+              paddingRight: '10px',
+            }}
+          />
+          <h2>Omat tiedostot</h2>
           <FileListSorters />
-        </h2>
+        </header>
 
-        <div className={styles.grid}>
-          {files.map((file) => (
-            <FileCard key={file.id} file={file} />
+        {!files &&
+          !error &&
+          times(6, (i) => (
+            <Skeleton key={i} style={{ height: '130px', width: '100%' }} />
           ))}
-        </div>
+        {files && files.length === 0 && (
+          <Result
+            icon={<Icon icon="bx:bx-bulb" />}
+            status="info"
+            title="Ei tiedostoja"
+            subTitle="Lisää ensimmäinen tiedostosi napsauttamalla alta."
+            extra={
+              <LinkButton href="/" kind="primary">
+                Lataa tiedosto
+              </LinkButton>
+            }
+          />
+        )}
+        {files && files.length > 0 && <FileCardGrid files={files} />}
+        {error && (
+          <Result
+            status="500"
+            title="500"
+            subTitle="Pahoittelut, jotain meni pieleen"
+          />
+        )}
       </div>
       {/* Adds some spacing so we can scroll further */}
       <div className={styles.spacer} />
+
+      <Route path="/files/:fileId">
+        {({ fileId }) => <FileModal fileId={fileId} />}
+      </Route>
     </div>
   );
 }
+
+const FileModal: React.FC<{ fileId: string }> = ({ fileId }) => {
+  const [, setLocation] = useLocation();
+  const { currentFile, error } = useFile(fileId);
+
+  return (
+    <Modal onClickOutside={() => setLocation('/files')}>
+      {currentFile && <File file={currentFile} />}
+      {error && (
+        <>
+          <b>Virhe ladattaessa tiedostoa!</b> <p>Yritä uudelleen myöhemmin.</p>
+        </>
+      )}
+      {!error && !currentFile && <Spinner />}
+    </Modal>
+  );
+};
 
 export default OwnFiles;

@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { Redirect } from 'wouter';
-import {
-  isAudioFile,
-  isImageFile,
-  isVideoFile,
-} from '../../../../shared/mimetype';
-import AudioFile from '../../components/AudioFile';
-import FileFooter from '../../components/FileFooter';
-import ImageFile from '../../components/ImageFile';
-import VideoFile from '../../components/VideoFile';
+import { BackButtonLink } from '../../components/BackButton';
+import File from '../../components/File';
 import { useFile } from '../../services/useFile';
+import { currentUserState } from '../../state/currentUserState';
 import NotFoundView from '../NotFoundView';
 import styles from './FileView.module.scss';
 
@@ -18,6 +13,7 @@ interface FileViewProps {
 }
 
 function FileView({ fileId }: FileViewProps) {
+  const currentUser = useRecoilValue(currentUserState);
   const { currentFile, error } = useFile(fileId);
   const [shouldRedirect, setShouldRedirect] = useState<boolean>();
 
@@ -41,22 +37,14 @@ function FileView({ fileId }: FileViewProps) {
     return null;
   }
 
-  const renderFile = () => {
-    if (isVideoFile(currentFile)) {
-      return <VideoFile file={currentFile} />;
-    }
-    if (isImageFile(currentFile)) {
-      return <ImageFile file={currentFile} />;
-    }
-    if (isAudioFile(currentFile)) {
-      return <AudioFile file={currentFile} />;
-    }
-  };
-
   return (
-    <div className={styles.root}>
-      <div className={styles.file}>{renderFile()}</div>
-      <FileFooter file={currentFile} />
+    <div className={styles['file-view-container']}>
+      {currentUser && (
+        <BackButtonLink href="/files">
+          Takaisin omiin tiedostoihin
+        </BackButtonLink>
+      )}
+      <File file={currentFile} />
     </div>
   );
 }

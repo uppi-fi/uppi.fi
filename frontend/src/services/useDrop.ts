@@ -95,7 +95,6 @@ const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
     const onDragOver = (event: DragEvent) => {
       event.preventDefault();
       if (containsFiles(event)) {
-        console.log('TRUE 1', event.dataTransfer);
         setOver(true);
       }
     };
@@ -103,24 +102,20 @@ const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
     const onDragEnter = (event: DragEvent) => {
       event.preventDefault();
       if (containsFiles(event)) {
-        console.log('TRUE 2', event.dataTransfer);
         setOver(true);
       }
     };
 
     const onDragLeave = (evt: DragEvent) => {
-      console.log('FALSE 1', evt);
       setOver(false);
     };
 
     const onDragExit = (evt: DragEvent) => {
-      console.log('FALSE 2', evt);
       setOver(false);
     };
 
     const onDrop = (event: DragEvent) => {
       event.preventDefault();
-      console.log('FALSE 3');
       setOver(false);
       if (event.dataTransfer) {
         process(event.dataTransfer, event);
@@ -141,7 +136,6 @@ const useDrop = (options: DropAreaOptions = {}, args = []): DropAreaState => {
     }
 
     return () => {
-      console.log('OFF');
       off(document, 'dragover', onDragOver);
       off(document, 'dragenter', onDragEnter);
       off(document, 'dragleave', onDragLeave);

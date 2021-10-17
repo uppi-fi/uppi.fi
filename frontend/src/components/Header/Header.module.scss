@@ -1,30 +1,5 @@
-@import '../../theme.scss';
+@use '../../theme.scss' as *;
 
-$shake-distance: 2.5px;
-
-@keyframes shake {
-  10%,
-  90% {
-    -webkit-transform: translate3d(-1px, 0, 0);
-    transform: translate3d(-1px, 0, 0);
-  }
-  20%,
-  80% {
-    -webkit-transform: translate3d(2px, 0, 0);
-    transform: translate3d(2px, 0, 0);
-  }
-  30%,
-  50%,
-  70% {
-    -webkit-transform: translate3d(-4px, 0, 0);
-    transform: translate3d(-4px, 0, 0);
-  }
-  40%,
-  60% {
-    -webkit-transform: translate3d(4px, 0, 0);
-    transform: translate3d(4px, 0, 0);
-  }
-}
 .header {
   background: white;
   border-bottom: 1px solid #dfdfdf;
@@ -40,40 +15,11 @@ $shake-distance: 2.5px;
     display: flex;
     align-items: center;
   }
-
-  img {
-    margin-right: -10px;
-    &:hover {
-      animation: shake 2s ease normal;
-    }
-  }
-
+  
   h1 {
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
     padding: 8px;
     font-size: 24px;
-  }
-}
-
-.right {
-  color: $accent;
-  display: flex;
-  font-size: 12px;
-  font-weight: 600;
-  align-items: center;
-  gap: 24px;
-}
-
-.smallLink {
-  font-size: 12px;
-  margin-top: 5px;
-  padding: 0 20px;
-  color: #818181;
-  transform: scale(1);
-  transition: scale ease 0.2s;
-
-  &:hover {
-    transform: scale(1.1);
   }
 }

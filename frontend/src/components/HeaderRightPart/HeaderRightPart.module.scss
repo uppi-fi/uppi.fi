@@ -1,0 +1,10 @@
+@use '../../theme.scss' as *;
+
+.root {
+  color: $accent;
+  display: flex;
+  font-size: 12px;
+  font-weight: 600;
+  align-items: center;
+  gap: 24px;
+}

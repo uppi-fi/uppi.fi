@@ -1,0 +1,17 @@
+.file-details {
+  border-top: 1px solid #dfdfdf;
+  padding: 4px;
+
+  input[type='text'] {
+    width: 100%;
+    padding: 8px;
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid transparent;
+    outline: none;
+    &:hover,
+    &:focus {
+      border: 1px solid #dfdfdf;
+    }
+  }
+}
