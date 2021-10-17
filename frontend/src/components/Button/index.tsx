@@ -16,7 +16,14 @@ const Button: React.FC<ButtonProps> = ({
 }) => (
   <button
     {...rest}
-    className={cx(styles['button'], styles['button--' + kind], className)}
+    className={cx(
+      styles['button'],
+      {
+        [styles['button--primary']]: kind === 'primary',
+        [styles['button--secondary']]: kind === 'secondary',
+      },
+      className
+    )}
   >
     {children}
   </button>
