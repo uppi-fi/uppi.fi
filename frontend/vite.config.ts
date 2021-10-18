@@ -41,7 +41,7 @@ export default defineConfig({
       },
       {
         find: '@frontend',
-        replacement: __dirname,
+        replacement: path.resolve(__dirname, 'src'),
       },
     ],
   },
