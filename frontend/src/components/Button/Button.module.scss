@@ -2,14 +2,23 @@
 
 .button,
 .button--primary {
+  font-size: 13px;
   border: 0;
-  padding: 6px 16px;
+  padding: 10px 16px;
   background: $accent;
-  border: 2px solid $accent;
   color: #fff;
+  cursor: pointer;
+
+  &:hover {
+    background: $accent-darken;
+  }
 }
 .button--secondary {
   background: #fff;
-  border: 2px solid $accent;
-  color: $icon-color;
+  box-shadow: inset 0 0 0 2px $accent;
+  color: $accent;
+
+  &:hover {
+    background: $accent-transparent;
+  }
 }

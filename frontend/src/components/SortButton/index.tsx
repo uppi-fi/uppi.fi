@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import cx from 'classnames';
 import Tooltip from 'rc-tooltip';
+import { CSSProperties } from 'react';
 import { useRecoilState } from 'recoil';
 import {
   FileListSortState,
@@ -15,6 +16,7 @@ interface SortButtonProps {
   ascTooltip: string;
   descTooltip: string;
   flipIcon?: boolean;
+  style?: CSSProperties;
 }
 
 function SortButton({
@@ -57,6 +59,7 @@ function SortButton({
             };
           })
         }
+        style={{ height: '28px', width: '28px' }}
       />
     </Tooltip>
   );

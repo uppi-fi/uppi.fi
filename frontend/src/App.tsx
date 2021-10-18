@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     updateVisits().then(setPageLoads);
-  }, []);
+  }, [updateVisits]);
 
   if (!userVerified) return null;
 

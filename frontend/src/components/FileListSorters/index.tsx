@@ -14,8 +14,8 @@ function FileListSorters() {
         type="date"
       />
       <SortButton
-        ascIcon="cil:sort-numeric-down"
-        descIcon="cil:sort-numeric-up"
+        ascIcon="mdi:sort-numeric-ascending"
+        descIcon="mdi:sort-numeric-descending"
         ascTooltip="Katsomiskerrat: Vähiten ensin"
         descTooltip="Katsomiskerrat: Eniten ensin"
         type="viewCount"

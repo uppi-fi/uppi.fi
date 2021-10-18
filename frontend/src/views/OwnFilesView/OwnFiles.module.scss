@@ -3,7 +3,7 @@
 .main {
   padding-top: 24px;
   min-width: 200px;
-  width: 900px;
+  width: 1280px;
   max-width: 100vw;
   margin: 0 auto;
   word-wrap: break-word;
@@ -14,10 +14,18 @@
   display: flex;
   margin-bottom: 16px;
   align-items: center;
+  background: #fff;
+  padding: 8px;
+  border: 1px solid $border-light-color;
 
   :last-child {
     margin-left: auto;
   }
+}
+
+.page-header--details {
+  padding-left: 8px;
+  font-size: 13px;
 }
 
 .spacer {

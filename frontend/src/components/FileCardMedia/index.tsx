@@ -1,9 +1,8 @@
 import { Icon } from '@iconify/react';
 import { FileT } from '@shared/schema';
 import { clickEvent, useDoubleClick } from '@zattoo/use-double-click';
-import noop from 'lodash-es/noop';
 import Tooltip from 'rc-tooltip';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
   isAudioFile,
   isImageFile,
@@ -15,15 +14,11 @@ import styles from './FileCardMedia.module.scss';
 
 interface FileCardMediaProps {
   file: FileT;
-  onClick?: clickEvent;
+  onClick?: (e: React.MouseEvent) => void;
   onDoubleClick: clickEvent;
 }
 
-function FileCardMedia({
-  file,
-  onClick = noop,
-  onDoubleClick,
-}: FileCardMediaProps) {
+function FileCardMedia({ file, onClick, onDoubleClick }: FileCardMediaProps) {
   /** TODO: Maybe separate component from this? */
   const rendered = useMemo(() => {
     const fileUrl = getFileUrl(file);
@@ -52,7 +47,7 @@ function FileCardMedia({
       className={styles.media}
       onClick={(e) => {
         doubleClickHandler(e);
-        onClick(e);
+        onClick?.(e);
       }}
     >
       <div className={styles.fileType}>
