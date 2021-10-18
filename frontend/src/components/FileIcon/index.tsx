@@ -13,8 +13,6 @@ interface FileIconProps {
   file: FileT;
 }
 
-const FallBack = () => <Icon icon="ant-design:file-unknown-twotone" />;
-
 /**
  * Renders icon for file. Can be image/video thumbnail.
  */
@@ -24,7 +22,7 @@ function FileIcon({ file }: FileIconProps) {
   if (isImageFile(file)) {
     return (
       <ImageWithFallback
-        fallback={FallBack}
+        fallback={() => <Icon icon="ant-design:file-image-twotone" />}
         src={fileUrl}
         alt={file.filename}
         draggable="false"
@@ -35,7 +33,7 @@ function FileIcon({ file }: FileIconProps) {
   if (isVideoFile(file)) {
     return (
       <ImageWithFallback
-        fallback={FallBack}
+        fallback={() => <Icon icon="ant-design:play-circle-twotone" />}
         src={getVideoPreviewUrl(file)}
         alt={file.filename}
         draggable="false"
