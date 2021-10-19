@@ -60,13 +60,13 @@ Port-forwarding does not seem to always work with WSL, there are two scripts in 
 ## Migrations
 
 - `yarn migrate`
-  - Runs any un-executed committed migrations.
+  Runs any un-executed committed migrations.
 - `yarn migrate:watch`
-  - Runs any un-executed committed migrations and then runs and watches the current migration, re-running it on any change. For development.
+  Runs any un-executed committed migrations and then runs and watches the current migration, re-running it on any change. For development.
 - `yarn migrate:commit`
-  - Commits the current migration into the `committed/` folder, resetting the current migration.
+  Commits the current migration into the `committed/` folder, resetting the current migration.
 - `yarn migrate:uncommit`
-  - Moves the latest commit out of the committed migrations folder and back to the current migration (assuming the current migration is empty-ish).
+  Moves the latest commit out of the committed migrations folder and back to the current migration (assuming the current migration is empty-ish).
 
 ## License
 
