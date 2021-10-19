@@ -6,7 +6,7 @@ import styles from './FileCard.module.scss';
 
 type FileCardProps = React.HTMLAttributes<HTMLDivElement> & {
   selected?: boolean;
-  onClickAway?: (e: MouseEvent) => void;
+  onClickAway?: (e: React.MouseEvent) => void;
 };
 
 const FileCard: React.FC<FileCardProps> = ({

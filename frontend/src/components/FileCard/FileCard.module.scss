@@ -5,11 +5,6 @@
   background: white;
   user-select: none;
 
-  &:hover,
-  &:focus {
-    box-shadow: 0 0 6px 0 $accent-transparent;
-  }
-
   &.file-card--selected {
     background: $accent-transparent;
   }

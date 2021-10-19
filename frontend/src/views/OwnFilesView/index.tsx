@@ -20,16 +20,12 @@ function OwnFiles() {
     <div>
       <div className={styles.main}>
         <header className={styles['page-header']}>
-          <Icon
-            icon="bx:bxs-face"
-            color="#545454"
-            style={{
-              height: '40px',
-              width: '40px',
-              paddingRight: '10px',
-            }}
-          />
-          <h2>Omat tiedostot</h2>
+          <LinkButton to="/" kind="primary">
+            Lisää tiedosto
+          </LinkButton>
+          <span className={styles['page-header--details']}>
+            ...tai raahaa ja pudota
+          </span>
           <FileListSorters />
         </header>
 

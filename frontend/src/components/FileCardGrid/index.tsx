@@ -24,7 +24,7 @@ const FileCardGrid: React.FC<FileCardGridProps> = ({ files }) => {
         >
           <FileCardMedia
             file={file}
-            onClick={() => onClickFile(file)}
+            onClick={(event) => onClickFile(event, file)}
             onDoubleClick={() => onDoubleClickFile(file)}
           />
           <FileCardDetails>
