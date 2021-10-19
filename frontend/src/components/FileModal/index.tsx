@@ -3,13 +3,17 @@ import { useLocation } from 'wouter';
 import Modal from '../Modal';
 import Spinner from '../Spinner';
 import File from '../File';
+import { useKeyPressEvent } from 'react-use';
 
 const FileModal: React.FC<{ fileId: string }> = ({ fileId }) => {
   const [, setLocation] = useLocation();
   const { currentFile, error } = useFile(fileId);
 
+  const closeModal = () => setLocation('/files');
+  useKeyPressEvent('Escape', closeModal);
+
   return (
-    <Modal onClickOutside={() => setLocation('/files')}>
+    <Modal onClickOutside={closeModal}>
       {currentFile && <File file={currentFile} />}
       {error && (
         <>
