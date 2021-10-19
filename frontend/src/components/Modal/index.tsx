@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './Modal.module.scss';
 
@@ -6,6 +7,11 @@ type ModalProps = {
 };
 
 const Modal: React.FC<ModalProps> = ({ onClickOutside, children }) => {
+  useEffect(() => {
+    document.body.classList.add('modal-open');
+    return () => document.body.classList.remove('modal-open');
+  });
+
   return ReactDOM.createPortal(
     <div className={styles['modal-background']} onClick={onClickOutside}>
       <div
