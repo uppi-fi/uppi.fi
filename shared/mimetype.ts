@@ -14,3 +14,7 @@ export function isImageFile(file: FileT) {
 export function isAudioFile(file: FileT) {
   return file.mimeType.startsWith('audio');
 }
+
+export function isTextFile(file: FileT) {
+  return file.mimeType.startsWith('text');
+}

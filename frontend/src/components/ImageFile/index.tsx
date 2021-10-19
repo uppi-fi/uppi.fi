@@ -1,5 +1,6 @@
 import { FileT } from '@shared/schema';
 import { getFileUrl } from '../../utils/url';
+import ImageWithFallback from '../ImageWithFallback';
 import styles from './ImageFile.module.scss';
 
 interface ImageFileProps {
@@ -11,7 +12,12 @@ function ImageFile({ file }: ImageFileProps) {
 
   return (
     <a href={imageUrl}>
-      <img className={styles.image} src={imageUrl} alt={file.filename} />
+      <ImageWithFallback
+        fallback={() => null}
+        className={styles.image}
+        src={imageUrl}
+        alt={file.filename}
+      />
     </a>
   );
 }
