@@ -7,19 +7,22 @@ export function useFileSelection() {
     ,
     {
       has: hasSelectedFileId,
-      add: toggleSelectedFileId,
+      toggle: toggleSelectedFileId,
       reset: clearSelectedFileIds,
     },
   ] = useSet(new Set<FileTId>([]));
   const [, setLocation] = useLocation();
 
-  const onClickFile = (file: FileT) => {
-    toggleSelectedFileId(file.id);
+  const onClickFile = (event: React.MouseEvent, file: FileT) => {
+    if (event.ctrlKey) {
+      toggleSelectedFileId(file.id);
+    } else {
+      setLocation('/files/' + file.id);
+    }
   };
 
-  const onClickAway = (event: MouseEvent) => {
+  const onClickAway = (event: React.MouseEvent) => {
     if (!event.ctrlKey) {
-      console.log('onClickAway');
       clearSelectedFileIds();
     }
   };
