@@ -20,7 +20,7 @@ export const uploadRoute = (app: Application) =>
       userId: string;
     }
   >('/upload', upload.single('file'), async (req, res) => {
-    if (!req.file) {
+    if (!req.file || env.DISABLED_MIME_TYPES.includes(req.file.mimetype)) {
       return res.sendStatus(400);
     }
 

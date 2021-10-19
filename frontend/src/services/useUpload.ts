@@ -24,6 +24,10 @@ export function useUpload() {
       return alert('Max koko 10MB');
     }
 
+    if (env.DISABLED_MIME_TYPES.split(',').includes(file.type)) {
+      return alert('Tiedostotyyppi ei sallittu');
+    }
+
     const formData = new FormData();
     formData.append('file', file);
     formData.append('userId', currentUser?.userId);
