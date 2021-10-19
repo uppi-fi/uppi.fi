@@ -1,16 +1,13 @@
 import { Icon } from '@iconify/react';
 import times from 'lodash-es/times';
-import { Route, useLocation } from 'wouter';
+import { Route } from 'wouter';
 import { LinkButton } from '../../components/Button';
-import File from '../../components/File';
 import FileCardGrid from '../../components/FileCardGrid';
 import FileListSorters from '../../components/FileListSorters';
-import Modal from '../../components/Modal';
 import Result from '../../components/Result';
 import Skeleton from '../../components/Skeleton';
-import Spinner from '../../components/Spinner';
+import FileModal from '../../components/FileModal';
 import { useFetchFiles } from '../../services/useFetchFiles';
-import { useFile } from '../../services/useFile';
 import styles from './OwnFiles.module.scss';
 
 function OwnFiles() {
@@ -65,22 +62,5 @@ function OwnFiles() {
     </div>
   );
 }
-
-const FileModal: React.FC<{ fileId: string }> = ({ fileId }) => {
-  const [, setLocation] = useLocation();
-  const { currentFile, error } = useFile(fileId);
-
-  return (
-    <Modal onClickOutside={() => setLocation('/files')}>
-      {currentFile && <File file={currentFile} />}
-      {error && (
-        <>
-          <b>Virhe ladattaessa tiedostoa!</b> <p>Yritä uudelleen myöhemmin.</p>
-        </>
-      )}
-      {!error && !currentFile && <Spinner />}
-    </Modal>
-  );
-};
 
 export default OwnFiles;
