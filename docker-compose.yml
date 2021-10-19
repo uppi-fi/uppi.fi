@@ -16,3 +16,14 @@ services:
     volumes:
       - ./scripts/create-databases.sh:/docker-entrypoint-initdb.d/create-databases.sh
     command: -p 5433
+  nginx:
+    image: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - '/home/kalle/projects/uppim.me/dist/frontend:/usr/share/nginx/frontend'
+      - '/home/kalle/projects/uppim.me/uploads:/usr/share/nginx/uploads'
+    container_name: nginx
+    extra_hosts:
+        - 'host.docker.internal:172.17.0.1'
+    ports:
+      - "80:80"
