@@ -1,10 +1,9 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
-
 import react from '@vitejs/plugin-react';
+import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { defineConfig } from 'vite';
 import { env } from '../shared/config';
+dotenv.config();
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,6 +27,7 @@ export default defineConfig({
     'process.env': {
       MAX_FILE_SIZE: env.MAX_FILE_SIZE,
       FILE_ID_LENGTH: env.FILE_ID_LENGTH,
+      DISABLED_MIME_TYPES: env.DISABLED_MIME_TYPES,
       BACKEND_URL: env.BACKEND_URL,
       TELEGRAM_BOT_TOKEN: '""',
     },

@@ -22,5 +22,9 @@ export const env = cleanEnv(process.env, {
     default: 'postgres://postgres:postgres@localhost:5433/laturi_shadow',
   }),
   MAX_FILE_SIZE: num({ default: 250_000_000 }),
+  DISABLED_MIME_TYPES: str({
+    desc: 'Disabled file-types splitted by comma (,)',
+    default: 'text/html,image/svg+xml',
+  }),
   FILE_ID_LENGTH: num({ default: 10, desc: 'File ID length in URLs' }),
 });
