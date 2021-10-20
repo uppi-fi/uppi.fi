@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const path = require('path');
 const pluralize = require('pluralize');
-const fs = require('fs');
 const { processDatabase } = require('kanel');
 
 const capitalizeFirstLetter = (s) => {
