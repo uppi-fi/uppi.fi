@@ -4,3 +4,4 @@ uploads
 -error.log
 dist
 storybook-static
+migrations/current.sql

@@ -1,11 +1,10 @@
-import * as dotenv from 'dotenv';
-dotenv.config();
-
+import { env } from '@shared/config';
 import { UserT } from '@shared/schema';
+import * as dotenv from 'dotenv';
 import { Telegraf } from 'telegraf';
 import { v4 as uuid } from 'uuid';
 import { db } from '../../backend/src/database';
-import { env } from '@shared/config';
+dotenv.config();
 
 const bot = new Telegraf(env.TELEGRAM_BOT_TOKEN || '');
 bot.launch();

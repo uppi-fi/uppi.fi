@@ -112,7 +112,8 @@ module.exports = {
   afterCurrent: [
     {
       _: 'command',
-      command: 'yarn generate-types',
+      // NOTE: If Windows users want to use this please use cross-env here
+      command: `DATABASE_URL=${process.env.DATABASE_URL} yarn generate-types`,
     },
     {
       _: 'command',
