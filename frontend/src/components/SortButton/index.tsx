@@ -38,12 +38,8 @@ function SortButton({
       mouseLeaveDelay={0}
       arrowContent={<div className="rc-tooltip-arrow-inner"></div>}
     >
-      <Icon
-        className={cx(styles.icon, {
-          [styles.active]: isCurrentSorter,
-        })}
-        hFlip={flipIcon}
-        icon={currentSorter.order === 'asc' ? ascIcon : descIcon}
+      <button
+        className={cx(styles['clear-button'], styles['sort-padding'])}
         onClick={() =>
           setCurrentSorter((old) => {
             if (old.type !== type) {
@@ -59,8 +55,16 @@ function SortButton({
             };
           })
         }
-        style={{ height: '28px', width: '28px' }}
-      />
+      >
+        <Icon
+          className={cx(styles.icon, {
+            [styles.active]: isCurrentSorter,
+          })}
+          hFlip={flipIcon}
+          icon={currentSorter.order === 'asc' ? ascIcon : descIcon}
+          style={{ height: '28px', width: '28px' }}
+        />
+      </button>
     </Tooltip>
   );
 }

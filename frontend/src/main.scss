@@ -6,6 +6,10 @@ body {
   padding: 0;
   background: rgba(198, 205, 213, 0.09);
   color: black;
+
+  &.modal-open {
+    overflow: hidden;
+  }
 }
 
 a {
