@@ -1,6 +1,6 @@
-# uppim.me &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# uppi.fi &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Uppim.me is a **fast** and **easy to use** file uploader.
+Uppi.fi is a **fast** and **easy to use** file uploader.
 
 ## Requirements
 

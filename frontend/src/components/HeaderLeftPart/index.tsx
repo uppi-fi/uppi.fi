@@ -11,7 +11,7 @@ function HeaderLeftPart() {
   if (!currentUser) {
     return (
       <Row alignItems="center">
-        <img className={styles.logo} src={logo} alt="uppim.me" />
+        <img className={styles.logo} src={logo} alt="uppi.fi" />
         <h1>uppim.me</h1>
       </Row>
     );
@@ -20,8 +20,8 @@ function HeaderLeftPart() {
   return (
     <Row alignItems="center">
       <Link to="/">
-        <img className={styles.logo} src={logo} alt="uppim.me" />
-        <h1>uppim.me</h1>
+        <img className={styles.logo} src={logo} alt="uppi.fi" />
+        <h1>uppi.fi</h1>
       </Link>
       <Link to="/files" className={styles.smallLink}>
         Omat tiedostot
