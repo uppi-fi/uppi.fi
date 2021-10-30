@@ -1,8 +1,8 @@
-import { Application } from 'express';
+import { getRoute } from '.';
 import { db } from '../database';
 
-export const visitRoute = (app: Application) =>
-  app.get('/visit', async (req, res) => {
+export const visitRoute = () =>
+  getRoute('/visit', async (req, res) => {
     const row = await db.one<{
       pageLoads: number;
     }>(

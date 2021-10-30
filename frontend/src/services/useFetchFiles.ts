@@ -1,9 +1,9 @@
+import { FileT } from '@shared/schema';
+import { useEffect } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { currentUserState } from '../state/currentUserState';
 import { fileListState } from '../state/fileList/fileListState';
 import { sortedFileListState } from '../state/fileList/sortedFileListState';
-import { FileT } from '@shared/schema';
-import { useEffect } from 'react';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useApiService } from './useApiService';
 
 export function useFetchFiles() {

@@ -1,12 +1,10 @@
 import { UserT } from '@shared/schema';
-import { Application } from 'express';
+import { getRoute } from '.';
 import { db } from '../database';
 
-export const getUserRoute = (app: Application) =>
-  app.get<
-    unknown,
+export const getUserRoute = () =>
+  getRoute<
     UserT | null,
-    unknown,
     {
       userId: string;
     }

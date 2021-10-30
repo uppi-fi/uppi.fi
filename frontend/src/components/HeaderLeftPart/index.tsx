@@ -12,7 +12,7 @@ function HeaderLeftPart() {
     return (
       <Row alignItems="center">
         <img className={styles.logo} src={logo} alt="uppi.fi" />
-        <h1>uppim.me</h1>
+        <h1>uppi.fi</h1>
       </Row>
     );
   }

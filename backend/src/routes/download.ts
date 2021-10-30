@@ -1,11 +1,14 @@
-import { Application } from 'express';
 import * as path from 'path';
+import { getRoute } from '.';
 import { db } from '../database';
 
-export const downloadRoute = (app: Application) =>
-  app.get<{
-    fileId: string;
-  }>('/dl', async (req, res) => {
+export const downloadRoute = () =>
+  getRoute<
+    {},
+    {
+      fileId: string;
+    }
+  >('/dl', async (req, res) => {
     const { fileId } = req.query;
     if (typeof fileId !== 'string') return;
     const [row] = await db.any('SELECT filename FROM files WHERE id=$1', [

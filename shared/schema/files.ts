@@ -1,6 +1,8 @@
 // @generated
 // Automatically generated. Don't change this file manually.
 
+import { UserTId } from './users';
+
 export type FileTId = string & { " __flavor"?: 'files' };
 
 export default interface FileT {
@@ -21,7 +23,7 @@ export default interface FileT {
 
   createdAt: Date;
 
-  userId: string;
+  userId: UserTId;
 }
 
 export interface FileTInitializer {
@@ -44,5 +46,5 @@ export interface FileTInitializer {
   /** Default value: now() */
   createdAt?: Date;
 
-  userId: string;
+  userId: UserTId;
 }

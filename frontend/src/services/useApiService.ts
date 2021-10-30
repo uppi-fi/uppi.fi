@@ -1,5 +1,7 @@
+import { jwtTokenState } from '@frontend/state/jwtTokenState';
 import axios, { AxiosRequestConfig } from 'axios';
 import { useCallback, useState } from 'react';
+import { useRecoilValue } from 'recoil';
 import { ResponseStatus } from '../types';
 
 export interface ApiResponse<T> {
@@ -11,6 +13,7 @@ export interface ApiResponse<T> {
 export function useApiService<TResponse, TDataOrParams = unknown>(
   path: string
 ) {
+  const jwtToken = useRecoilValue(jwtTokenState);
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
   const [error, setError] = useState<any>();
@@ -20,17 +23,25 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
       method: 'GET' | 'POST',
       data?: TDataOrParams,
       config?: AxiosRequestConfig
-    ) => {
+    ): Promise<TResponse> => {
       setError(false);
       const url = '/api/' + path;
 
       try {
+        const configWithAuth: AxiosRequestConfig = {
+          ...config,
+          headers: {
+            ...config?.headers,
+            ...(jwtToken ? { Authorization: jwtToken } : {}),
+          },
+        };
+
         const res =
           method === 'POST'
-            ? await axios.post(url, data, config)
+            ? await axios.post(url, data, configWithAuth)
             : await axios.get(url, {
                 params: data,
-                ...config,
+                ...configWithAuth,
               });
         const responseOk = res.status === 200;
 

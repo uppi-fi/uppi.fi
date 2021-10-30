@@ -1,19 +1,19 @@
 import { FileT } from '@shared/schema';
-import { Application } from 'express';
 import * as fs from 'fs';
 import * as path from 'path';
 import pgPromise from 'pg-promise';
+import { postRoute } from '.';
+import { authorization } from '..';
 import { db } from '../database';
 import { ResponseStatus } from '../types';
 
-export const deleteFileRoute = (app: Application) =>
-  app.post<
-    unknown,
-    unknown,
+export const deleteFileRoute = () =>
+  postRoute<
+    {},
     {
       fileId: string;
     }
-  >('/delete-file', async (req, res) => {
+  >('/delete-file', authorization, async (req, res) => {
     try {
       // Update DB
       const { id } = await db.one<Pick<FileT, 'id' | 'filename'>>(

@@ -1,25 +1,25 @@
 import { env } from '@shared/config';
 import { isVideoFile } from '@shared/mimetype';
 import { FileT } from '@shared/schema';
-import { Application } from 'express';
 import * as fs from 'fs';
 import * as multer from 'multer';
 import { nanoid } from 'nanoid';
 import * as path from 'path';
+import { postRoute } from '.';
+import { authorization } from '..';
 import { db } from '../database';
 import { getFileLocalPath } from '../utils/file';
 import { generateVideoThumbnail } from '../utils/videoThumbnails';
 
 const upload = multer({ dest: 'uploads/' });
 
-export const uploadRoute = (app: Application) =>
-  app.post<
-    {},
+export const uploadRoute = () =>
+  postRoute<
     FileT,
     {
       userId: string;
     }
-  >('/upload', upload.single('file'), async (req, res) => {
+  >('/upload', authorization, upload.single('file'), async (req, res) => {
     if (!req.file || env.DISABLED_MIME_TYPES.includes(req.file.mimetype)) {
       return res.sendStatus(400);
     }

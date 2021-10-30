@@ -1,12 +1,10 @@
 import { FileT } from '@shared/schema';
-import { Application } from 'express';
+import { getRoute } from '.';
 import { db } from '../database';
 
-export const getFileRoute = (app: Application) =>
-  app.get<
-    unknown,
+export const getFileRoute = () =>
+  getRoute<
     FileT,
-    unknown,
     {
       fileId: string;
     }

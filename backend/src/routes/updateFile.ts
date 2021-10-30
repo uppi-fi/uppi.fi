@@ -1,17 +1,17 @@
 import { FileT } from '@shared/schema';
-import { Application } from 'express';
+import { postRoute } from '.';
+import { authorization } from '..';
 import { db } from '../database';
 
 const camelToSnakeCase = (str: string) =>
   str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
-export const updateFileRoute = (app: Application) =>
-  app.post<
-    unknown,
+export const updateFileRoute = () =>
+  postRoute<
     FileT,
     Pick<FileT, 'id'> &
       Partial<Pick<FileT, 'customName' | 'filename' | 'viewCount'>>
-  >('/update-file', async (req, res) => {
+  >('/update-file', authorization, async (req, res) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id, ...rest } = req.body;
     const entries = Object.entries(rest);

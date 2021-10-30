@@ -5,7 +5,7 @@ import { useLocation } from 'wouter';
 import { currentUserState } from '../state/currentUserState';
 import { useApiService } from './useApiService';
 
-export function useCheckAccess() {
+export function useAuthentication() {
   const [location, setLocation] = useLocation();
   const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
   const [userVerified, setUserVerified] = useState(false);
