@@ -20,7 +20,7 @@
     "generate-types": "kanel",
     "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\" \"npm:dev:bot\" \"npm:migrate:watch\" -c \"green,yellow,red,magenta\" --names \"frontend,backend.,bot.....,migrate.\"",
     "build": "concurrently \"npm:build:frontend\" \"npm:build:backend\" \"npm:build:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\"",
-    "start": "concurrently \"npm:start:backend\" \"npm:start:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\"",
+    "start": "concurrently \"npm:start:backend\" \"npm:start:bot\"  -c \"green,yellow,red\" --names \"backend.,bot.....\"",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
