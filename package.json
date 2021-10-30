@@ -9,7 +9,6 @@
     "build:frontend": "vite build frontend --emptyOutDir --outDir ../dist/frontend",
     "build:backend": "tsc -p tsconfig.backend.json && tscpaths -p tsconfig.backend.json -s .",
     "build:bot": "tsc -p tsconfig.bot.json && tscpaths -p tsconfig.bot.json -s .",
-    "start:frontend": "vite preview --config frontend/vite.config.ts --port 3005",
     "start:backend": "node dist/backend/src/index.js",
     "start:bot": "node dist/bot/src/index.js",
     "migrate": "graphile-migrate migrate",
