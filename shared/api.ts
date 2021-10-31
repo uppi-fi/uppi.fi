@@ -59,9 +59,15 @@ export type UpdateFileParams = Pick<FileT, 'id'> &
 
 export type UserResponse = UserT | null;
 
-export interface DeleteFileResponse {
-  message: ApiMessage.NotFound | ApiMessage.PgError | ApiMessage.Ok;
-}
+export type DeleteFileResponse =
+  | {
+      message: ApiMessage.NotFound | ApiMessage.PgError;
+    }
+  | {
+      message: ApiMessage.Ok;
+      id: string;
+      filename: string;
+    };
 
 export interface ViewFileResponse {
   viewCount: number;

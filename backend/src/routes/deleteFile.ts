@@ -14,7 +14,7 @@ export const deleteFileRoute = () =>
     async (req, res) => {
       try {
         // Update DB
-        const { id } = await db.one<Pick<FileT, 'id' | 'filename'>>(
+        const { id, filename } = await db.one<Pick<FileT, 'id' | 'filename'>>(
           `DELETE FROM files
         WHERE id=$1
         RETURNING id, filename`,
@@ -26,6 +26,8 @@ export const deleteFileRoute = () =>
         fs.rmdirSync(dir, { recursive: true });
         res.send({
           message: ApiMessage.Ok,
+          id,
+          filename,
         });
       } catch (error: unknown) {
         if (error instanceof pgPromise.errors.QueryResultError) {

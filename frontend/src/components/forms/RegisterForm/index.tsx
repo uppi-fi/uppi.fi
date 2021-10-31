@@ -2,6 +2,7 @@ import FormError from '@frontend/components/FormError';
 import { useApiService } from '@frontend/services/useApiService';
 import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
+import { showSuccessMessage } from '@frontend/utils/snackBar';
 import { Icon } from '@iconify/react';
 import { ApiMessage, RegisterParams, RegisterResponse } from '@shared/api';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -67,6 +68,10 @@ function RegisterForm() {
     console.debug('Register success', res);
     setCurrentUser(res.user);
     setJwtToken(res.token);
+    showSuccessMessage(
+      'Uusi käyttäjä luotu',
+      `Tervetuloa ${res.user.username}! Nyt voit ladata tiedostoja 👍`
+    );
   };
 
   return (

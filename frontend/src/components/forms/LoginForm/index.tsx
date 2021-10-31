@@ -2,6 +2,7 @@ import FormError from '@frontend/components/FormError';
 import { useApiService } from '@frontend/services/useApiService';
 import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
+import { showSuccessMessage } from '@frontend/utils/snackBar';
 import { Icon } from '@iconify/react';
 import {
   ApiMessage,
@@ -56,6 +57,7 @@ function LoginForm() {
     console.debug('Login success');
     setCurrentUser(res.user);
     setJwtToken(res.token);
+    showSuccessMessage('Kirjauduit sisään', `Terve taas ${res.user.username}!`);
   };
 
   return (
