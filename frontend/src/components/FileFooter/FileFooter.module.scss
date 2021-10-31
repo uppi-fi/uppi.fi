@@ -8,6 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  cursor: default;
 }
 
 .col {
@@ -22,13 +23,14 @@
   justify-content: space-between;
 }
 
-.date {
+.file-details {
   font-size: 12px;
+  align-items: center;
   color: #444;
   font-weight: 400;
-
-  svg {
-    margin-top: -4px;
-    margin-left: 6px;
+  .group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 }
