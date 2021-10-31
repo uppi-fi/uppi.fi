@@ -19,7 +19,7 @@ module.exports = {
    */
   connectionString:
     process.env.DATABASE_URL ??
-    'postgres://postgres:postgres@localhost:5433/laturi',
+    'postgres://postgres:postgres@localhost:5433/uppi',
 
   /*
    * shadowConnectionString: like connectionString, but this is used for the
@@ -29,7 +29,7 @@ module.exports = {
    */
   shadowConnectionString:
     process.env.SHADOW_DATABASE_URL ??
-    'postgres://postgres:postgres@localhost:5433/laturi_shadow',
+    'postgres://postgres:postgres@localhost:5433/uppi_shadow',
 
   /*
    * rootConnectionString: like connectionString, but this is used for

@@ -18,7 +18,7 @@ module.exports = {
   connection: {
     connectionString:
       process.env.DATABASE_URL ??
-      'postgres://postgres:postgres@localhost:5433/laturi',
+      'postgres://postgres:postgres@localhost:5433/uppi',
   },
 
   preDeleteModelFolder: true,
