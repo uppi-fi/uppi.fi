@@ -1,4 +1,5 @@
 import { db } from '@backend/database';
+import { encrypt } from '@backend/utils/crypto';
 import {
   ApiMessage,
   RegisterResponse,
@@ -30,19 +31,19 @@ export function registerRoute() {
         return res.json({ message: ApiMessage.UserExists });
       }
 
+      const { encryptedData: encryptedPassword } = encrypt(password);
       const createdUser = await db.one<UserT>(
         `INSERT INTO users (user_id, username, password)
         VALUES ($1, $2, $3)
         RETURNING *`,
-        [uuid(), username, password]
+        [uuid(), username, encryptedPassword]
       );
       const payload = { id: createdUser.userId };
       const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30 days' });
-      console.log({ token });
       res.send({
         message: ApiMessage.Ok,
         user: createdUser,
-        token,
+        token: `Bearer ${token}`,
       });
     }
   );
