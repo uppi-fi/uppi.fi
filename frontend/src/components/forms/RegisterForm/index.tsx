@@ -70,7 +70,7 @@ function RegisterForm() {
     setJwtToken(res.token);
     showSuccessMessage(
       'Uusi käyttäjä luotu',
-      `Tervetuloa ${res.user.username}! Nyt voit ladata tiedostoja 👍`
+      `Tervetuloa ${res.user.username}! Nyt voit lisätä tiedostoja 👍`
     );
   };
 
