@@ -21,7 +21,11 @@ export const env = cleanEnv(process.env, {
   SHADOW_DATABASE_URL: str({
     default: 'postgres://postgres:postgres@localhost:5433/laturi_shadow',
   }),
-  MAX_FILE_SIZE: num({ default: 250_000_000 }),
+
+  // NOTE: Remember to update this in nginx.conf too.
+  //       Found at nginx.conf: "client_max_body_size"
+  MAX_FILE_SIZE: num({ default: 500_000_000 }),
+
   DISABLED_MIME_TYPES: str({
     desc: 'Disabled file-types splitted by comma (,)',
     default: 'text/html,image/svg+xml',
