@@ -1,9 +1,9 @@
 import { useFile } from '@frontend/services/useFile';
+import { useKeyPressEvent } from 'react-use';
 import { useLocation } from 'wouter';
+import File from '../File';
 import Modal from '../Modal';
 import Spinner from '../Spinner';
-import File from '../File';
-import { useKeyPressEvent } from 'react-use';
 
 const FileModal: React.FC<{ fileId: string }> = ({ fileId }) => {
   const [, setLocation] = useLocation();

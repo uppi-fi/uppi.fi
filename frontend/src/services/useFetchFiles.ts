@@ -7,12 +7,13 @@ import { sortedFileListState } from '../state/fileList/sortedFileListState';
 import { useApiService } from './useApiService';
 
 export function useFetchFiles() {
-  const currentUser = useRecoilValue(currentUserState);
   const {
     data: apiFiles,
     get: fetch,
     error,
   } = useApiService<FileT[]>('get-files');
+
+  const currentUser = useRecoilValue(currentUserState);
   const setFiles = useSetRecoilState(fileListState);
   const files = useRecoilValue(sortedFileListState);
 

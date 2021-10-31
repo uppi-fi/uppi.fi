@@ -4,9 +4,9 @@ import { Route } from 'wouter';
 import { LinkButton } from '../../components/Button';
 import FileCardGrid from '../../components/FileCardGrid';
 import FileListSorters from '../../components/FileListSorters';
+import FileModal from '../../components/FileModal';
 import Result from '../../components/Result';
 import Skeleton from '../../components/Skeleton';
-import FileModal from '../../components/FileModal';
 import { useFetchFiles } from '../../services/useFetchFiles';
 import styles from './OwnFiles.module.scss';
 
