@@ -1,18 +1,18 @@
+import { UserIdParams } from '@shared/api';
 import { FileT } from '@shared/schema';
 import { getRoute } from '.';
 import { authorization } from '..';
 import { db } from '../database';
 
 export const getFilesRoute = () =>
-  getRoute<
-    FileT[],
-    {
-      userId: string;
+  getRoute<FileT[], UserIdParams>(
+    '/get-files',
+    authorization,
+    async (req, res) => {
+      const files = await db.any<FileT>(
+        'SELECT * FROM files WHERE user_id = $1',
+        [req.query.userId]
+      );
+      res.json(files);
     }
-  >('/get-files', authorization, async (req, res) => {
-    const files = await db.any<FileT>(
-      'SELECT * FROM files WHERE user_id = $1',
-      [req.query.userId]
-    );
-    res.json(files);
-  });
+  );

@@ -1,13 +1,16 @@
 import { db } from '@backend/database';
+import {
+  ApiMessage,
+  LoginResponse,
+  UsernameAndPasswordParams,
+} from '@shared/api';
 import { UserT } from '@shared/schema';
 import * as jwt from 'jsonwebtoken';
 import { postRoute } from '.';
 import { JWT_SECRET } from '..';
 
-const FAIL_MESSAGE = 'invalid credentials';
-
 export function loginRoute() {
-  postRoute<{}, { username: string; password: string }>(
+  postRoute<LoginResponse, UsernameAndPasswordParams>(
     '/login',
     async (req, res) => {
       const { username, password } = req.body;
@@ -17,7 +20,7 @@ export function loginRoute() {
       );
 
       if (!user) {
-        res.send({ message: FAIL_MESSAGE });
+        res.send({ message: ApiMessage.InvalidCredentials });
         return;
       }
 
@@ -25,9 +28,9 @@ export function loginRoute() {
       if (user.password === req.body.password) {
         const payload = { id: user.userId };
         const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30 days' });
-        res.json({ message: 'ok', user, token: `Bearer ${token}` });
+        res.json({ message: ApiMessage.Ok, user, token: `Bearer ${token}` });
       } else {
-        res.json({ message: FAIL_MESSAGE });
+        res.json({ message: ApiMessage.InvalidCredentials });
       }
     }
   );

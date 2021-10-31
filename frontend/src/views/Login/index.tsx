@@ -5,34 +5,14 @@ import { useApiService } from '@frontend/services/useApiService';
 import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
 import { Icon } from '@iconify/react';
-import { UserT } from '@shared/schema';
+import {
+  ApiMessage,
+  LoginResponse,
+  RegisterResponse,
+  UsernameAndPasswordParams,
+} from '@shared/api';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-
-type LoginResponse =
-  | {
-      message: 'invalid credentials';
-    }
-  | {
-      message: 'ok';
-      user: UserT;
-      token: string;
-    };
-
-interface UsernameAndPasswordParams {
-  username: string;
-  password: string;
-}
-
-type RegisterResponse =
-  | {
-      message: 'missing fields';
-    }
-  | {
-      message: 'ok';
-      user: UserT;
-      token: string;
-    };
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -61,7 +41,7 @@ function Login() {
       username,
       password,
     });
-    const isOk = res.message === 'ok';
+    const isOk = res.message === ApiMessage.Ok;
 
     setErrors((old) => ({
       ...old,
@@ -82,7 +62,7 @@ function Login() {
       username: registerUsername,
       password: registerPassword,
     });
-    const isOk = res.message === 'ok';
+    const isOk = res.message === ApiMessage.Ok;
 
     setErrors((old) => ({
       ...old,

@@ -10,5 +10,5 @@ export const autoPlayState = atom<{
     audio: false,
     video: false,
   },
-  effects_UNSTABLE: [localStorageEffect('autoPlay')],
+  effects_UNSTABLE: [localStorageEffect('auto-play')],
 });

@@ -1,14 +1,10 @@
+import { FileIdParams } from '@shared/api';
 import { FileT } from '@shared/schema';
 import { getRoute } from '.';
 import { db } from '../database';
 
 export const getFileRoute = () =>
-  getRoute<
-    FileT,
-    {
-      fileId: string;
-    }
-  >('/get-file', async (req, res) => {
+  getRoute<FileT, FileIdParams>('/get-file', async (req, res) => {
     const [file] = await db.any('SELECT * FROM files WHERE id=$1', [
       req.query.fileId,
     ]);

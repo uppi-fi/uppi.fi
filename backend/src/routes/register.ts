@@ -1,4 +1,9 @@
 import { db } from '@backend/database';
+import {
+  ApiMessage,
+  RegisterResponse,
+  UsernameAndPasswordParams,
+} from '@shared/api';
 import { UserT } from '@shared/schema';
 import * as jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
@@ -6,14 +11,14 @@ import { postRoute } from '.';
 import { JWT_SECRET } from '..';
 
 export function registerRoute() {
-  postRoute<{}, { username: string; password: string }>(
+  postRoute<RegisterResponse, UsernameAndPasswordParams>(
     '/register',
     async (req, res) => {
       const { username, password } = req.body;
 
       if (!username || !password) {
         console.log({ username, password });
-        return res.json({ message: 'missing fields' });
+        return res.json({ message: ApiMessage.MissingFields });
       }
 
       const user = await db.oneOrNone<UserT>(
@@ -22,7 +27,7 @@ export function registerRoute() {
       );
 
       if (user) {
-        return res.json({ message: 'user already exists' });
+        return res.json({ message: ApiMessage.UserExists });
       }
 
       const createdUser = await db.one<UserT>(
@@ -35,7 +40,7 @@ export function registerRoute() {
       const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30 days' });
       console.log({ token });
       res.send({
-        message: 'ok',
+        message: ApiMessage.Ok,
         user: createdUser,
         token,
       });
