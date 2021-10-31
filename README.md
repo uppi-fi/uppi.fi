@@ -1,4 +1,4 @@
-# uppi.fi &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# uppi.fi &middot; [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Storybook](https://tinyurl.com/storybookbadge)](https://uppi-fi.netlify.app/)
 
 Uppi.fi is a **fast** and **easy to use** file uploader.
 
@@ -59,7 +59,7 @@ Port-forwarding does not seem to always work with WSL, there are two scripts in 
 
 ## Migrations
 
-- `yarn migrate` - 
+- `yarn migrate` -
   Runs any un-executed committed migrations.
 - `yarn migrate:watch` -
   Runs any un-executed committed migrations and then runs and watches the current migration, re-running it on any change. For development.
