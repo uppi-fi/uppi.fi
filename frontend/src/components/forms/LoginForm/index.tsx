@@ -1,8 +1,8 @@
 import FormError from '@frontend/components/FormError';
 import { useApiService } from '@frontend/services/useApiService';
+import { useToast } from '@frontend/services/useToast';
 import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
-import { showSuccessMessage } from '@frontend/utils/snackBar';
 import { Icon } from '@iconify/react';
 import {
   ApiMessage,
@@ -32,6 +32,7 @@ function LoginForm() {
 
   const setCurrentUser = useSetRecoilState(currentUserState);
   const setJwtToken = useSetRecoilState(jwtTokenState);
+  const toast = useToast();
 
   const { post: loginRequest } = useApiService<
     LoginResponse,
@@ -57,7 +58,7 @@ function LoginForm() {
     console.debug('Login success');
     setCurrentUser(res.user);
     setJwtToken(res.token);
-    showSuccessMessage('Kirjauduit sisään', `Terve taas ${res.user.username}!`);
+    toast.success('Kirjauduit sisään', `Terve taas ${res.user.username}!`);
   };
 
   return (

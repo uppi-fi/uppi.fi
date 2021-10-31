@@ -1,8 +1,8 @@
 import FormError from '@frontend/components/FormError';
 import { useApiService } from '@frontend/services/useApiService';
+import { useToast } from '@frontend/services/useToast';
 import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
-import { showSuccessMessage } from '@frontend/utils/snackBar';
 import { Icon } from '@iconify/react';
 import { ApiMessage, RegisterParams, RegisterResponse } from '@shared/api';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -26,6 +26,7 @@ function RegisterForm() {
   } = useForm<RegisterFormInput>({
     reValidateMode: 'onSubmit',
   });
+  const toast = useToast();
 
   const { post: registerRequest } = useApiService<
     RegisterResponse,
@@ -68,9 +69,9 @@ function RegisterForm() {
     console.debug('Register success', res);
     setCurrentUser(res.user);
     setJwtToken(res.token);
-    showSuccessMessage(
+    toast.success(
       'Uusi käyttäjä luotu',
-      `Tervetuloa ${res.user.username}! Nyt voit lisätä tiedostoja 👍`
+      `Tervetuloa ${res.user.username}! Voit nyt lisätä tiedostoja 👍`
     );
   };
 
