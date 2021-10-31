@@ -18,7 +18,6 @@ export function registerRoute() {
       const { username, password } = req.body;
 
       if (!username || !password) {
-        console.log({ username, password });
         return res.json({ message: ApiMessage.MissingFields });
       }
 

@@ -28,11 +28,11 @@ function Login() {
   const { post: login } = useApiService<
     LoginResponse,
     UsernameAndPasswordParams
-  >('/login');
+  >('login');
   const { post: register } = useApiService<
     RegisterResponse,
     UsernameAndPasswordParams
-  >('/register');
+  >('register');
 
   const setCurrentUser = useSetRecoilState(currentUserState);
   const setJwtToken = useSetRecoilState(jwtTokenState);
@@ -74,7 +74,7 @@ function Login() {
       return;
     }
 
-    console.debug('Register success');
+    console.debug('Register success', res);
     setCurrentUser(res.user);
     setJwtToken(res.token);
   };

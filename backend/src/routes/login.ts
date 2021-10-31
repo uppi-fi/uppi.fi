@@ -1,4 +1,5 @@
 import { db } from '@backend/database';
+import { encrypt } from '@backend/utils/crypto';
 import {
   ApiMessage,
   LoginResponse,
@@ -15,8 +16,8 @@ export function loginRoute() {
     async (req, res) => {
       const { username, password } = req.body;
       const user = await db.oneOrNone<UserT>(
-        'SELECT * FROM users WHERE username = $1 AND password = $2',
-        [username, password]
+        'SELECT * FROM users WHERE username = $1',
+        [username]
       );
 
       if (!user) {
@@ -24,8 +25,9 @@ export function loginRoute() {
         return;
       }
 
-      // TODO: Encryption
-      if (user.password === req.body.password) {
+      const { encryptedData: encryptedPassword } = encrypt(password);
+
+      if (user.password === encryptedPassword) {
         const payload = { id: user.userId };
         const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30 days' });
         res.json({ message: ApiMessage.Ok, user, token: `Bearer ${token}` });
