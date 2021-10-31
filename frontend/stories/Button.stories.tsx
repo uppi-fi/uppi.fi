@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
-import Button from '../src/components/Button';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { RecoilRoot } from 'recoil';
 import BackButton from '../src/components/BackButton';
+import Button from '../src/components/Button';
 import CopyButton from '../src/components/CopyButton';
-import IconButton from '../src/components/IconButton';
-import DownloadButton from '../src/components/DownloadButton';
 import DeleteButton from '../src/components/DeleteButton';
+import DownloadButton from '../src/components/DownloadButton';
+import IconButton from '../src/components/IconButton';
 
 export default {
   title: 'Button',
@@ -32,7 +32,11 @@ export const Copy = () => (
   <CopyButton textToCopy="This is now on your clipboard" />
 );
 
-export const Delete = () => <DeleteButton fileId="0" />;
+export const Delete = () => (
+  <RecoilRoot>
+    <DeleteButton fileId="0" />
+  </RecoilRoot>
+);
 
 export const Icon = () => <IconButton icon="ant-design:file-twotone" />;
 
