@@ -71,7 +71,7 @@ function RegisterForm() {
     setJwtToken(res.token);
     toast.success(
       'Uusi käyttäjä luotu',
-      `Tervetuloa ${res.user.username}! Voit nyt lisää tiedostoja 👍`
+      `Tervetuloa ${res.user.username}! Voit nyt lisätä tiedostoja 👍`
     );
   };
 
