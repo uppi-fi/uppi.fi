@@ -1,5 +1,5 @@
+import { useToast } from '@frontend/services/useToast';
 import { fileListState } from '@frontend/state/fileList/fileListState';
-import { showErrorMessage, showInfoMessage } from '@frontend/utils/snackBar';
 import { ApiMessage, DeleteFileResponse } from '@shared/api';
 import { useSetRecoilState } from 'recoil';
 import { useLocation } from 'wouter';
@@ -15,6 +15,7 @@ function DeleteButton({ fileId }: DeleteButtonProps) {
   const setFiles = useSetRecoilState(fileListState);
   const { post: deleteFile } = useApiService<DeleteFileResponse>('delete-file');
   const [, setLocation] = useLocation();
+  const toast = useToast();
 
   const onClick = async () => {
     try {
@@ -28,10 +29,7 @@ function DeleteButton({ fileId }: DeleteButtonProps) {
       );
 
       if (res.message !== ApiMessage.Ok) {
-        showErrorMessage(
-          'Tiedoston poistaminen epäonnistui',
-          'Joku meni mönkään'
-        );
+        toast.error('Tiedoston poistaminen epäonnistui', 'Joku meni mönkään');
         return;
       }
 
@@ -43,7 +41,7 @@ function DeleteButton({ fileId }: DeleteButtonProps) {
         (oldFiles || []).filter((oldFile) => oldFile.id !== res.id)
       );
       setLocation('/files');
-      showInfoMessage('Tiedosto poistettu', `"${res.filename}" poistettiin`);
+      toast.info('Tiedosto poistettu', `"${res.filename}" poistettiin`);
     } catch (err) {
       console.error(err);
       alert('Poistaminen ei onnistunut');

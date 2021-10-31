@@ -3,6 +3,7 @@ import { useRecoilValue } from 'recoil';
 import styles from './App.module.scss';
 import DropOverlay from './components/DropOverlay';
 import Header from './components/Header';
+import Toaster from './components/Toaster';
 import Routes from './routes';
 import { useApiService } from './services/useApiService';
 import { useAuthentication } from './services/useCheckAccess';
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <>
+      <Toaster />
       <div className={styles.layout}>
         <Header pageLoads={pageLoads} />
         {!currentUser && !isFileView && location && <Login />}
