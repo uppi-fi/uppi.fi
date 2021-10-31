@@ -3,7 +3,8 @@ import { FileT, UserT } from './schema';
 export enum ApiMessage {
   Ok = 'ok',
   MissingFields = 'missing fields',
-  UserExists = 'user already exists',
+  UserAlreadyExists = 'user already exists',
+  InvalidAccessKey = 'invalid access key',
   InvalidCredentials = 'invalid credentials',
   NotFound = 'not found',
   PgError = 'pg error',
@@ -32,9 +33,16 @@ export type LoginResponse =
       token: string;
     };
 
+export interface RegisterParams extends UsernameAndPasswordParams {
+  accessKey: string;
+}
+
 export type RegisterResponse =
   | {
-      message: ApiMessage.MissingFields | ApiMessage.UserExists;
+      message:
+        | ApiMessage.MissingFields
+        | ApiMessage.UserAlreadyExists
+        | ApiMessage.InvalidAccessKey;
     }
   | {
       message: ApiMessage.Ok;

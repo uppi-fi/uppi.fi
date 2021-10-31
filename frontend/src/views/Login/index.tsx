@@ -9,6 +9,7 @@ import { Icon } from '@iconify/react';
 import {
   ApiMessage,
   LoginResponse,
+  RegisterParams,
   RegisterResponse,
   UsernameAndPasswordParams,
 } from '@shared/api';
@@ -20,6 +21,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [registerUsername, setRegisterUsername] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
+  const [registerAccessKey, setRegisterAccessKey] = useState('');
   const [errors, setErrors] = useState<{
     login?: string;
     register?: string;
@@ -29,10 +31,9 @@ function Login() {
     LoginResponse,
     UsernameAndPasswordParams
   >('login');
-  const { post: register } = useApiService<
-    RegisterResponse,
-    UsernameAndPasswordParams
-  >('register');
+  const { post: register } = useApiService<RegisterResponse, RegisterParams>(
+    'register'
+  );
 
   const setCurrentUser = useSetRecoilState(currentUserState);
   const setJwtToken = useSetRecoilState(jwtTokenState);
@@ -62,6 +63,7 @@ function Login() {
     const res = await register({
       username: registerUsername,
       password: registerPassword,
+      accessKey: registerAccessKey,
     });
     const isOk = res.message === ApiMessage.Ok;
 
@@ -129,8 +131,17 @@ function Login() {
             value={registerPassword}
             onChange={(evt) => setRegisterPassword(evt.currentTarget.value)}
           />
+          <input
+            type="text"
+            name="password"
+            placeholder="Kutsukoodi"
+            value={registerAccessKey}
+            onChange={(evt) => setRegisterAccessKey(evt.currentTarget.value)}
+          />
           <Button
-            disabled={!registerUsername || !registerPassword}
+            disabled={
+              !registerUsername || !registerPassword || !registerAccessKey
+            }
             onClick={onRegisterSubmit}
           >
             Luo uusi käyttäjä
