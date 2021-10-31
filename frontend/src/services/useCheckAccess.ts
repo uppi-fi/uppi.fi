@@ -26,7 +26,7 @@ export function useAuthentication() {
       setCurrentUser(user);
       setUserVerified(true);
     })();
-  }, []);
+  }, [currentUser, getUser, location, setCurrentUser, setLocation]);
 
   return { userVerified };
 }

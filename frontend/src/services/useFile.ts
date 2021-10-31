@@ -19,11 +19,11 @@ export function useFile(fileId: string) {
     return () => {
       setCurrentFile(null);
     };
-  }, []);
+  }, [setCurrentFile]);
 
   useEffect(() => {
     setCurrentFile(fetchedFile);
-  }, [fetchedFile]);
+  }, [fetchedFile, setCurrentFile]);
 
   useEffect(() => {
     // File just uploaded, we can use it
@@ -37,7 +37,7 @@ export function useFile(fileId: string) {
     fetch({
       fileId,
     });
-  }, [uploadedFile?.id]);
+  }, [fetch, fileId, setCurrentFile, setUploadedFile, uploadedFile]);
 
   return { error, currentFile };
 }

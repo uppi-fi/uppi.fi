@@ -16,7 +16,7 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
   const jwtToken = useRecoilValue(jwtTokenState);
   const [status, setStatus] = useState<ResponseStatus | null>(null);
   const [data, setData] = useState<TResponse | null>(null);
-  const [error, setError] = useState<any>();
+  const [error, setError] = useState<unknown>();
 
   const request = useCallback(
     async (
@@ -63,7 +63,7 @@ export function useApiService<TResponse, TDataOrParams = unknown>(
         throw new Error('API error');
       }
     },
-    [path, status]
+    [jwtToken, path]
   );
 
   const get = useCallback(
