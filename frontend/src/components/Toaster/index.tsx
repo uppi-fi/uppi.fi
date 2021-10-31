@@ -1,5 +1,6 @@
 import { toastsState } from '@frontend/state/toastsState';
 import { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { useRecoilState } from 'recoil';
 import ToastCard from '../ToastCard';
 import styles from './Toaster.module.scss';
@@ -37,7 +38,7 @@ function Toaster() {
     }
   }, [toasts]);
 
-  return (
+  return ReactDOM.createPortal(
     <div className={styles.container}>
       {toasts.map((toast) => {
         return (
@@ -48,7 +49,9 @@ function Toaster() {
           />
         );
       })}
-    </div>
+    </div>,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    document.getElementById('toasts')!
   );
 }
 
