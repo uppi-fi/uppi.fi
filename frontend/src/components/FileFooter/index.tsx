@@ -1,9 +1,10 @@
 import { Icon } from '@iconify/react';
 import { FileT } from '@shared/schema';
+import Tooltip from 'rc-tooltip';
 import { useRecoilValue } from 'recoil';
 import { currentUserState } from '../../state/currentUserState';
 import { formatDate } from '../../utils/time';
-import { getFileUrl, getFileDownloadUrl } from '../../utils/url';
+import { getFileDownloadUrl, getFileUrl } from '../../utils/url';
 import Col from '../atoms/Col';
 import Row from '../atoms/Row';
 import CopyButton from '../CopyButton';
@@ -23,9 +24,35 @@ function FileFooter({ file }: FileFooterProps) {
       <Row alignItems="center" justifyContent="space-between">
         <Col gap="8px">
           {file.customName !== file.filename ? file.customName : file.filename}
-          <Row alignItems="center" className={styles.date}>
-            {formatDate(file.createdAt)}
-            <Icon icon="bx:bx-calendar" fontSize={18} />{' '}
+
+          <Row
+            alignItems="center"
+            className={styles['file-details']}
+            gap="20px"
+          >
+            <Tooltip
+              placement="bottom"
+              overlay="Latauspäivämäärä"
+              mouseLeaveDelay={0}
+              mouseEnterDelay={0.4}
+            >
+              <div className={styles.group}>
+                <Icon icon="bx:bx-calendar" fontSize={18} />
+                {formatDate(file.createdAt)}
+              </div>
+            </Tooltip>
+
+            <Tooltip
+              placement="bottom"
+              overlay="Näyttökerrat"
+              mouseLeaveDelay={0}
+              mouseEnterDelay={0.4}
+            >
+              <div className={styles.group}>
+                <Icon icon="ant-design:eye-twotone" fontSize={18} />
+                {file.viewCount}
+              </div>
+            </Tooltip>
           </Row>
         </Col>
 

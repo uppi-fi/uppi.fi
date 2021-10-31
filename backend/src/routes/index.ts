@@ -20,14 +20,14 @@ export function registerRoutes(expressApp: express.Application) {
   registerRoute();
 
   // App routes
+  deleteFileRoute();
+  downloadRoute();
   getFileRoute();
   getFilesRoute();
-  deleteFileRoute();
-  uploadRoute();
-  downloadRoute();
-  visitRoute();
   getUserRoute();
   updateFileRoute();
+  uploadRoute();
+  visitRoute();
 }
 
 export function getRoute<TData, TParams>(

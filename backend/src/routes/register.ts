@@ -1,7 +1,7 @@
 import { db } from '@backend/database';
 import { encrypt } from '@backend/utils/crypto';
 import { ApiMessage, RegisterParams, RegisterResponse } from '@shared/api';
-import { UserT } from '@shared/schema';
+import { AccessKeyT, UserT } from '@shared/schema';
 import * as jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 import { postRoute } from '.';
@@ -9,24 +9,24 @@ import { JWT_SECRET } from '..';
 
 export function registerRoute() {
   postRoute<RegisterResponse, RegisterParams>('/register', async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, accessKey } = req.body;
 
     if (!username || !password) {
       return res.json({ message: ApiMessage.MissingFields });
     }
 
-    const accessKey = await db.oneOrNone<UserT>(
+    const accessKeyRow = await db.oneOrNone<AccessKeyT>(
       'SELECT * FROM access_keys WHERE access_key = $1',
-      [req.body.accessKey]
+      [accessKey]
     );
 
-    if (!accessKey) {
+    if (!accessKeyRow) {
       return res.json({ message: ApiMessage.InvalidAccessKey });
     }
 
     const user = await db.oneOrNone<UserT>(
       'SELECT * FROM users WHERE username = $1',
-      [req.body.username]
+      [username]
     );
 
     if (user) {
@@ -42,6 +42,15 @@ export function registerRoute() {
     );
     const payload = { id: createdUser.userId };
     const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '30 days' });
+
+    // Update access key use count
+    await db.query(
+      `UPDATE access_keys
+      SET use_count = use_count + 1
+      WHERE access_key = $2`,
+      [accessKeyRow.useCount + 1, accessKey]
+    );
+
     res.send({
       message: ApiMessage.Ok,
       user: createdUser,
