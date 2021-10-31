@@ -3,7 +3,10 @@ import { PropsWithChildren } from 'react';
 import { Link, LinkProps, LocationHook } from 'wouter';
 import styles from './Button.module.scss';
 
-type ButtonProps = { kind?: 'primary' | 'secondary' } & React.DetailedHTMLProps<
+type ButtonProps = {
+  kind?: 'primary' | 'secondary';
+  loading?: boolean;
+} & React.DetailedHTMLProps<
   React.ButtonHTMLAttributes<HTMLButtonElement>,
   HTMLButtonElement
 >;
@@ -11,21 +14,25 @@ type ButtonProps = { kind?: 'primary' | 'secondary' } & React.DetailedHTMLProps<
 const Button: React.FC<ButtonProps> = ({
   children,
   kind,
+  loading,
+  disabled,
   className,
   ...rest
 }) => (
   <button
     {...rest}
+    disabled={disabled}
     className={cx(
       styles['button'],
       {
         [styles['button--primary']]: kind === 'primary',
         [styles['button--secondary']]: kind === 'secondary',
+        [styles['button--disabled']]: disabled,
       },
       className
     )}
   >
-    {children}
+    {loading ? <div>spinneri tähä</div> : children}
   </button>
 );
 

@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
 import React from 'react';
+import Col from '../atoms/Col';
 import Row from '../atoms/Row';
 import Centered from '../Centered';
 import styles from './Result.module.scss';
@@ -26,16 +27,21 @@ const Result: React.FC<ResultProps> = ({
 
   return (
     <Centered className={styles.result}>
-      <Row alignItems="center">
-        {React.cloneElement(icon, { style: { width: '84px', height: '84px' } })}
-      </Row>
-      <Row className={styles.title}>{title}</Row>
-      {subTitle && (
-        <Row className={styles.subtitle}>
-          <div>{subTitle}</div>
+      <Col gap="8px" alignItems="center">
+        <Row alignItems="center">
+          {React.cloneElement(icon, {
+            style: { width: '84px', height: '84px' },
+          })}
         </Row>
-      )}
-      {extra && <Row className={styles.extra}>{extra}</Row>}
+
+        <Row className={styles.title}>{title}</Row>
+        {subTitle && (
+          <Row className={styles.subtitle}>
+            <div>{subTitle}</div>
+          </Row>
+        )}
+        {extra && <Row className={styles.extra}>{extra}</Row>}
+      </Col>
     </Centered>
   );
 };

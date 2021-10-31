@@ -11,6 +11,10 @@ export default interface UserT {
   telegramUserId: string | null;
 
   createdAt: Date;
+
+  username: string;
+
+  password: string;
 }
 
 export interface UserTInitializer {
@@ -22,4 +26,10 @@ export interface UserTInitializer {
 
   /** Default value: now() */
   createdAt?: Date;
+
+  /** Default value: ''::character varying */
+  username?: string;
+
+  /** Default value: ''::character varying */
+  password?: string;
 }
