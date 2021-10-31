@@ -38,6 +38,8 @@ function Toaster() {
     }
   }, [toasts]);
 
+  if (!toasts.length) return null;
+
   return ReactDOM.createPortal(
     <div className={styles.container}>
       {toasts.map((toast) => {
