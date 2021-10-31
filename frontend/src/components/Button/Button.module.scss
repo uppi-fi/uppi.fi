@@ -9,7 +9,7 @@
   color: #fff;
   cursor: pointer;
 
-  &:hover {
+  &:hover:not(.button--disabled) {
     background: $accent-darken;
   }
 }
@@ -20,5 +20,11 @@
 
   &:hover {
     background: $accent-transparent;
+    color: white;
   }
+}
+
+.button--disabled {
+  opacity: 0.3;
+  cursor: default;
 }

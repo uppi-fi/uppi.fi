@@ -11,16 +11,19 @@ type ButtonProps = { kind?: 'primary' | 'secondary' } & React.DetailedHTMLProps<
 const Button: React.FC<ButtonProps> = ({
   children,
   kind,
+  disabled,
   className,
   ...rest
 }) => (
   <button
     {...rest}
+    disabled={disabled}
     className={cx(
       styles['button'],
       {
         [styles['button--primary']]: kind === 'primary',
         [styles['button--secondary']]: kind === 'secondary',
+        [styles['button--disabled']]: disabled,
       },
       className
     )}

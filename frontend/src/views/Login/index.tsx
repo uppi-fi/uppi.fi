@@ -1,5 +1,6 @@
 import Col from '@frontend/components/atoms/Col';
 import Row from '@frontend/components/atoms/Row';
+import Button from '@frontend/components/Button';
 import Centered from '@frontend/components/Centered';
 import { useApiService } from '@frontend/services/useApiService';
 import { currentUserState } from '@frontend/state/currentUserState';
@@ -100,9 +101,9 @@ function Login() {
             value={password}
             onChange={(evt) => setPassword(evt.currentTarget.value)}
           />
-          <button disabled={!username || !password} onClick={onLoginSubmit}>
+          <Button disabled={!username || !password} onClick={onLoginSubmit}>
             Kirjaudu sisään
-          </button>
+          </Button>
           {errors?.login}
         </Col>
         <Col gap="8px">
@@ -128,12 +129,12 @@ function Login() {
             value={registerPassword}
             onChange={(evt) => setRegisterPassword(evt.currentTarget.value)}
           />
-          <button
+          <Button
             disabled={!registerUsername || !registerPassword}
             onClick={onRegisterSubmit}
           >
             Luo uusi käyttäjä
-          </button>
+          </Button>
           {errors?.register}
         </Col>
       </Row>

@@ -3,6 +3,7 @@ import { isAudioFile, isVideoFile } from '@shared/mimetype';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { currentFileState } from '../../state/currentFileState';
 import AutoPlayButton from '../AutoPlayButton';
+import Button from '../Button';
 import styles from './HeaderRightPart.module.scss';
 
 interface HeaderRightPartProps {
@@ -17,15 +18,16 @@ function HeaderRightPart({ pageLoads }: HeaderRightPartProps) {
 
   return (
     <div className={styles.root}>
-      {currentUser && (
-        <>
-          Käyttäjä: {currentUser.username}
-          <button onClick={() => setCurrentUser(null)}>Kirjaudu ulos</button>
-        </>
-      )}
       {pageLoads !== undefined && `Sivulatauksia: ${pageLoads}`}
       {shouldRenderAutoPlayBtn && (
         <AutoPlayButton type={isVideoFile(currentFile) ? 'video' : 'audio'} />
+      )}
+      {currentUser && (
+        <>
+          <Button kind="secondary" onClick={() => setCurrentUser(null)}>
+            Kirjaudu ulos
+          </Button>
+        </>
       )}
     </div>
   );
