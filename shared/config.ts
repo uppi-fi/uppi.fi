@@ -16,10 +16,10 @@ export const env = cleanEnv(process.env, {
     desc: 'The port frontend is running at',
   }),
   DATABASE_URL: str({
-    default: 'postgres://postgres:postgres@localhost:5433/laturi',
+    default: 'postgres://postgres:postgres@localhost:5433/uppi',
   }),
   SHADOW_DATABASE_URL: str({
-    default: 'postgres://postgres:postgres@localhost:5433/laturi_shadow',
+    default: 'postgres://postgres:postgres@localhost:5433/uppi_shadow',
   }),
 
   // NOTE: Remember to update this in nginx.conf too.
