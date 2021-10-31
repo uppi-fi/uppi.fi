@@ -22,7 +22,7 @@
     "build": "concurrently \"npm:build:frontend\" \"npm:build:backend\" \"npm:build:bot\"  -c \"green,yellow,red\" --names \"frontend,backend.,bot.....\"",
     "start": "concurrently \"npm:start:backend\" \"npm:start:bot\"  -c \"green,yellow,red\" --names \"backend.,bot.....\"",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -o dist/storybook"
   },
   "husky": {
     "hooks": {
