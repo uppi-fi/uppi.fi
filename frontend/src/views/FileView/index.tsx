@@ -1,10 +1,9 @@
+import { useCurrentUser } from '@frontend/services/useCurrentUser';
 import { useEffect, useState } from 'react';
-import { useRecoilValue } from 'recoil';
 import { Redirect } from 'wouter';
 import { BackButtonLink } from '../../components/BackButton';
 import File from '../../components/File';
 import { useFile } from '../../services/useFile';
-import { currentUserState } from '../../state/currentUserState';
 import NotFoundView from '../NotFoundView';
 import styles from './FileView.module.scss';
 
@@ -13,7 +12,7 @@ interface FileViewProps {
 }
 
 function FileView({ fileId }: FileViewProps) {
-  const currentUser = useRecoilValue(currentUserState);
+  const { currentUser } = useCurrentUser();
   const { currentFile, error } = useFile(fileId);
   const [shouldRedirect, setShouldRedirect] = useState<boolean>();
 

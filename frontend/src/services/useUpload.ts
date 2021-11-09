@@ -1,47 +1,47 @@
+import { uploadFile } from '@frontend/api';
 import { env } from '@shared/config';
-import { FileT } from '@shared/schema';
 import { useCallback } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { useLocation } from 'wouter';
-import { currentUserState } from '../state/currentUserState';
 import { uploadedFileState } from '../state/uploadedFileState';
 import { uploadProgresState } from '../state/uploadProgresState';
-import { useApiService } from './useApiService';
+import { useCurrentUser } from './useCurrentUser';
 
 export function useUpload() {
   const [, setLocation] = useLocation();
-  const currentUser = useRecoilValue(currentUserState);
+  const { currentUser } = useCurrentUser();
   const setUploadedFile = useSetRecoilState(uploadedFileState);
   const setUploadProgress = useSetRecoilState(uploadProgresState);
-  const { post: fetch } = useApiService<FileT>('upload');
 
-  const upload = useCallback(async (file: File) => {
-    if (!currentUser) {
-      return alert('Et oo kirjautuneena?');
-    }
+  const upload = useCallback(
+    async (file: File) => {
+      if (!currentUser) {
+        return alert('Et oo kirjautuneena?');
+      }
 
-    if (file.size > env.MAX_FILE_SIZE) {
-      return alert('Max koko 10MB');
-    }
+      if (file.size > env.MAX_FILE_SIZE) {
+        return alert('Max koko 10MB');
+      }
 
-    if (env.DISABLED_MIME_TYPES.split(',').includes(file.type)) {
-      return alert('Tiedostotyyppi ei sallittu');
-    }
+      if (env.DISABLED_MIME_TYPES.split(',').includes(file.type)) {
+        return alert('Tiedostotyyppi ei sallittu');
+      }
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('userId', currentUser?.userId);
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('userId', currentUser?.userId);
 
-    const uploadedFile = await fetch(formData, {
-      onUploadProgress: (p: ProgressEvent) =>
-        setUploadProgress(p.loaded / p.total),
-    });
+      const uploadedFile = await uploadFile(formData, (p: ProgressEvent) =>
+        setUploadProgress(p.loaded / p.total)
+      );
 
-    setUploadProgress(1);
-    setUploadedFile(uploadedFile);
-    setLocation(`/files/${uploadedFile.id}`);
-    return uploadedFile;
-  }, []);
+      setUploadProgress(1);
+      setUploadedFile(uploadedFile);
+      setLocation(`/files/${uploadedFile.id}`);
+      return uploadedFile;
+    },
+    [currentUser, setLocation, setUploadProgress, setUploadedFile]
+  );
 
   return upload;
 }

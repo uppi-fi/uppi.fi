@@ -1,12 +1,11 @@
-import { useRecoilValue } from 'recoil';
 import { Route, Switch } from 'wouter';
-import { currentUserState } from './state/currentUserState';
+import { useCurrentUser } from './services/useCurrentUser';
 import FileView from './views/FileView';
 import OwnFiles from './views/OwnFilesView';
 import UploadView from './views/UploadView';
 
 const Routes = () => {
-  const currentUser = useRecoilValue(currentUserState);
+  const { currentUser } = useCurrentUser();
 
   return (
     <Switch>
