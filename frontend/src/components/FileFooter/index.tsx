@@ -1,8 +1,7 @@
+import { useCurrentUser } from '@frontend/services/useCurrentUser';
 import { Icon } from '@iconify/react';
 import { FileT } from '@shared/schema';
 import Tooltip from 'rc-tooltip';
-import { useRecoilValue } from 'recoil';
-import { currentUserState } from '../../state/currentUserState';
 import { formatDate } from '../../utils/time';
 import { getFileDownloadUrl, getFileUrl } from '../../utils/url';
 import Col from '../atoms/Col';
@@ -17,7 +16,7 @@ interface FileFooterProps {
 }
 
 function FileFooter({ file }: FileFooterProps) {
-  const currentUser = useRecoilValue(currentUserState);
+  const { currentUser } = useCurrentUser();
 
   return (
     <footer className={styles.root}>

@@ -13,7 +13,7 @@ Uppi.fi is a **fast** and **easy to use** file uploader.
 1. Start postgres:
 
    ```sh
-   docker-compose up -d
+   docker-compose up -d postgres
    ```
 
 2. Install npm packages:

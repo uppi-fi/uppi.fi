@@ -1,6 +1,6 @@
-import { currentUserState } from '@frontend/state/currentUserState';
+import { useCurrentUser } from '@frontend/services/useCurrentUser';
 import { isAudioFile, isVideoFile } from '@shared/mimetype';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { currentFileState } from '../../state/currentFileState';
 import AutoPlayButton from '../AutoPlayButton';
 import Button from '../Button';
@@ -12,7 +12,7 @@ interface HeaderRightPartProps {
 
 function HeaderRightPart({ pageLoads }: HeaderRightPartProps) {
   const currentFile = useRecoilValue(currentFileState);
-  const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
+  const { currentUser, setCurrentUser } = useCurrentUser();
   const shouldRenderAutoPlayBtn =
     currentFile && (isVideoFile(currentFile) || isAudioFile(currentFile));
 

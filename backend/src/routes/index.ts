@@ -49,3 +49,10 @@ export function postRoute<TData, TParams>(
 ) {
   app.post<unknown, TData, TParams>(path, ...handlers);
 }
+
+export function deleteRoute<TData, TParams>(
+  path: string,
+  ...handlers: express.RequestHandler<any, TData, TParams>[]
+) {
+  app.delete<unknown, TData, TParams>(path, ...handlers);
+}
