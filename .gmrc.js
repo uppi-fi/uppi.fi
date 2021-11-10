@@ -1,12 +1,5 @@
 require('dotenv').config();
 
-const DATABASE_URL =
-  process.env.DATABASE_URL ??
-  'postgres://postgres:postgres@localhost:5433/uppi';
-const SHADOW_DATABASE_URL =
-  process.env.SHADOW_DATABASE_URL ??
-  'postgres://postgres:postgres@localhost:5433/uppi_shadow';
-
 /*
  * Graphile Migrate configuration.
  *
@@ -24,7 +17,9 @@ module.exports = {
    *
    * RECOMMENDATION: use `DATABASE_URL` envvar instead.
    */
-  connectionString: DATABASE_URL,
+  connectionString:
+    process.env.DATABASE_URL ??
+    'postgres://postgres:postgres@localhost:5433/uppi',
 
   /*
    * shadowConnectionString: like connectionString, but this is used for the
@@ -32,7 +27,9 @@ module.exports = {
    *
    * RECOMMENDATION: use `SHADOW_DATABASE_URL` envvar instead.
    */
-  shadowConnectionString: SHADOW_DATABASE_URL,
+  shadowConnectionString:
+    process.env.SHADOW_DATABASE_URL ??
+    'postgres://postgres:postgres@localhost:5433/uppi_shadow',
 
   /*
    * rootConnectionString: like connectionString, but this is used for
@@ -116,7 +113,7 @@ module.exports = {
     {
       _: 'command',
       // NOTE: If Windows users want to use this please use cross-env here
-      command: `DATABASE_URL=${DATABASE_URL} yarn generate-types`,
+      command: `DATABASE_URL=${process.env.DATABASE_URL} yarn generate-types`,
     },
     {
       _: 'command',

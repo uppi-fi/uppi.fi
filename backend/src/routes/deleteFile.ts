@@ -3,12 +3,12 @@ import { FileT } from '@shared/schema';
 import * as fs from 'fs';
 import * as path from 'path';
 import pgPromise from 'pg-promise';
-import { deleteRoute } from '.';
+import { postRoute } from '.';
 import { authorization } from '..';
 import { db } from '../database';
 
 export const deleteFileRoute = () =>
-  deleteRoute<DeleteFileResponse, FileIdParams>(
+  postRoute<DeleteFileResponse, FileIdParams>(
     '/delete-file',
     authorization,
     async (req, res) => {
@@ -18,7 +18,7 @@ export const deleteFileRoute = () =>
           `DELETE FROM files
         WHERE id=$1
         RETURNING id, filename`,
-          [req.params.fileId]
+          [req.body.fileId]
         );
 
         // Delete file & directory

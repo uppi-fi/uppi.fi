@@ -1,11 +1,12 @@
-import { useCurrentUser } from '@frontend/services/useCurrentUser';
+import { useRecoilValue } from 'recoil';
 import { Link } from 'wouter';
 import logo from '../../assets/images/logo.png';
+import { currentUserState } from '../../state/currentUserState';
 import Row from '../atoms/Row';
 import styles from './HeaderLeftPart.module.scss';
 
 function HeaderLeftPart() {
-  const { currentUser } = useCurrentUser();
+  const currentUser = useRecoilValue(currentUserState);
 
   if (!currentUser) {
     return (

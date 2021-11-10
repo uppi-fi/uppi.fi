@@ -1,10 +1,14 @@
-import { login } from '@frontend/api';
 import FormError from '@frontend/components/FormError';
-import { useCurrentUser } from '@frontend/services/useCurrentUser';
+import { useApiService } from '@frontend/services/useApiService';
 import { useToast } from '@frontend/services/useToast';
+import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
 import { Icon } from '@iconify/react';
-import { ApiMessage } from '@shared/api';
+import {
+  ApiMessage,
+  LoginResponse,
+  UsernameAndPasswordParams,
+} from '@shared/api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
 import Col from '../../atoms/Col';
@@ -25,16 +29,25 @@ function LoginForm() {
   } = useForm<LoginFormInput>({
     reValidateMode: 'onSubmit',
   });
-  const { setCurrentUser } = useCurrentUser();
+
+  const setCurrentUser = useSetRecoilState(currentUserState);
   const setJwtToken = useSetRecoilState(jwtTokenState);
   const toast = useToast();
+
+  const { post: loginRequest } = useApiService<
+    LoginResponse,
+    UsernameAndPasswordParams
+  >('login');
 
   const onSubmit: SubmitHandler<LoginFormInput> = async ({
     username,
     password,
   }) => {
-    const loginResponse = await login({ username, password });
-    const isOk = loginResponse.message === ApiMessage.Ok;
+    const res = await loginRequest({
+      username,
+      password,
+    });
+    const isOk = res.message === ApiMessage.Ok;
 
     if (!isOk) {
       return setError('password', {
@@ -42,13 +55,10 @@ function LoginForm() {
       });
     }
 
-    console.info('Login success');
-    setCurrentUser(loginResponse.user);
-    setJwtToken(loginResponse.token);
-    toast.success(
-      'Kirjauduit sisään',
-      `Terve taas ${loginResponse.user.username}!`
-    );
+    console.debug('Login success');
+    setCurrentUser(res.user);
+    setJwtToken(res.token);
+    toast.success('Kirjauduit sisään', `Terve taas ${res.user.username}!`);
   };
 
   return (

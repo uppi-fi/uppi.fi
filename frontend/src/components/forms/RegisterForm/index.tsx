@@ -1,15 +1,15 @@
 import FormError from '@frontend/components/FormError';
-import { useCurrentUser } from '@frontend/services/useCurrentUser';
+import { useApiService } from '@frontend/services/useApiService';
 import { useToast } from '@frontend/services/useToast';
+import { currentUserState } from '@frontend/state/currentUserState';
 import { jwtTokenState } from '@frontend/state/jwtTokenState';
 import { Icon } from '@iconify/react';
-import { ApiMessage } from '@shared/api';
+import { ApiMessage, RegisterParams, RegisterResponse } from '@shared/api';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useSetRecoilState } from 'recoil';
 import Col from '../../atoms/Col';
 import Row from '../../atoms/Row';
 import Button from '../../Button';
-import * as api from '@frontend/api';
 
 interface RegisterFormInput {
   username: string;
@@ -28,7 +28,12 @@ function RegisterForm() {
   });
   const toast = useToast();
 
-  const { setCurrentUser } = useCurrentUser();
+  const { post: registerRequest } = useApiService<
+    RegisterResponse,
+    RegisterParams
+  >('register');
+
+  const setCurrentUser = useSetRecoilState(currentUserState);
   const setJwtToken = useSetRecoilState(jwtTokenState);
 
   const onSubmit: SubmitHandler<RegisterFormInput> = async ({
@@ -36,7 +41,7 @@ function RegisterForm() {
     password,
     accessKey,
   }) => {
-    const res = await api.register({
+    const res = await registerRequest({
       username,
       password,
       accessKey,
